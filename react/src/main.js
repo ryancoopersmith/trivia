@@ -6,6 +6,6 @@ import Quiz from './components/Quiz';
 $(function() {
   reactDOM.render(
     <Quiz />,
-    document.getElementById('app')
+    document.getElementById('quiz')
   );
 });

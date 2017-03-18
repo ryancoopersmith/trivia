@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :username, presence: true, uniqueness: true
-  validates :win_percentage, numericality: true
+  validates :win_percentage, numericality: true, allow_nil: true
 
   has_many :quizzes
 end
