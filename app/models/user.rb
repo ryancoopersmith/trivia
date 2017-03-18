@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   validates :username, presence: true, uniqueness: true
   validates :win_percentage, numericality: true, allow_nil: true
+  validates :admin, numericality: true, allow_nil: true, inclusion: { in: [1, 2] }
 
   has_many :quizzes
 end
