@@ -2,7 +2,8 @@
 ![Code Climate](https://codeclimate.com/github/ryancoopersmith/trivia.png)
 ![Coverage Status](https://coveralls.io/repos/ryancoopersmith/trivia/badge.png)
 
-#Trivia Extraordinaire
+# Trivia Extraordinaire
+=======================
 
 My breakable toy, "Trivia Extraordinaire", is a trivia app composed of over 200,000 questions,
 found by crawling the Jeopardy archives. The user can chose between multiple question categories
