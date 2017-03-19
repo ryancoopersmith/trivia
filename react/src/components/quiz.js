@@ -11,7 +11,7 @@ class Quiz extends Component {
   }
 
   getQuestions() {
-    let category = this.props.category.toLowerCase().replace(/:/g, '-').replace(/ /g, '-');
+    let category = this.props.category.toLowerCase().replace(/:| /g, '-').replace(/\?|!|\(|\)|,|'|"|&|\.|\*/g, '');
     fetch(`https://s3.amazonaws.com/trivia-extraordinaire/categories/${category}.json`)
       .then(response => {
         if (response.ok) {
