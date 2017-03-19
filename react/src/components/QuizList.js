@@ -11,7 +11,7 @@ class QuizList extends Component {
   }
 
   getQuizzes() {
-    fetch('https://s3.amazonaws.com/trivia-extraordinaire/questions.json')
+    fetch('https://s3.amazonaws.com/trivia-extraordinaire/categories.json')
       .then(response => {
         if (response.ok) {
           return response;
@@ -21,7 +21,7 @@ class QuizList extends Component {
           throw(error);
         }
       })
-      .then(response => response.json()) //if this doesn't work use JSON.stringify(response)
+      .then(response => response.json())
       .then(body => {
         this.setState({ quizzes: body });
       })
@@ -36,8 +36,6 @@ class QuizList extends Component {
     let quizzes = this.state.quizzes.map((quiz, index) => {
       return(
         <Quiz
-         question={quiz.question}
-         answer={quiz.answer}
          category={quiz.category}
          key={index + 1}
         />

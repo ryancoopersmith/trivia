@@ -243,6 +243,7 @@ DEPENDENCIES
   factory_girl_rails
   foundation-rails
   jquery-rails
+  json
   launchy
   listen (~> 3.0.5)
   pg (~> 0.18)
