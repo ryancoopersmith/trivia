@@ -5,5 +5,7 @@ Rails.application.routes.draw do
     resources :questions
   end
 
+  resources :interests
+
   root 'quizzes#index'
 end

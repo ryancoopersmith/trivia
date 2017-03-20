@@ -7,8 +7,13 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'devise'
+gem 'coveralls'
+gem "carrierwave"
 gem 'dotenv-rails'
+gem 'ransack'
 gem 'foundation-rails'
+gem 'fog'
+gem 'jquery-turbolinks'
 gem 'json'
 
 group :development do
@@ -30,10 +35,7 @@ end
 
 group :production do
   gem 'rails_12factor'
-end
-
-group :test do
-  gem 'coveralls', require: false
+  gem 'sendgrid-ruby'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

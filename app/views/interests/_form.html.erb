@@ -1,3 +1,5 @@
-<%= form_for [@user, @interests] do |f| %>
+<%= form_for [@user, @interest] do |f| %>
+  <%= f.label :interest %>
+  <%= f.text_field :interest %>
   <%= f.submit %>
 <% end %>

@@ -3,7 +3,7 @@ class Quiz < ApplicationRecord
   validates :questions_count, presence: true, numericality: true
   validates :category, presence: true
 
-  has_many :questions, through: :quiz_questions
-  has_many :quiz_questions
+  has_many :questions, through: :quiz_questions, dependent: :destroy
+  has_many :quiz_questions, dependent: :destroy
   belongs_to :user
 end
