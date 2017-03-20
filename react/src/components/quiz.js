@@ -5,16 +5,14 @@ class Quiz extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      questions: [],
-      start: false
+      questions: []
     };
     this.getQuestions = this.getQuestions.bind(this);
-    this.startQuiz = this.startQuiz.bind(this);
   }
 
-  getQuestions(category) {
-    let quizCategory = category.toLowerCase().replace(/:| /g, '-').replace(/\?|!|\(|\)|,|'|"|&|\.|\*/g, '');
-    fetch(`https://s3.amazonaws.com/trivia-extraordinaire/categories/${quizCategory}.json`)
+  getQuestions() {
+    let category = this.props.category.toLowerCase().replace(/:| /g, '-').replace(/\?|!|\(|\)|,|'|"|&|\.|\*/g, '');
+    fetch(`https://s3.amazonaws.com/trivia-extraordinaire/categories/${category}.json`)
       .then(response => {
         if (response.ok) {
           return response;
@@ -31,32 +29,27 @@ class Quiz extends Component {
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
-  startQuiz(category) {
-    this.getQuestions(category);
-    this.setState({ start: true });
-  }
-
   render() {
-    if (this.state.start) {
-      let questions = this.state.questions.map((question, index) => {
-        return(
-          <Question
-          category={question.category}
-          question={question.question}
-          answer={question.answer}
-          key={index + 1}
-          />
-        );
-      });
+    let questions = this.state.questions.map((question, index) => {
+      return(
+        <Question
+         category={question.category}
+         question={question.question}
+         answer={question.answer}
+         key={index + 1}
+        />
+      );
+    });
+    if (this.state.questions) {
       return (
         <div>
-          {questions}
+          <button type="button" onClick={this.getQuestions()}>{this.props.category}</button>
         </div>
       );
     } else {
       return (
         <div>
-          <button type="button" onClick={() => this.startQuiz(this.props.category)}>{this.props.category}</button>
+          {questions}
         </div>
       );
     }

@@ -1,5 +1,3 @@
-<%= form_for @interests do |f| %>
+<%= form_for [@user, @interests] do |f| %>
   <%= f.submit %>
 <% end %>
-
-<%= link_to "Go Back", root_path %>
