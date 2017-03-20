@@ -26,7 +26,7 @@ class InterestsController < ApplicationController
   private
 
   def interests_params
-    params.require(:review).permit(:interest, :user_id)
+    params.require(:interest).permit(:interest, :user_id)
   end
 
   def authorize_user

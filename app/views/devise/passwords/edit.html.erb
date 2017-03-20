@@ -28,10 +28,12 @@
   <div class="row">
     <div class = "small-offset-3 small-6 columns">
       <%= f.submit "Change my password", class: 'small-12 hollow button defcon-5' %>
-      <%= render "devise/shared/links" %>
     </div>
     <div class = "small-offset-3 columns"></div>
   </div>
+
+  <%= render "devise/shared/links" %>
+
   <div class="row">
     <div class = "small-offset-3 small-6 columns">
       <%= link_to "Go Back", root_path %>
