@@ -3,11 +3,15 @@ class InterestsController < ApplicationController
 
   def new
     @user = current_user
-    10.times { @user.interests.new }
+    @interests = []
+    10.times { @interests << @user.interests.new }
   end
 
   def create
     @user = current_user
+    @interest = @user.interests.create(interests_params)
+    @interest.save
+    flash[:notice] = "Interests successfully added"
   end
 
   def edit
@@ -16,6 +20,7 @@ class InterestsController < ApplicationController
 
   def update
     @user = current_user
+    flash[:notice] = "Interests successfully updated"
   end
 
   private

@@ -1,5 +1,7 @@
-<%= form_for [@user, @interest] do |f| %>
-  <%= f.label :interest %>
-  <%= f.text_field :interest %>
-  <%= f.submit %>
+<% @interests.each do |interest| %>
+  <%= form_for interest do |f| %>
+    <%= f.label :interest %>
+    <%= f.text_field :interest %>
+    <%= f.submit %>
+  <% end %>
 <% end %>
