@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   end
 
   resources :interests
-
+  #nest interests under users and add users to the form helper for interests
   root 'quizzes#index'
 end
