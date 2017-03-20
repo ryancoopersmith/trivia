@@ -13,6 +13,9 @@ feature 'user signs up' do
   # [] I should remain on the sign in page if I enter invalid information
   # [] I should see a success message if I successfully sign up
   # [] I should be taken to the root path when I sign up
+
+  before { ActionMailer::Base.deliveries = [] }
+
   scenario 'user visits sign up page' do
     visit root_path
     click_link 'Sign Up'
