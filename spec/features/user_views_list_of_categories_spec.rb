@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 # As a user that wants to play some trivia
 # I should be able to see a list of the different categories
 # So that I can get trivia questions that I am interested in

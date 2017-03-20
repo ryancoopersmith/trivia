@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20170318175822) do
 
   create_table "interests", force: :cascade do |t|
     t.string  "interest"
-    t.integer "user_id",  null: false
+    t.integer "user_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20170318175822) do
 
   create_table "quizzes", force: :cascade do |t|
     t.string  "difficulty",       null: false
-    t.integer "user_id",          null: false
+    t.integer "user_id"
     t.integer "quiz_question_id", null: false
     t.integer "questions_count",  null: false
     t.string  "category",         null: false

@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 # As an authenticated user that wants to create my own trivia quiz
 # I should be able to fill out a form with my questions
 # So that I can create my trivia quiz for other users to play
@@ -12,6 +14,6 @@
 
 feature 'user creates quiz' do
   scenario "user clicks 'create quiz' link" do
-    
+
   end
 end

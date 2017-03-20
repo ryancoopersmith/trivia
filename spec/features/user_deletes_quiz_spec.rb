@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 # As an authenticated user that isn't happy with my quiz
 # I should be able to delete my quiz
 # So that no one can see my quiz anymore

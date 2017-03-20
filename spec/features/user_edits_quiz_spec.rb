@@ -1,7 +1,9 @@
+require 'rails_helper'
+
 # As an authenticated user that wants to edit my trivia quiz
 # I should be able to fill out a form with my updates
 # So that I can fix any mistakes and add new questions to my quiz
-# 
+#
 # [] I should be able to change the name of the category for my quiz
 # [] I should be able to change the questions and answers for my quiz
 # [] Each question and answer I fill out should be on their own form page

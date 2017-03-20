@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 # As a user that wants to play some trivia
 # I should be able to play a quiz of my choosing
 # So that I can have fun
