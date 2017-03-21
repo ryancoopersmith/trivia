@@ -37,6 +37,14 @@ class Quiz extends Component {
   }
 
   render() {
+    let classNames = require('classnames');
+
+    let gridClasses = classNames({
+      'card': true,
+      'small-2': true,
+      'columns': true
+    })
+
     if (this.state.start) {
       let questions = this.state.questions.map((question, index) => {
         return(
@@ -55,9 +63,13 @@ class Quiz extends Component {
       );
     } else {
       return (
-        <div>
-          <button type="button" onClick={() => this.startQuiz(this.props.category)}>{this.props.category}</button>
+      <div className={gridClasses}>
+        <div className="card-divider">
+          <div className="card-section">
+            <h3 className="category"><button type="button" onClick={() => this.startQuiz(this.props.category)}>{this.props.category}</button></h3>
+          </div>
         </div>
+      </div>
       );
     }
   }
