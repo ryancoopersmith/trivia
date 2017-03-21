@@ -9,7 +9,7 @@ class InterestsController < ApplicationController
 
   def create
     @user = current_user
-    @interests = @user.interests.create(interests_params)
+    @interests = @user.interests.create(interests_params) #possibly loop through @user.interests and create each individual one first
     @interests.each do |interest|
       if interest.save
         flash[:notice] = "Interests successfully added"
@@ -17,12 +17,14 @@ class InterestsController < ApplicationController
         flash[:notice] = "Interests failed to add"
       end
     end
-    #add a redirect
   end
 
   def edit
     @user = current_user
-    @interests = @user.interests
+    @old_interests = @user.interests
+    count = 10 - @old_interests.length
+    @interests = []
+    count.times { @interests << @user.interests.new }
   end
 
   def update
@@ -41,7 +43,7 @@ class InterestsController < ApplicationController
   private
 
   def interests_params
-    params.require(:interest).permit(:interest, :user_id)
+    params.require(:interest).permit(:interest, :user_id) #possibly change to allow an array of interests
   end
 
   def authorize_user
