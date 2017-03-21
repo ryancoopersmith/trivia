@@ -19,8 +19,8 @@ class Quiz extends Component {
         if (response.ok) {
           return response;
         } else {
-          let errorMessage = `${response.status} (${response.statusText})`;
-          let error = new Error(errorMessage);
+          let errorMessage = `${response.status} (${response.statusText})`,
+              error = new Error(errorMessage);
           throw(error);
         }
       })

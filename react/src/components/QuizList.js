@@ -12,6 +12,7 @@ class QuizList extends Component {
     this.getQuizzes = this.getQuizzes.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
     this.setQuizzes = this.setQuizzes.bind(this);
+    this.shuffle = this.shuffle.bind(this);
   }
 
   updateSearch(event) {
@@ -21,6 +22,18 @@ class QuizList extends Component {
     } else {
       this.setState({ group: 1 });
     }
+  }
+
+  shuffle(array) {
+    let currentIndex = array.length, temporaryValue, randomIndex;
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+    return array;
   }
 
   getQuizzes() {
@@ -36,7 +49,8 @@ class QuizList extends Component {
       })
       .then(response => response.json())
       .then(body => {
-        this.setState({ quizzes: body });
+        let randomizedBody = this.shuffle(body);
+        this.setState({ quizzes: randomizedBody });
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
@@ -87,7 +101,7 @@ class QuizList extends Component {
       }
     });
 
-    let pageNumbers = []
+    let pageNumbers = [];
     for(let i = 1; i <= pageNumberLength; i++) {
       pageNumbers.push(<input type="submit" value={i} className="button" onClick={() => this.setQuizzes(i)} />)
     }
