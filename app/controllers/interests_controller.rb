@@ -9,14 +9,32 @@ class InterestsController < ApplicationController
 
   def create
     @user = current_user
-    @interests = @user.interests.create(interests_params) #possibly loop through @user.interests and create each individual one first
-    @interests.each do |interest|
-      if interest.save
-        flash[:notice] = "Interests successfully added"
+    success = false
+    if params.has_key?("interest")
+      my_interest = @user.interests.create(interests_params(params['interest']))
+      if my_interest.save
+        success = true
       else
-        flash[:notice] = "Interests failed to add"
+        success = false
+      end
+    else
+      params['interests'].each do |interest|
+        if interest['interest'] != ""
+          my_interest = @user.interests.create(interests_params(interest))
+          if my_interest.save
+            success = true
+          else
+            success = false
+          end
+        end
       end
     end
+    if success
+      flash[:notice] = "Interests successfully added"
+    else
+      flash[:notice] = "One or more interests failed to add"
+    end
+    redirect_to root_path
   end
 
   def edit
@@ -29,21 +47,37 @@ class InterestsController < ApplicationController
 
   def update
     @user = current_user
-    @interests = @user.interests
-    @interests.each do |interest|
-      if interest.update_attributes(interests_params)
-        flash[:notice] = "Interests successfully updated"
+    success = false
+    if params.has_key?("interest")
+      my_interest = @user.interests.update_attributes(interests_params(params['interest']))
+      if my_interest.save
+        success = true
       else
-        flash[:notice] = "Interest failed to update"
+        success = false
+      end
+    else
+      params['interests'].each do |interest|
+        if interest['interest'] != ""
+          my_interest = @user.interests.update_attributes(interests_params(interest))
+          if my_interest.save
+            success = true
+          else
+            success = false
+          end
+        end
       end
     end
-    #add a redirect
+    if success
+      flash[:notice] = "Interests successfully updated"
+    else
+      flash[:notice] = "Interest failed to update"
+    end
   end
 
   private
 
-  def interests_params
-    params.require(:interest).permit(:interest, :user_id) #possibly change to allow an array of interests
+  def interests_params(interest_params)
+    interest_params.permit(:interest, :user_id)
   end
 
   def authorize_user

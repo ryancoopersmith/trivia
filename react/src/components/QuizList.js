@@ -26,7 +26,7 @@ class QuizList extends Component {
 
   shuffle(array) {
     let currentIndex = array.length, temporaryValue, randomIndex;
-    while (0 !== currentIndex) {
+    while (currentIndex !== 0) {
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
       temporaryValue = array[currentIndex];
@@ -66,7 +66,7 @@ class QuizList extends Component {
   render() {
     let groupSize = 6;
     let pageSize = 36;
-    let pageNumberLength = Math.ceil(this.state.quizzes.length / pageSize); //make sure this is right
+    let pageNumberLength = Math.ceil(this.state.quizzes.length / pageSize);
 
     let quizzes = this.state.quizzes.map((quiz, index) => {
       if (quiz.category.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1) {

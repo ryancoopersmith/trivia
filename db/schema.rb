@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20170320192509) do
   enable_extension "plpgsql"
 
   create_table "interests", force: :cascade do |t|
-    t.string  "interest"
+    t.string  "interest", default: ""
     t.integer "user_id"
   end
 
