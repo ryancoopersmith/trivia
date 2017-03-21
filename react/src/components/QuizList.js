@@ -7,6 +7,7 @@ class QuizList extends Component {
     this.state = {
       quizzes: [],
       search: '',
+      prevSearch: '',
       group: 1
     };
     this.getQuizzes = this.getQuizzes.bind(this);
@@ -16,9 +17,10 @@ class QuizList extends Component {
   }
 
   updateSearch(event) {
+    let prevSearch = this.state.search;
+    this.setState({ prevSearch: prevSearch });
     this.setState({search: event.target.value.substr(0, 20)});
-    console.log(this.state.search.length)
-    if(this.state.search.length === 1) {
+    if(this.state.search.length === 1 && this.state.prevSearch > this.state.search) {
       this.setState({ group: 1 });
     } else if(this.state.search.length > -1){
       this.setState({ group: 0 });
