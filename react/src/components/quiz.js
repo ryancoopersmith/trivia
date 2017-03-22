@@ -10,6 +10,19 @@ class Quiz extends Component {
     };
     this.getQuestions = this.getQuestions.bind(this);
     this.startQuiz = this.startQuiz.bind(this);
+    this.shuffle = this.shuffle.bind(this);
+  }
+
+  shuffle(array) {
+    let currentIndex = array.length, temporaryValue, randomIndex;
+    while (currentIndex !== 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+    return array;
   }
 
   getQuestions(category) {
@@ -46,13 +59,35 @@ class Quiz extends Component {
     })
 
     if (this.state.start) {
-      let questions = this.state.questions.map((question, index) => {
+      let randomizedQuestions = this.shuffle(this.state.questions);
+      let questions = randomizedQuestions.map((question, index) => {
+        let randomizedAnswers = this.shuffle(this.state.questions);
+        let wrongs = [randomizedAnswers[0].answer, randomizedAnswers[1].answer, randomizedAnswers[2].answer];
+        let finalWrongs = [];
+        let prevWrongs = [];
+        wrongs.forEach((wrong) => {
+          while (wrong === question.answer) {
+            wrong = randomizedAnswers[Math.floor(Math.random() * randomizedAnswers.length)].answer;
+            if (prevWrongs[0]) {
+              prevWrongs.forEach((prevWrong) => {
+                while (prevWrong === wrong) {
+                  wrong = randomizedAnswers[Math.floor(Math.random() * randomizedAnswers.length)].answer;
+                }
+              });
+            }
+          }
+          prevWrongs.push(wrong);
+          finalWrongs.push(wrong);
+        });
         return(
           <Question
-          category={question.category}
-          question={question.question}
-          answer={question.answer}
-          key={index + 1}
+           key={index + 1}
+           category={question.category}
+           question={question.question}
+           answer={question.answer}
+           wrong1={finalWrongs[0]}
+           wrong2={finalWrongs[1]}
+           wrong3={finalWrongs[2]}
           />
         );
       });

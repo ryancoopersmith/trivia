@@ -20,26 +20,6 @@ ActiveRecord::Schema.define(version: 20170320192509) do
     t.integer "user_id"
   end
 
-  create_table "questions", force: :cascade do |t|
-    t.text    "description",      null: false
-    t.string  "answer",           null: false
-    t.integer "quiz_question_id", null: false
-    t.string  "category",         null: false
-  end
-
-  create_table "quiz_questions", force: :cascade do |t|
-    t.integer "quiz_id",     null: false
-    t.integer "question_id", null: false
-  end
-
-  create_table "quizzes", force: :cascade do |t|
-    t.string  "difficulty",       null: false
-    t.integer "user_id"
-    t.integer "quiz_question_id", null: false
-    t.integer "questions_count",  null: false
-    t.string  "category",         null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false

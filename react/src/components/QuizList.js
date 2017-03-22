@@ -81,8 +81,8 @@ class QuizList extends Component {
       if (quiz.category.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1) {
         return (
           <Quiz
-           category={quiz.category}
            key={index + 1}
+           category={quiz.category}
           />
         );
       }
