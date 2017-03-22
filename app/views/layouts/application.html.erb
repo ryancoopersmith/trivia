@@ -37,14 +37,6 @@
             </div>
           <% end %>
         <% end %>
-
-        <% if current_user %>
-          <% if current_user.admin? %>
-            <div class="top-bar-link">
-              <%=link_to "Create Bar", new_bar_path %>
-            </div>
-          <% end %>
-        <% end %>
       </div>
     </div>
     <div class="flash">

@@ -6,6 +6,11 @@ h1, h2, h3, a {
   color: $yellow;
 }
 
+p {
+  font-family: sans-serif;
+  font-size: 20px;
+}
+
 button {
   color: $yellow;
   font-family: "Lemon";
@@ -20,7 +25,8 @@ button {
 .top-bar-link {
   font-size: 20px;
   display: inline-block;
-  padding: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
 }
 
 .top-bar {
