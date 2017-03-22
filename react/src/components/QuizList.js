@@ -106,7 +106,7 @@ class QuizList extends Component {
 
     let quizzes = this.state.quizzes.map((quiz, index) => {
       if (this.state.interests[0]) {
-        quizzes.forEach((matchQuiz) => {
+        this.state.quizzes.forEach((matchQuiz) => {
           this.state.interests.forEach((interest) => {
             if (matchQuiz.category.toLowerCase().indexOf(interest.toLowerCase()) !== -1) {
               if (matchQuiz.category.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1) {
