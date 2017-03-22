@@ -14,6 +14,7 @@ class QuizList extends Component {
     this.updateSearch = this.updateSearch.bind(this);
     this.setQuizzes = this.setQuizzes.bind(this);
     this.shuffle = this.shuffle.bind(this);
+    this.updateGroup = this.updateGroup.bind(this);
   }
 
   updateSearch(event) {
@@ -37,6 +38,11 @@ class QuizList extends Component {
       array[randomIndex] = temporaryValue;
     }
     return array;
+  }
+
+  updateGroup(page) {
+    let nextGroup = this.state.group + page;
+    this.setState({ group: nextGroup });
   }
 
   getQuizzes() {
@@ -69,10 +75,10 @@ class QuizList extends Component {
   render() {
     let classNames = require('classnames');
 
-    let paginationClass = classNames({
+    let paginateClasses = classNames({
       'button': true,
       'paginate': true
-    })
+    });
 
     let groupSize = 4;
     let pageSize = 34;
@@ -110,9 +116,20 @@ class QuizList extends Component {
       }
     });
 
-    let pageNumbers = [];
-    for(let i = 1; i <= pageSize; i++) {
-      pageNumbers.push(<input type="submit" value={i} className={paginationClass} onClick={() => this.setQuizzes(i)} />)
+    let page;
+    if (this.state.group > 1 && this.state.group < 33) {
+      page = <div className="center">
+      <button type="button" onClick={() => this.updateGroup(-1)} className={paginateClasses}>Previous</button>
+      <button type="button" onClick={() => this.updateGroup(1)} className={paginateClasses}>Next</button>
+      </div>;
+    } else if (this.state.group === 33){
+      page = <div className="center">
+      <button type="button" onClick={() => this.updateGroup(-1)} className={paginateClasses}>Previous</button>
+      </div>;
+    } else {
+      page = <div className="center">
+      <button type="button" onClick={() => this.updateGroup(1)} className={paginateClasses}>Next</button>
+      </div>;
     }
 
     return(
@@ -121,9 +138,7 @@ class QuizList extends Component {
         value={this.state.search}
         onChange={this.updateSearch}/>
         {quizzes}
-        <div className="numbers">
-          {pageNumbers}
-        </div>
+        {page}
       </div>
     );
   }

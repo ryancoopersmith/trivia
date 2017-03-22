@@ -10,7 +10,6 @@ class User < ApplicationRecord
   validates :win_percentage, numericality: true, allow_nil: true
   validates :admin, inclusion: { in: [true, false] }, allow_nil: true
 
-  has_many :quizzes, dependent: :destroy
   has_many :interests, dependent: :destroy
   accepts_nested_attributes_for :interests
 

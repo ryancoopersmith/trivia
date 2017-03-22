@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :quizzes
 
-  resources :interests
+  resources :users do
+    resources :interests
+  end
 
   root 'quizzes#index'
 end

@@ -1,6 +1,11 @@
 class InterestsController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @user = current_user
+    @interests = @user.interests
+  end
+
   def new
     @user = current_user
     @interests = []

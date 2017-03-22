@@ -55,7 +55,12 @@ button {
 }
 
 .paginate {
-  font-size: 16px;
+  text-align: center;
+  margin: auto;
   background-color: $purple;
   color: $yellow;
+}
+
+.center {
+  text-align: center;
 }

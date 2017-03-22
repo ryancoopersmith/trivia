@@ -1,0 +1,11 @@
+<h2 class="text-center">Your Interests</h2>
+
+<ul>
+  <% @interests.each do |interest| %>
+    <li>
+      <%= interest %>
+    </li>
+    <%= link_to "Edit Interest", user_interest_path(@current_user, interest) %>
+</ul>
+
+<%= link_to "Go Back", root_path %>
