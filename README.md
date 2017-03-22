@@ -1,6 +1,6 @@
 ![Build Status](https://codeship.com/projects/4af01c90-e639-0134-6c39-22570000ff61/status?branch=master)
 ![Code Climate](https://codeclimate.com/github/ryancoopersmith/trivia.png)
-![Coverage Status](https://coveralls.io/repos/ryancoopersmith/trivia/badge.png)
+[![Coverage Status](https://coveralls.io/repos/github/ryancoopersmith/trivia/badge.svg?branch=master)](https://coveralls.io/github/ryancoopersmith/trivia?branch=master)
 
 # Trivia Extraordinaire
 
