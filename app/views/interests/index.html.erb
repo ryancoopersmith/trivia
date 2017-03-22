@@ -1,11 +1,45 @@
 <h2 class="text-center">Your Interests</h2>
 
-<ul>
-  <% @interests.each do |interest| %>
-    <li>
-      <%= interest %>
-    </li>
-    <%= link_to "Edit Interest", user_interest_path(@current_user, interest) %>
-</ul>
+<% if current_user.interests[0] %>
+  <ul>
+    <% @interests.each do |interest| %>
+      <div class="center">
+        <li>
+          <h4><%= interest.interest %></h4>
+        </li>
+        <div class="row">
+          <div class = "small-offset-3 small-6 columns">
+            <div class="hollow button defcon-5">
+              <%= link_to "Edit Interest", edit_user_interest_path(current_user, interest) %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class = "small-offset-3 small-6 columns">
+            <div class="hollow button defcon-5">
+              <%= link_to "Delete Interest", user_interest_path(current_user, interest), method: :delete %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </ul>
+<% else %>
+  <h3 class="text-center">You don't have any interests!</h3>
+  <div class="row">
+    <div class = "small-offset-3 small-6 columns">
+      <div class="center hollow button defcon-5">
+        <%= link_to "Add Interest", new_user_interest_path(current_user) %>
+      </div>
+    </div>
+  </div>
+<% end %>
 
-<%= link_to "Go Back", root_path %>
+<div class="row">
+  <div class = "small-offset-3 small-6 columns">
+    <div class='hollow button defcon-5'>
+      <%= link_to "Go Back", root_path %>
+    </div>
+  </div>
+  <div class = "small-offset-3 columns"></div>
+</div>

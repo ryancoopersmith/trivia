@@ -44,39 +44,24 @@ class InterestsController < ApplicationController
 
   def edit
     @user = current_user
-    @old_interests = @user.interests
-    count = 10 - @old_interests.length
-    @interests = []
-    count.times { @interests << @user.interests.new }
+    @interest = @user.interests.find(params[:id])
   end
 
   def update
     @user = current_user
-    success = false
-    if params.has_key?("interest")
-      my_interest = @user.interests.update_attributes(interests_params(params['interest']))
-      if my_interest.save
-        success = true
-      else
-        success = false
-      end
+    @interest = @user.interests.find(params[:id])
+    if @interest.update_attributes(one_interest_params)
+      flash[:notice] = "Interest updated successfully"
     else
-      params['interests'].each do |interest|
-        if interest['interest'] != ""
-          my_interest = @user.interests.update_attributes(interests_params(interest))
-          if my_interest.save
-            success = true
-          else
-            success = false
-          end
-        end
-      end
+      flash[:notice] = @interest.errors.messages
     end
-    if success
-      flash[:notice] = "Interests successfully updated"
-    else
-      flash[:notice] = "Interest failed to update"
-    end
+    redirect_to root_path
+  end
+
+  def destroy
+    @interest = Interest.find(params[:id])
+    @interest.delete
+    flash[:notice] = "Interest successfully deleted"
     redirect_to root_path
   end
 
@@ -84,6 +69,10 @@ class InterestsController < ApplicationController
 
   def interests_params(interest_params)
     interest_params.permit(:interest, :user_id)
+  end
+
+  def one_interest_params
+    params.require(:interest).permit(:interest, :user_id)
   end
 
   def authorize_user

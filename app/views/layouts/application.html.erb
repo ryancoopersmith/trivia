@@ -24,7 +24,7 @@
               <%= link_to "My Account", edit_user_registration_path %>
             </div>
             <div class="top-bar-link">
-              <%= link_to "Edit Your Interests", edit_user_interest_path(current_user, current_user.interests) %>
+              <%= link_to "View Your Interests", user_interests_path(current_user) %>
             </div>
           <% else %>
             <div class="top-bar-link">

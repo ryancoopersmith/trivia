@@ -2,7 +2,7 @@ $purple: #755F98;
 $blue: #6D96D3;
 $yellow: #F7CD7F;
 
-h1, h2, h3, a {
+h1, h2, h3, a, li {
   color: $yellow;
 }
 
@@ -59,6 +59,7 @@ button {
   margin: auto;
   background-color: $purple;
   color: $yellow;
+  border-radius: 10px;
 }
 
 .center {
