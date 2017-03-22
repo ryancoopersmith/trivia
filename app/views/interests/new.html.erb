@@ -2,6 +2,10 @@
   <h2 class="text-center">What Interests You?</h2>
 </div>
 
+<div class="row">
+  <h3 class="text-center">Quizzes realating to your interests will show up first on the home page.</h3>
+</div>
+
 <%= form_tag user_interests_path do %>
   <% @interests.each do |interest| %>
     <%= fields_for 'interests[]', interest do |f| %>
