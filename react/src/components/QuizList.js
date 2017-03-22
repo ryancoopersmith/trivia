@@ -8,13 +8,15 @@ class QuizList extends Component {
       quizzes: [],
       search: '',
       prevSearch: '',
-      group: 1
+      group: 1,
+      interests: []
     };
     this.getQuizzes = this.getQuizzes.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
     this.setQuizzes = this.setQuizzes.bind(this);
     this.shuffle = this.shuffle.bind(this);
     this.updateGroup = this.updateGroup.bind(this);
+    this.getInterests = this.getInterests.bind(this);
   }
 
   updateSearch(event) {
@@ -64,8 +66,27 @@ class QuizList extends Component {
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
+  getInterests() {
+    fetch('http://localhost:3000/api/v1/interests.json')
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+              error = new Error(errorMessage);
+          throw(error);
+        }
+      })
+      .then(response => response.json())
+      .then(body => {
+        this.setState({ interests: body });
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
+
   componentDidMount() {
     this.getQuizzes();
+    this.getInterests();
   }
 
   setQuizzes(page) {
@@ -83,38 +104,41 @@ class QuizList extends Component {
     let groupSize = 4;
     let pageSize = 34;
 
-    let quizzes = this.state.quizzes.map((quiz, index) => {
-      if (quiz.category.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1) {
-        return (
-          <Quiz
-           key={index + 1}
-           category={quiz.category}
-          />
-        );
-      }
-    }).reduce((r, element, index) => {
-      index % groupSize === 0 && r.push([]);
-      r[r.length - 1].push(element);
-      return r;
-    }, []).reduce((r, element, index) => {
-      index % pageSize === 0 && r.push([]);
-      r[r.length - 1].push(element);
-      return r;
-    }, []).map((quizContent) => {
-      if (this.state.group) {
-        return(
-          <div className="row">
+    this.state.interests.forEach((interest) => {
+      let quizzes = this.state.quizzes.map((quiz, index) => {
+        if (quiz.category.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1) {
+          return (
+            <Quiz
+            key={index + 1}
+            category={quiz.category}
+            />
+          );
+        }
+      }).reduce((r, element, index) => {
+        index % groupSize === 0 && r.push([]);
+        r[r.length - 1].push(element);
+        return r;
+      }, []).reduce((r, element, index) => {
+        index % pageSize === 0 && r.push([]);
+        r[r.length - 1].push(element);
+        return r;
+      }, []).map((quizContent) => {
+        if (this.state.group) {
+          return(
+            <div className="row">
             {quizContent[this.state.group - 1]}
-          </div>
-        );
-      } else {
-        return(
-          <div className="row">
+            </div>
+          );
+        } else {
+          return(
+            <div className="row">
             {quizContent}
-          </div>
-        );
-      }
-    });
+            </div>
+          );
+        }
+      });
+      
+    })
 
     let page;
     if (this.state.group > 1 && this.state.group < 33) {
