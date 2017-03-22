@@ -21,7 +21,6 @@
 
 # Ignore coverage
 /coverage
-.coveralls.yml
 /react/coverage
 
 # Ignore dot-env
