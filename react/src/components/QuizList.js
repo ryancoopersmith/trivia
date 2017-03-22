@@ -67,9 +67,15 @@ class QuizList extends Component {
   }
 
   render() {
-    let groupSize = 6;
-    let pageSize = 36;
-    let pageNumberLength = Math.ceil(this.state.quizzes.length / pageSize);
+    let classNames = require('classnames');
+
+    let paginationClass = classNames({
+      'button': true,
+      'paginate': true
+    })
+
+    let groupSize = 4;
+    let pageSize = 34;
 
     let quizzes = this.state.quizzes.map((quiz, index) => {
       if (quiz.category.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1) {
@@ -105,8 +111,8 @@ class QuizList extends Component {
     });
 
     let pageNumbers = [];
-    for(let i = 1; i <= pageNumberLength; i++) {
-      pageNumbers.push(<input type="submit" value={i} className="button" onClick={() => this.setQuizzes(i)} />)
+    for(let i = 1; i <= pageSize; i++) {
+      pageNumbers.push(<input type="submit" value={i} className={paginationClass} onClick={() => this.setQuizzes(i)} />)
     }
 
     return(

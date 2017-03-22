@@ -72,6 +72,7 @@ class InterestsController < ApplicationController
     else
       flash[:notice] = "Interest failed to update"
     end
+    redirect_to root_path
   end
 
   private

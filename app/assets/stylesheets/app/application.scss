@@ -1,0 +1,55 @@
+$purple: #755F98;
+$blue: #6D96D3;
+$yellow: #F7CD7F;
+
+h1, h2, h3, a {
+  color: $yellow;
+}
+
+button {
+  color: $yellow;
+  font-family: "Lemon";
+  text-align: center;
+  font-size: 20px;
+}
+
+.top-bar-right {
+  padding-right: 15px;
+}
+
+.top-bar-link {
+  font-size: 20px;
+  display: inline-block;
+  padding: 10px;
+}
+
+.top-bar {
+  margin-bottom: 15px;
+}
+
+.search {
+  position: absolute;
+  width: 26%;
+  top: 8%;
+  right: 2%;
+}
+
+.card-divider {
+  width: 250px;
+  height: 150px;
+  border-radius: 10px;
+}
+
+.card {
+  border-radius: 10px;
+}
+
+.card-section {
+  text-align: center;
+}
+
+.paginate {
+  font-size: 16px;
+  background-color: $purple;
+  color: $yellow;
+}

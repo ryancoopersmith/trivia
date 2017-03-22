@@ -41,7 +41,7 @@ class Quiz extends Component {
 
     let gridClasses = classNames({
       'card': true,
-      'small-2': true,
+      'small-3': true,
       'columns': true
     })
 
@@ -66,7 +66,7 @@ class Quiz extends Component {
       <div className={gridClasses}>
         <div className="card-divider">
           <div className="card-section">
-            <h3 className="category"><button type="button" onClick={() => this.startQuiz(this.props.category)}>{this.props.category}</button></h3>
+            <p className="category"><button type="button" onClick={() => this.startQuiz(this.props.category)}>{this.props.category}</button></p>
           </div>
         </div>
       </div>
