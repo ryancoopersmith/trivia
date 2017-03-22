@@ -68,13 +68,13 @@ class Quiz extends Component {
         wrongs.forEach((wrong) => {
           while (wrong === question.answer) {
             wrong = randomizedAnswers[Math.floor(Math.random() * randomizedAnswers.length)].answer;
-            if (prevWrongs[0]) {
-              prevWrongs.forEach((prevWrong) => {
-                while (prevWrong === wrong) {
-                  wrong = randomizedAnswers[Math.floor(Math.random() * randomizedAnswers.length)].answer;
-                }
-              });
-            }
+          }
+          if (prevWrongs[0]) {
+            prevWrongs.forEach((prevWrong) => {
+              while (prevWrong === wrong) {
+                wrong = randomizedAnswers[Math.floor(Math.random() * randomizedAnswers.length)].answer;
+              }
+            });
           }
           prevWrongs.push(wrong);
           finalWrongs.push(wrong);
