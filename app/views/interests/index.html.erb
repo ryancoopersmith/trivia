@@ -28,12 +28,21 @@
       </div>
     <% end %>
   </ul>
+  <% unless @interests.length == 10 %>
+    <div class="row">
+      <div class = "small-offset-3 small-6 columns">
+        <div class="hollow button defcon-5">
+          <%= link_to "Add Interests", new_user_interest_path(current_user) %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 <% else %>
   <h3 class="text-center">You don't have any interests!</h3>
   <div class="row">
     <div class = "small-offset-3 small-6 columns">
-      <div class="center hollow button defcon-5">
-        <%= link_to "Add Interest", new_user_interest_path(current_user) %>
+      <div class="hollow button defcon-5">
+        <%= link_to "Add Interests", new_user_interest_path(current_user) %>
       </div>
     </div>
   </div>

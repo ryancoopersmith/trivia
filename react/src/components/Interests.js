@@ -10,12 +10,12 @@ class Interests extends Component {
       interests: [],
       myQuiz: true
     };
-    this.getQuizzes = this.getQuizzes.bind(this);
-    this.getInterests = this.getInterests.bind(this);
+    this.getMyQuizzes = this.getMyQuizzes.bind(this);
+    this.getMyInterests = this.getMyInterests.bind(this);
     this.showAll = this.showAll.bind(this);
   }
 
-  getQuizzes() {
+  getMyQuizzes() {
     fetch('https://s3.amazonaws.com/trivia-extraordinaire/categories.json')
       .then(response => {
         if (response.ok) {
@@ -28,13 +28,13 @@ class Interests extends Component {
       })
       .then(response => response.json())
       .then(body => {
-        let randomizedBody = this.shuffle(body);
-        this.setState({ quizzes: randomizedBody });
+        this.setState({ quizzes: body });
+        debugger
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
-  getInterests() {
+  getMyInterests() {
     fetch('http://localhost:3000/api/v1/interests.json', {credentials: 'same-origin'})
       .then(response => {
         if (response.ok) {
@@ -53,8 +53,8 @@ class Interests extends Component {
   }
 
   componentDidMount() {
-    this.getQuizzes();
-    this.getInterests();
+    this.getMyQuizzes();
+    this.getMyInterests();
   }
 
   showAll() {

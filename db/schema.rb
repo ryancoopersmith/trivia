@@ -10,14 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170320192509) do
+ActiveRecord::Schema.define(version: 20170323184305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "favorite_categories", force: :cascade do |t|
+    t.string  "category", null: false
+    t.integer "user_id",  null: false
+  end
+
   create_table "interests", force: :cascade do |t|
-    t.string  "interest", default: ""
-    t.integer "user_id"
+    t.string  "interest", null: false
+    t.integer "user_id",  null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -35,7 +40,6 @@ ActiveRecord::Schema.define(version: 20170320192509) do
     t.datetime "updated_at",                             null: false
     t.string   "username",                               null: false
     t.integer  "win_percentage",         default: 0
-    t.string   "favorite_category",      default: ""
     t.string   "best_category",          default: ""
     t.string   "worst_category",         default: ""
     t.boolean  "admin",                  default: false

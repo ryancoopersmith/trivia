@@ -11,6 +11,7 @@ class User < ApplicationRecord
   validates :admin, inclusion: { in: [true, false] }, allow_nil: true
 
   has_many :interests, dependent: :destroy
+  has_many :favorite_categories, dependent: :destroy
   accepts_nested_attributes_for :interests
 
   mount_uploader :profile_photo, ProfilePhotoUploader

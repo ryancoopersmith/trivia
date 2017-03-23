@@ -8,8 +8,13 @@ class InterestsController < ApplicationController
 
   def new
     @user = current_user
+    @old_interests = @user.interests
     @interests = []
-    10.times { @interests << @user.interests.new }
+    count = 10
+    if @old_interests
+      count -= @old_interests.length
+    end
+    count.times { @interests << @user.interests.new }
   end
 
   def create
@@ -55,14 +60,15 @@ class InterestsController < ApplicationController
     else
       flash[:notice] = @interest.errors.messages
     end
-    redirect_to root_path
+    redirect_to user_interests_path(@user)
   end
 
   def destroy
+    @user = current_user
     @interest = Interest.find(params[:id])
     @interest.delete
     flash[:notice] = "Interest successfully deleted"
-    redirect_to root_path
+    redirect_to user_interests_path(@user)
   end
 
   private
