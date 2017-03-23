@@ -1,11 +1,11 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import QuizList from './components/QuizList';
+import App from './components/App';
 
 $(function() {
   ReactDOM.render(
-    <QuizList />,
+    <App />,
     document.getElementById('quiz')
   );
 });

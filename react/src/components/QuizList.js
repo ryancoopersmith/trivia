@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Quiz from './Quiz';
-import Interests from './Interests';
 
 class QuizList extends Component {
   constructor(props) {
@@ -10,14 +9,12 @@ class QuizList extends Component {
       search: '',
       prevSearch: '',
       group: 1,
-      myQuiz: false
     };
     this.getQuizzes = this.getQuizzes.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
     this.setQuizzes = this.setQuizzes.bind(this);
     this.shuffle = this.shuffle.bind(this);
     this.updateGroup = this.updateGroup.bind(this);
-    this.showMyQuizzes = this.showMyQuizzes.bind(this);
   }
 
   updateSearch(event) {
@@ -75,10 +72,6 @@ class QuizList extends Component {
     this.setState({ group: page })
   }
 
-  showMyQuizzes() {
-    this.setState({ myQuiz: true })
-  }
-
   render() {
     let classNames = require('classnames');
 
@@ -134,27 +127,19 @@ class QuizList extends Component {
       </div>;
     } else {
       page = <div className="center">
-      <button type="button" onClick={() => this.showMyQuizzes()} className={paginateClasses}>My Quizzes</button>
       <button type="button" onClick={() => this.updateGroup(1)} className={paginateClasses}>Next</button>
       </div>;
     }
-    if (this.state.myQuiz) {
-      return(
-        <div>
-          <Interests />
-        </div>
-      );
-    } else {
-      return(
-        <div>
-        <input type="text" className="search" placeholder="Search"
-        value={this.state.search}
-        onChange={this.updateSearch}/>
-        {quizzes}
-        {page}
-        </div>
-      );
-    }
+
+    return(
+      <div>
+      <input type="text" className="search" placeholder="Search"
+      value={this.state.search}
+      onChange={this.updateSearch}/>
+      {quizzes}
+      {page}
+      </div>
+    );
   }
 }
 
