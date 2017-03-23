@@ -67,7 +67,7 @@ class QuizList extends Component {
   }
 
   getInterests() {
-    fetch('http://localhost:3000/api/v1/interests.json')
+    fetch('http://localhost:3000/api/v1/interests.json', {credentials: 'same-origin'})
       .then(response => {
         if (response.ok) {
           return response;
@@ -103,12 +103,11 @@ class QuizList extends Component {
 
     let groupSize = 4;
     let pageSize = 34;
-
     let quizzes = this.state.quizzes.map((quiz, index) => {
       if (this.state.interests[0]) {
         this.state.quizzes.forEach((matchQuiz) => {
           this.state.interests.forEach((interest) => {
-            if (matchQuiz.category.toLowerCase().indexOf(interest.toLowerCase()) !== -1) {
+            if (matchQuiz.category.toLowerCase().indexOf(interest.interest.toLowerCase()) !== -1) {
               if (matchQuiz.category.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1) {
                 return (
                   <Quiz
