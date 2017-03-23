@@ -17,4 +17,4 @@ own trivia questions. These are just some of the numerous features in "Trivia Ex
 * The user data is stored in a PostgreSQL database
 * The quiz portion is implemented using React
 * The front-end is styled using Foundation with custom CSS
-* The Google Charts API is used so the user can view their personal statistics
+* The Chart.js API is used so the user can view their personal statistics in a piechart
