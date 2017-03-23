@@ -1,14 +1,11 @@
 $purple: #755F98;
 $blue: #6D96D3;
 $yellow: #F7CD7F;
+$green: #30AD23;
+$red: #DB0000;
 
 h1, h2, h3, a, li {
   color: $yellow;
-}
-
-p {
-  font-family: sans-serif;
-  font-size: 20px;
 }
 
 button {
@@ -64,4 +61,12 @@ button {
 
 .center {
   text-align: center;
+}
+
+.correct {
+  color: green;
+}
+
+.wrong {
+  color: $red;
 }

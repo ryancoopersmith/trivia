@@ -4,15 +4,18 @@ class Question extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      answers: [this.props.answer, this.props.wrong1, this.props.wrong2, this.props.wrong3],
       message: ''
-    }
+    };
     this.shuffle = this.shuffle.bind(this);
     this.capitalize = this.capitalize.bind(this);
     this.checkAnswer = this.checkAnswer.bind(this);
   }
 
   capitalize(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+    if (string !== '') {
+      return string.charAt(0).toUpperCase() + string.slice(1) + '!';
+    }
   }
 
   shuffle(array) {
@@ -25,6 +28,11 @@ class Question extends Component {
       array[randomIndex] = temporaryValue;
     }
     return array;
+  }
+
+  componentDidMount() {
+    let answers = this.shuffle(this.state.answers);
+    this.setState({ answers: answers })
   }
 
   checkAnswer(answer) {
@@ -43,21 +51,17 @@ class Question extends Component {
       'answer': true
     });
 
-    let message = this.state.message;
-    if (message !== '') {
-      message = this.state.message.capitalize + '!';
-    }
+    let message = this.capitalize(this.state.message);
 
-    let answers = this.shuffle([this.props.answer, this.props.wrong1, this.props.wrong2, this.props.wrong3]);
     return (
       <div>
         <h2>{this.props.category}</h2>
         <p className={this.state.message}>{message}</p>
         <p className="question">{this.props.question}</p>
-        <button type="button" onClick={() => this.checkAnswer(answers[0])} className={answerClasses}>{answers[0]}</button>
-        <button type="button" onClick={() => this.checkAnswer(answers[1])} className={answerClasses}>{answers[1]}</button>
-        <button type="button" onClick={() => this.checkAnswer(answers[2])} className={answerClasses}>{answers[2]}</button>
-        <button type="button" onClick={() => this.checkAnswer(answers[3])} className={answerClasses}>{answers[3]}</button>
+        <button type="button" onClick={() => this.checkAnswer(this.state.answers[0])} className={answerClasses}>{this.state.answers[0]}</button>
+        <button type="button" onClick={() => this.checkAnswer(this.state.answers[1])} className={answerClasses}>{this.state.answers[1]}</button>
+        <button type="button" onClick={() => this.checkAnswer(this.state.answers[2])} className={answerClasses}>{this.state.answers[2]}</button>
+        <button type="button" onClick={() => this.checkAnswer(this.state.answers[3])} className={answerClasses}>{this.state.answers[3]}</button>
       </div>
     );
   }
