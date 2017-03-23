@@ -17,6 +17,7 @@ class QuizList extends Component {
     this.shuffle = this.shuffle.bind(this);
     this.updateGroup = this.updateGroup.bind(this);
     this.getInterests = this.getInterests.bind(this);
+    this.showMyQuizzes = this.showMyQuizzes.bind(this);
   }
 
   updateSearch(event) {
@@ -93,6 +94,29 @@ class QuizList extends Component {
     this.setState({ group: page })
   }
 
+  showMyQuizzes() {
+    let groupSize = 4;
+
+    let myQuizzes = this.state.interests.map((myInterest, index) => {
+      this.state.quizzes.forEach((quiz) => {
+        if (quiz.category.toLowerCase().indexOf(myInterest.interest.toLowerCase()) !== -1) {
+          return (
+            <Quiz
+            key={index + 1}
+            category={quiz.category}
+            />
+          );
+        }
+      });
+    }).reduce((r, element, index) => {
+      index % groupSize === 0 && r.push([]);
+      r[r.length - 1].push(element);
+      return r;
+    }, []);
+
+    this.setState({ interests: myQuizzes });
+  }
+
   render() {
     let classNames = require('classnames');
 
@@ -104,38 +128,13 @@ class QuizList extends Component {
     let groupSize = 4;
     let pageSize = 34;
     let quizzes = this.state.quizzes.map((quiz, index) => {
-      if (this.state.interests[0]) {
-        this.state.quizzes.forEach((matchQuiz) => {
-          this.state.interests.forEach((interest) => {
-            if (matchQuiz.category.toLowerCase().indexOf(interest.interest.toLowerCase()) !== -1) {
-              if (matchQuiz.category.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1) {
-                return (
-                  <Quiz
-                  key={index + 1}
-                  category={matchQuiz.category}
-                  />
-                );
-              }
-            }
-          });
-        });
-        if (quiz.category.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1) {
-          return (
-            <Quiz
-            key={index + 1}
-            category={quiz.category}
-            />
-          );
-        }
-      } else {
-        if (quiz.category.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1) {
-          return (
-            <Quiz
-            key={index + 1}
-            category={quiz.category}
-            />
-          );
-        }
+      if (quiz.category.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1) {
+        return (
+          <Quiz
+          key={index + 1}
+          category={quiz.category}
+          />
+        );
       }
     }).reduce((r, element, index) => {
       index % groupSize === 0 && r.push([]);
@@ -162,7 +161,11 @@ class QuizList extends Component {
     });
 
     let page;
-    if (this.state.group > 1 && this.state.group < 33) {
+    if (this.state.interests.category) {
+      page = <div className="center">
+      <button type="button" onClick={() => this.updateGroup(1)} className={paginateClasses}>Next</button>
+      </div>;
+    } else if (this.state.group > 1 && this.state.group < 33) {
       page = <div className="center">
       <button type="button" onClick={() => this.updateGroup(-1)} className={paginateClasses}>Previous</button>
       <button type="button" onClick={() => this.updateGroup(1)} className={paginateClasses}>Next</button>
@@ -171,12 +174,25 @@ class QuizList extends Component {
       page = <div className="center">
       <button type="button" onClick={() => this.updateGroup(-1)} className={paginateClasses}>Previous</button>
       </div>;
+    } else if (this.state.interests[0]){
+      page = <div className="center">
+      <button type="button" onClick={() => this.showMyQuizzes()} className={paginateClasses}>My Quizzes</button>
+      <button type="button" onClick={() => this.updateGroup(1)} className={paginateClasses}>Next</button>
+      </div>;
     } else {
       page = <div className="center">
       <button type="button" onClick={() => this.updateGroup(1)} className={paginateClasses}>Next</button>
       </div>;
     }
-
+    if (this.state.interests.category) {
+      <div>
+        <input type="text" className="search" placeholder="Search"
+        value={this.state.search}
+        onChange={this.updateSearch}/>
+        {this.state.interests}
+        {page}
+      </div>
+    }
     return(
       <div>
         <input type="text" className="search" placeholder="Search"
