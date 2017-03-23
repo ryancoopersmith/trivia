@@ -5,11 +5,13 @@ class Question extends Component {
     super(props);
     this.state = {
       answers: [this.props.answer, this.props.wrong1, this.props.wrong2, this.props.wrong3],
-      message: ''
+      message: '',
+      countdown: 0
     };
     this.shuffle = this.shuffle.bind(this);
     this.capitalize = this.capitalize.bind(this);
     this.checkAnswer = this.checkAnswer.bind(this);
+    this.tick = this.tick.bind(this);
   }
 
   capitalize(string) {
@@ -32,7 +34,8 @@ class Question extends Component {
 
   componentDidMount() {
     let answers = this.shuffle(this.state.answers);
-    this.setState({ answers: answers })
+    this.setState({ answers: answers });
+    this.timer = setInterval(this.tick, 50);
   }
 
   checkAnswer(answer) {
@@ -43,6 +46,14 @@ class Question extends Component {
     }
   }
 
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
+
+  tick() {
+    this.setState({ countdown: new Date() - this.props.start });
+  }
+
   render() {
     let classNames = require('classnames');
 
@@ -51,10 +62,17 @@ class Question extends Component {
       'answer': true
     });
 
+    let countdown = Math.round(this.state.countdown / 100);
+    let seconds = (10 - (countdown / 10)).toFixed(1);
+    if (seconds <= 0) {
+      clearInterval(this.timer);
+      seconds = "Time's up!";
+    }
     let message = this.capitalize(this.state.message);
 
     return (
       <div>
+        {seconds}
         <h2>{this.props.category}</h2>
         <p className={this.state.message}>{message}</p>
         <p className="question">{this.props.question}</p>

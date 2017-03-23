@@ -66,15 +66,15 @@ class Quiz extends Component {
         let finalWrongs = [];
         let prevWrongs = [];
         wrongs.forEach((wrong) => {
-          while (wrong === question.answer) {
-            wrong = randomizedAnswers[Math.floor(Math.random() * randomizedAnswers.length)].answer;
-          }
           if (prevWrongs[0]) {
             prevWrongs.forEach((prevWrong) => {
               while (prevWrong === wrong) {
                 wrong = randomizedAnswers[Math.floor(Math.random() * randomizedAnswers.length)].answer;
               }
             });
+          }
+          while (wrong === question.answer) {
+            wrong = randomizedAnswers[Math.floor(Math.random() * randomizedAnswers.length)].answer;
           }
           prevWrongs.push(wrong);
           finalWrongs.push(wrong);
@@ -88,6 +88,7 @@ class Quiz extends Component {
            wrong1={finalWrongs[0]}
            wrong2={finalWrongs[1]}
            wrong3={finalWrongs[2]}
+           start={new Date()}
           />
         );
       });
