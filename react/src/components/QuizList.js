@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Quiz from './Quiz';
+import Interests from './Interests';
 
 class QuizList extends Component {
   constructor(props) {
@@ -9,14 +10,13 @@ class QuizList extends Component {
       search: '',
       prevSearch: '',
       group: 1,
-      interests: []
+      myQuiz: false
     };
     this.getQuizzes = this.getQuizzes.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
     this.setQuizzes = this.setQuizzes.bind(this);
     this.shuffle = this.shuffle.bind(this);
     this.updateGroup = this.updateGroup.bind(this);
-    this.getInterests = this.getInterests.bind(this);
     this.showMyQuizzes = this.showMyQuizzes.bind(this);
   }
 
@@ -67,27 +67,8 @@ class QuizList extends Component {
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
-  getInterests() {
-    fetch('http://localhost:3000/api/v1/interests.json', {credentials: 'same-origin'})
-      .then(response => {
-        if (response.ok) {
-          return response;
-        } else {
-          let errorMessage = `${response.status} (${response.statusText})`,
-              error = new Error(errorMessage);
-          throw(error);
-        }
-      })
-      .then(response => response.json())
-      .then(body => {
-        this.setState({ interests: body });
-      })
-      .catch(error => console.error(`Error in fetch: ${error.message}`));
-  }
-
   componentDidMount() {
     this.getQuizzes();
-    this.getInterests();
   }
 
   setQuizzes(page) {
@@ -95,26 +76,7 @@ class QuizList extends Component {
   }
 
   showMyQuizzes() {
-    let groupSize = 4;
-
-    let myQuizzes = this.state.interests.map((myInterest, index) => {
-      this.state.quizzes.forEach((quiz) => {
-        if (quiz.category.toLowerCase().indexOf(myInterest.interest.toLowerCase()) !== -1) {
-          return (
-            <Quiz
-            key={index + 1}
-            category={quiz.category}
-            />
-          );
-        }
-      });
-    }).reduce((r, element, index) => {
-      index % groupSize === 0 && r.push([]);
-      r[r.length - 1].push(element);
-      return r;
-    }, []);
-
-    this.setState({ interests: myQuizzes });
+    this.setState({ myQuiz: true })
   }
 
   render() {
@@ -161,11 +123,7 @@ class QuizList extends Component {
     });
 
     let page;
-    if (this.state.interests.category) {
-      page = <div className="center">
-      <button type="button" onClick={() => this.updateGroup(1)} className={paginateClasses}>Next</button>
-      </div>;
-    } else if (this.state.group > 1 && this.state.group < 33) {
+    if (this.state.group > 1 && this.state.group < 33) {
       page = <div className="center">
       <button type="button" onClick={() => this.updateGroup(-1)} className={paginateClasses}>Previous</button>
       <button type="button" onClick={() => this.updateGroup(1)} className={paginateClasses}>Next</button>
@@ -174,34 +132,29 @@ class QuizList extends Component {
       page = <div className="center">
       <button type="button" onClick={() => this.updateGroup(-1)} className={paginateClasses}>Previous</button>
       </div>;
-    } else if (this.state.interests[0]){
+    } else {
       page = <div className="center">
       <button type="button" onClick={() => this.showMyQuizzes()} className={paginateClasses}>My Quizzes</button>
       <button type="button" onClick={() => this.updateGroup(1)} className={paginateClasses}>Next</button>
       </div>;
+    }
+    if (this.state.myQuiz) {
+      return(
+        <div>
+          <Interests />
+        </div>
+      );
     } else {
-      page = <div className="center">
-      <button type="button" onClick={() => this.updateGroup(1)} className={paginateClasses}>Next</button>
-      </div>;
-    }
-    if (this.state.interests.category) {
-      <div>
-        <input type="text" className="search" placeholder="Search"
-        value={this.state.search}
-        onChange={this.updateSearch}/>
-        {this.state.interests}
-        {page}
-      </div>
-    }
-    return(
-      <div>
+      return(
+        <div>
         <input type="text" className="search" placeholder="Search"
         value={this.state.search}
         onChange={this.updateSearch}/>
         {quizzes}
         {page}
-      </div>
-    );
+        </div>
+      );
+    }
   }
 }
 
