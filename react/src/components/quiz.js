@@ -58,6 +58,13 @@ class Quiz extends Component {
       'columns': true
     })
 
+    let startClasses = classNames({
+      'hollow': true,
+      'button': true,
+      'defcon-5': true,
+      'start': true
+    })
+
     if (this.state.start) {
       let randomizedQuestions = this.shuffle(this.state.questions);
       let questions = randomizedQuestions.map((question, index) => {
@@ -102,7 +109,8 @@ class Quiz extends Component {
       <div className={gridClasses}>
         <div className="card-divider">
           <div className="card-section">
-            <p className="category"><button type="button" onClick={() => this.startQuiz(this.props.category)}>{this.props.category}</button></p>
+            <button className="category" type="button" onClick={() => this.startQuiz(this.props.category)}>{this.props.category}</button>
+            <button className={startClasses} type="button" onClick={() => this.startQuiz(this.props.category)}>Start Quiz</button>
           </div>
         </div>
       </div>
