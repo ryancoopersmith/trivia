@@ -77,7 +77,7 @@ class Interests extends Component {
     }, []).map((quizContent) => {
       return(
         <div className="row">
-        {quizContent}
+          {quizContent}
         </div>
       );
     });
