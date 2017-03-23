@@ -22,23 +22,24 @@ class App extends Component {
   render() {
     let classNames = require('classnames');
 
-    let paginateClasses = classNames({
+    let quizClasses = classNames({
       'button': true,
-      'paginate': true
+      'paginate': true,
+      'toggleQuizzes': true
     });
 
     let page;
     let quiz;
     if (this.state.myQuiz) {
       page = <div className="center">
-      <button type="button" onClick={() => this.toggleMyQuizzes(0)} className={paginateClasses}>See All Quizzes</button>
+      <button type="button" onClick={() => this.toggleMyQuizzes(0)} className={quizClasses}>See All Quizzes</button>
       </div>;
       quiz = <Interests />;
     } else {
       page = <div className="center">
-      <button type="button" onClick={() => this.toggleMyQuizzes(1)} className={paginateClasses}>My Quizzes</button>
+      <button type="button" onClick={() => this.toggleMyQuizzes(1)} className={quizClasses}>My Quizzes</button>
       </div>;
-      quiz = <Interests />;
+      quiz = <QuizList />;
     }
 
     return(

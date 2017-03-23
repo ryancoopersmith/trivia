@@ -8,7 +8,7 @@ class QuizList extends Component {
       quizzes: [],
       search: '',
       prevSearch: '',
-      group: 1,
+      group: 1
     };
     this.getQuizzes = this.getQuizzes.bind(this);
     this.updateSearch = this.updateSearch.bind(this);
@@ -103,13 +103,13 @@ class QuizList extends Component {
       if (this.state.group) {
         return(
           <div className="row">
-          {quizContent[this.state.group - 1]}
+            {quizContent[this.state.group - 1]}
           </div>
         );
       } else {
         return(
           <div className="row">
-          {quizContent}
+            {quizContent}
           </div>
         );
       }
@@ -133,11 +133,11 @@ class QuizList extends Component {
 
     return(
       <div>
-      <input type="text" className="search" placeholder="Search"
-      value={this.state.search}
-      onChange={this.updateSearch}/>
-      {quizzes}
-      {page}
+        <input type="text" className="search" placeholder="Search"
+        value={this.state.search}
+        onChange={this.updateSearch}/>
+        {quizzes}
+        {page}
       </div>
     );
   }

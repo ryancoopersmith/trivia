@@ -7,7 +7,7 @@ class Interests extends Component {
     super(props);
     this.state = {
       quizzes: [],
-      interests: [],
+      interests: []
     };
     this.getMyQuizzes = this.getMyQuizzes.bind(this);
     this.getMyInterests = this.getMyInterests.bind(this);
@@ -57,22 +57,14 @@ class Interests extends Component {
   }
 
   render() {
-    let classNames = require('classnames');
-
-    let paginateClasses = classNames({
-      'button': true,
-      'paginate': true
-    });
-
     let groupSize = 4;
 
     let myQuizzes = this.state.interests.map((myInterest, index) => {
-      return this.state.quizzes.map((quiz, index2) => {
+      return this.state.quizzes.map((quiz, quizIndex) => {
         if (quiz.category.toLowerCase().indexOf(myInterest.interest.toLowerCase()) !== -1) {
-          console.log("here");
           return (
             <Quiz
-              key={index2}
+              key={quizIndex + 1}
               category={quiz.category}
             />
           )
@@ -82,11 +74,17 @@ class Interests extends Component {
       index % groupSize === 0 && r.push([]);
       r[r.length - 1].push(element);
       return r;
-    }, []);
+    }, []).map((quizContent) => {
+      return(
+        <div className="row">
+          {quizContent}
+        </div>
+      );
+    });
 
     return(
       <div>
-      {myQuizzes}
+        {myQuizzes}
       </div>
     );
   }
