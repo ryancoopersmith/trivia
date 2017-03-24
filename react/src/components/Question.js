@@ -84,12 +84,13 @@ class Question extends Component {
   render() {
     let classNames = require('classnames');
 
-    if (correct) {
-      //put logic here to display the correct answer in green
-    } else if (!correct){
-      //put logic here to display the correct answer in green and the user's answer in red
+    let answerClasses;
+    if (this.state.correct) {
+      // put logic here to display the correct answer in green
+    } else if (!this.state.correct) {
+      // put logic here to display the correct answer in green and the user's answer in red
     } else {
-      let answerClasses = classNames({ //change the classes so that the wrong answer and right answer have different classes from the other answers
+      answerClasses = classNames({ // change the classes so that the wrong answer and right answer have different classes from the other answers
         'button': true,
         'answer': true
       });
@@ -99,7 +100,7 @@ class Question extends Component {
       'hollow': true,
       'button': true,
       'defcon-5': true
-    })
+    });
 
     let message = this.capitalize(this.state.message);
 

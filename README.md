@@ -6,10 +6,8 @@
 
 My breakable toy, "Trivia Extraordinaire", is a trivia app composed of over 200,000 questions,
 found by crawling the Jeopardy archives. The large amount of data ensures that the user can chose
-between a seemingly infinite amount of categories. The user can also view their comprehensive
-history, including their favorite category, total number of points accumulated and the badges
-they've collected through the feats they've accomplished. The user can also chose to add their
-own trivia questions. These are just some of the numerous features in "Trivia Extraordinaire".
+between a seemingly infinite amount of categories. The user can chose between randomly sorted trivia categories and categories tailored to their own personal interests. The user can also view their comprehensive history, including their favorite categories and win percentage. These are just some
+of the numerous features in "Trivia Extraordinaire".
 
 ## Development
 * The trivia data was filtered using a combination of Ruby, Perl, and Regular Expressions
