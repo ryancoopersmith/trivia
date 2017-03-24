@@ -47,6 +47,7 @@ class Quiz extends Component {
   startQuiz(category) {
     this.getQuestions(category);
     this.setState({ start: true });
+    // add logic here to post data to the favorite_categories API endpoint to update the user's favorite categories
   }
 
   render() {

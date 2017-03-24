@@ -22,6 +22,10 @@ class Question extends Component {
     this.setClasses = this.setClasses.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    console.log('hi');
+  }
+
   capitalize(string) {
     if (string !== '') {
       return string.charAt(0).toUpperCase() + string.slice(1) + '!';
