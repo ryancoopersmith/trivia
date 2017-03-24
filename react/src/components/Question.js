@@ -6,12 +6,16 @@ class Question extends Component {
     this.state = {
       answers: [this.props.answer, this.props.wrong1, this.props.wrong2, this.props.wrong3],
       message: '',
-      countdown: 0
+      countdown: 0,
+      timesUp: false,
+      correct: false,
+      didAnswer: null
     };
     this.shuffle = this.shuffle.bind(this);
     this.capitalize = this.capitalize.bind(this);
     this.checkAnswer = this.checkAnswer.bind(this);
     this.tick = this.tick.bind(this);
+    this.nextQuestion = this.nextQuestion.bind(this);
   }
 
   capitalize(string) {
@@ -39,10 +43,17 @@ class Question extends Component {
   }
 
   checkAnswer(answer) {
-    if (answer === this.props.answer) {
-      this.setState({ message: 'correct' });
-    } else {
-      this.setState({ message: 'wrong' });
+    if (!this.state.didAnswer) {
+      if (!this.state.timesUp) {
+        if (answer === this.props.answer) {
+          this.setState({ message: 'correct' });
+        } else {
+          this.setState({ message: 'wrong' });
+        }
+      } else {
+        this.setState({ message: 'wrong' });
+      }
+      this.setState({ didAnswer: true });
     }
   }
 
@@ -52,15 +63,45 @@ class Question extends Component {
 
   tick() {
     this.setState({ countdown: new Date() - this.props.start });
+    let countdown = Math.round(this.state.countdown / 100);
+    let seconds = (10 - (countdown / 10)).toFixed(1);
+    if (seconds <= 0) {
+      clearInterval(this.timer);
+      seconds = "Time's up!";
+      this.setState({ timesUp: true });
+    }
+  }
+
+  timesUp() {
+    this.setState({ message: 'wrong' });
+  }
+
+  nextQuestion() {
+    console.log("create me!!!")
+    // put logic here to go to the next question
   }
 
   render() {
     let classNames = require('classnames');
 
-    let answerClasses = classNames({
+    if (correct) {
+      //put logic here to display the correct answer in green
+    } else if (!correct){
+      //put logic here to display the correct answer in green and the user's answer in red
+    } else {
+      let answerClasses = classNames({ //change the classes so that the wrong answer and right answer have different classes from the other answers
+        'button': true,
+        'answer': true
+      });
+    }
+
+    let nextClasses = classNames({
+      'hollow': true,
       'button': true,
-      'answer': true
-    });
+      'defcon-5': true
+    })
+
+    let message = this.capitalize(this.state.message);
 
     let countdown = Math.round(this.state.countdown / 100);
     let seconds = (10 - (countdown / 10)).toFixed(1);
@@ -68,7 +109,11 @@ class Question extends Component {
       clearInterval(this.timer);
       seconds = "Time's up!";
     }
-    let message = this.capitalize(this.state.message);
+
+    let next;
+    if (this.state.timesUp) {
+      next = <button type="button" onClick={() => this.nextQuestion()} className={nextClasses}>Next Question</button>;
+    }
 
     return (
       <div>
@@ -80,6 +125,7 @@ class Question extends Component {
         <button type="button" onClick={() => this.checkAnswer(this.state.answers[1])} className={answerClasses}>{this.state.answers[1]}</button>
         <button type="button" onClick={() => this.checkAnswer(this.state.answers[2])} className={answerClasses}>{this.state.answers[2]}</button>
         <button type="button" onClick={() => this.checkAnswer(this.state.answers[3])} className={answerClasses}>{this.state.answers[3]}</button>
+        {next}
       </div>
     );
   }
