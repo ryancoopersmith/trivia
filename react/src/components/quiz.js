@@ -6,13 +6,19 @@ class Quiz extends Component {
     super(props);
     this.state = {
       questions: [],
-      start: false
-      // add a current_question state and change it when the user presses the next button
+      start: false,
+      question: 0
     };
     this.getQuestions = this.getQuestions.bind(this);
     this.startQuiz = this.startQuiz.bind(this);
     this.shuffle = this.shuffle.bind(this);
     this.setMyFavorites = this.setMyFavorites.bind(this);
+    this.nextQuestion = this.nextQuestion.bind(this);
+  }
+
+  nextQuestion() {
+    let question = this.state.question += 1;
+    this.setState({ question: question })
   }
 
   shuffle(array) {
@@ -48,7 +54,7 @@ class Quiz extends Component {
 
   setMyFavorites(category) {
     let jsonStringData = JSON.stringify(category);
-
+    //look into token authenticatble to get this to work
     fetch('http://localhost:3000/api/v1/favorite_categories.json', {
       credentials: 'same-origin',
       method: 'post',
@@ -122,12 +128,13 @@ class Quiz extends Component {
            wrong2={finalWrongs[1]}
            wrong3={finalWrongs[2]}
            start={new Date()}
+           onClick={this.nextQuestion}
           />
         );
       });
       return (
         <div>
-          {questions}
+          {questions[this.state.question]}
         </div>
       );
     } else {

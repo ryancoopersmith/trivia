@@ -8,17 +8,17 @@ class Question extends Component {
       message: '',
       countdown: 0,
       timesUp: false,
-      didAnswer: null,
+      didAnswer: false,
       answerClasses1: null,
       answerClasses2: null,
       answerClasses3: null,
-      answerClasses4: null
+      answerClasses4: null,
+      answer: null
     };
     this.shuffle = this.shuffle.bind(this);
     this.capitalize = this.capitalize.bind(this);
     this.checkAnswer = this.checkAnswer.bind(this);
     this.tick = this.tick.bind(this);
-    this.nextQuestion = this.nextQuestion.bind(this);
     this.setClasses = this.setClasses.bind(this);
   }
 
@@ -29,7 +29,7 @@ class Question extends Component {
         message: '',
         countdown: 0,
         timesUp: false,
-        didAnswer: null,
+        didAnswer: false,
         answerClasses1: null,
         answerClasses2: null,
         answerClasses3: null,
@@ -58,6 +58,11 @@ class Question extends Component {
 
   componentDidMount() {
     let answers = this.shuffle(this.state.answers);
+    answers.forEach((answer, index) => {
+      if (answer === this.props.answer) {
+        this.setState({ answer: index + 1 });
+      }
+    });
     this.setState({ answers: answers });
     this.setClasses();
     this.timer = setInterval(this.tick, 50);
@@ -115,8 +120,6 @@ class Question extends Component {
             this.setState({ answerClasses4: wrongAnswerClasses });
           }
         }
-      } else {
-        this.setState({ message: 'wrong' });
       }
       this.setState({ didAnswer: true });
       all.forEach((rand, index) => {
@@ -144,18 +147,29 @@ class Question extends Component {
     if (seconds <= 0) {
       clearInterval(this.timer);
       seconds = "Time's up!";
-      this.setState({ timesUp: true });
+      this.timesUp();
     }
   }
 
   timesUp() {
-    this.setState({ message: 'wrong' });
-  }
+    this.setState({ timesUp: true });
 
-  nextQuestion() {
-    console.log("create me!!!")
-    // put logic here to go to the next question after componentWillReceiveProps
-    // componentWillReceiveProps will work if I only pass one question at a time
+    let classNames = require('classnames');
+    let correctAnswerClasses = classNames({
+      'button': true,
+      'answer': true,
+      'correctAnswer': true
+    });
+
+    if (this.state.answer === 1) {
+      this.setState({ answerClasses1: correctAnswerClasses });
+    } else if (this.state.answer === 2) {
+      this.setState({ answerClasses2: correctAnswerClasses });
+    } else if (this.state.answer === 3) {
+      this.setState({ answerClasses3: correctAnswerClasses });
+    } else if (this.state.answer === 4) {
+      this.setState({ answerClasses4: correctAnswerClasses });
+    }
   }
 
   render() {
@@ -168,16 +182,19 @@ class Question extends Component {
 
     let message = this.capitalize(this.state.message);
 
-    let countdown = Math.round(this.state.countdown / 100);
-    let seconds = (10 - (countdown / 10)).toFixed(1);
-    if (seconds <= 0) {
-      clearInterval(this.timer);
-      seconds = "Time's up!";
+    let seconds;
+    if (!this.state.didAnswer) {
+      let countdown = Math.round(this.state.countdown / 100);
+      seconds = (10 - (countdown / 10)).toFixed(1);
+      if (seconds <= 0) {
+        clearInterval(this.timer);
+        seconds = "Time's up!";
+      }
     }
 
     let next;
-    if (this.state.timesUp) {
-      next = <button type="button" onClick={() => this.nextQuestion()} className={nextClasses}>Next Question</button>;
+    if (this.state.timesUp || this.state.didAnswer) {
+      next = <button type="button" onClick={this.props.onClick} className={nextClasses}>Next Question</button>;
     }
 
     let randomAnswers = [this.state.answers[0], this.state.answers[1], this.state.answers[2], this.state.answers[3]];
