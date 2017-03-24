@@ -11,6 +11,7 @@ class Quiz extends Component {
     this.getQuestions = this.getQuestions.bind(this);
     this.startQuiz = this.startQuiz.bind(this);
     this.shuffle = this.shuffle.bind(this);
+    this.setMyFavorites = this.setMyFavorites.bind(this);
   }
 
   shuffle(array) {
@@ -44,10 +45,33 @@ class Quiz extends Component {
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
+  setMyFavorites(category) {
+    let jsonStringData = JSON.stringify(category);
+
+    fetch('http://localhost:3000/api/v1/favorite_categories.json', {
+      credentials: 'same-origin',
+      method: 'post',
+      body: jsonStringData
+    }).then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      console.log(body);
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
+
   startQuiz(category) {
     this.getQuestions(category);
     this.setState({ start: true });
-    // add logic here to post data to the favorite_categories API endpoint to update the user's favorite categories
+    this.setMyFavorites(category)
   }
 
   render() {

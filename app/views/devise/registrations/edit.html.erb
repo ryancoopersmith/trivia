@@ -12,7 +12,14 @@
 <div class = "row">
   <h3 class="text-center">Favorite Categories</h3>
 </div>
-<canvas id="myChart"></canvas>
+
+<% if current_user.favorite_categories.any? %>
+  <canvas id="myChart"></canvas>
+<% else %>
+  <div class = "row">
+    <h3 class="text-center">Sign In and start playing to see your favorite categories!</h3>
+  </div>
+<% end %>
 
 <div class="row">
   <h3 class="text-center">Edit <%= resource_name.to_s.humanize %></h3>

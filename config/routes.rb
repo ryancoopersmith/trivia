@@ -13,5 +13,11 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do
+    namespace :v1 do
+      resources :favorite_categories
+    end
+  end
+
   root 'quizzes#index'
 end

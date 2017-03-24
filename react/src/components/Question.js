@@ -24,6 +24,18 @@ class Question extends Component {
 
   componentWillReceiveProps(nextProps) {
     console.log('hi');
+    if (this.props !== nextProps) {
+      this.setState({
+        message: '',
+        countdown: 0,
+        timesUp: false,
+        didAnswer: null,
+        answerClasses1: null,
+        answerClasses2: null,
+        answerClasses3: null,
+        answerClasses4: null
+      });
+    }
   }
 
   capitalize(string) {
@@ -142,7 +154,7 @@ class Question extends Component {
 
   nextQuestion() {
     console.log("create me!!!")
-    // put logic here to go to the next question
+    // put logic here to go to the next question after componentWillReceiveProps
   }
 
   render() {
