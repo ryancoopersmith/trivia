@@ -8,14 +8,18 @@ class Question extends Component {
       message: '',
       countdown: 0,
       timesUp: false,
-      correct: false,
-      didAnswer: null
+      didAnswer: null,
+      answerClasses1: null,
+      answerClasses2: null,
+      answerClasses3: null,
+      answerClasses4: null
     };
     this.shuffle = this.shuffle.bind(this);
     this.capitalize = this.capitalize.bind(this);
     this.checkAnswer = this.checkAnswer.bind(this);
     this.tick = this.tick.bind(this);
     this.nextQuestion = this.nextQuestion.bind(this);
+    this.setClasses = this.setClasses.bind(this);
   }
 
   capitalize(string) {
@@ -39,21 +43,77 @@ class Question extends Component {
   componentDidMount() {
     let answers = this.shuffle(this.state.answers);
     this.setState({ answers: answers });
+    this.setClasses();
     this.timer = setInterval(this.tick, 50);
   }
 
-  checkAnswer(answer) {
+  setClasses() {
+    let classNames = require('classnames');
+
+    let answerClasses = classNames({
+      'button': true,
+      'answer': true
+    });
+
+    this.setState({ answerClasses1: answerClasses });
+    this.setState({ answerClasses2: answerClasses });
+    this.setState({ answerClasses3: answerClasses });
+    this.setState({ answerClasses4: answerClasses });
+  }
+
+  checkAnswer(answer, all, num) {
+    let classNames = require('classnames');
+    let correctAnswerClasses = classNames({
+      'button': true,
+      'answer': true,
+      'correctAnswer': true
+    });
+    let wrongAnswerClasses = classNames({
+      'button': true,
+      'answer': true,
+      'wrongAnswer': true
+    });
+
     if (!this.state.didAnswer) {
       if (!this.state.timesUp) {
         if (answer === this.props.answer) {
           this.setState({ message: 'correct' });
+          if (num === 1) {
+            this.setState({ answerClasses1: correctAnswerClasses });
+          } else if (num === 2) {
+            this.setState({ answerClasses2: correctAnswerClasses });
+          } else if (num === 3) {
+            this.setState({ answerClasses3: correctAnswerClasses });
+          } else if (num === 4) {
+            this.setState({ answerClasses4: correctAnswerClasses });
+          }
         } else {
           this.setState({ message: 'wrong' });
+          if (num === 1) {
+            this.setState({ answerClasses1: wrongAnswerClasses });
+          } else if (num === 2) {
+            this.setState({ answerClasses2: wrongAnswerClasses });
+          } else if (num === 3) {
+            this.setState({ answerClasses3: wrongAnswerClasses });
+          } else if (num === 4) {
+            this.setState({ answerClasses4: wrongAnswerClasses });
+          }
         }
       } else {
         this.setState({ message: 'wrong' });
       }
       this.setState({ didAnswer: true });
+      all.forEach((rand, index) => {
+        if (rand === this.props.answer && index === 0) {
+          this.setState({ answerClasses1: correctAnswerClasses });
+        } else if (rand === this.props.answer && index === 1) {
+          this.setState({ answerClasses2: correctAnswerClasses });
+        } else if (rand === this.props.answer && index === 2) {
+          this.setState({ answerClasses3: correctAnswerClasses });
+        } else if (rand === this.props.answer && index === 3) {
+          this.setState({ answerClasses4: correctAnswerClasses });
+        }
+      });
     }
   }
 
@@ -83,19 +143,6 @@ class Question extends Component {
 
   render() {
     let classNames = require('classnames');
-
-    let answerClasses;
-    if (this.state.correct) {
-      // put logic here to display the correct answer in green
-    } else if (!this.state.correct) {
-      // put logic here to display the correct answer in green and the user's answer in red
-    } else {
-      answerClasses = classNames({ // change the classes so that the wrong answer and right answer have different classes from the other answers
-        'button': true,
-        'answer': true
-      });
-    }
-
     let nextClasses = classNames({
       'hollow': true,
       'button': true,
@@ -116,16 +163,18 @@ class Question extends Component {
       next = <button type="button" onClick={() => this.nextQuestion()} className={nextClasses}>Next Question</button>;
     }
 
+    let randomAnswers = [this.state.answers[0], this.state.answers[1], this.state.answers[2], this.state.answers[3]];
+
     return (
       <div>
         {seconds}
         <h2>{this.props.category}</h2>
         <p className={this.state.message}>{message}</p>
         <p className="question">{this.props.question}</p>
-        <button type="button" onClick={() => this.checkAnswer(this.state.answers[0])} className={answerClasses}>{this.state.answers[0]}</button>
-        <button type="button" onClick={() => this.checkAnswer(this.state.answers[1])} className={answerClasses}>{this.state.answers[1]}</button>
-        <button type="button" onClick={() => this.checkAnswer(this.state.answers[2])} className={answerClasses}>{this.state.answers[2]}</button>
-        <button type="button" onClick={() => this.checkAnswer(this.state.answers[3])} className={answerClasses}>{this.state.answers[3]}</button>
+        <button type="button" onClick={() => this.checkAnswer(this.state.answers[0], randomAnswers, 1)} className={this.state.answerClasses1}>{this.state.answers[0]}</button>
+        <button type="button" onClick={() => this.checkAnswer(this.state.answers[1], randomAnswers, 2)} className={this.state.answerClasses2}>{this.state.answers[1]}</button>
+        <button type="button" onClick={() => this.checkAnswer(this.state.answers[2], randomAnswers, 3)} className={this.state.answerClasses3}>{this.state.answers[2]}</button>
+        <button type="button" onClick={() => this.checkAnswer(this.state.answers[3], randomAnswers, 4)} className={this.state.answerClasses4}>{this.state.answers[3]}</button>
         {next}
       </div>
     );
