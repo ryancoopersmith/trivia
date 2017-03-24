@@ -7,7 +7,8 @@ class Interests extends Component {
     super(props);
     this.state = {
       quizzes: [],
-      interests: []
+      interests: [],
+      auth: true
     };
     this.getMyQuizzes = this.getMyQuizzes.bind(this);
     this.getMyInterests = this.getMyInterests.bind(this);
@@ -48,7 +49,10 @@ class Interests extends Component {
 
         this.setState({ interests: body });
       })
-      .catch(error => console.error(`Error in fetch: ${error.message}`));
+      .catch(error => {
+        this.setState({ auth: false });
+        console.error(`Error in fetch: ${error.message}`);
+      });
   }
 
   componentDidMount() {
@@ -81,6 +85,10 @@ class Interests extends Component {
         </div>
       );
     });
+
+    if (!this.state.auth) {
+      myQuizzes = <h2>Sign in and add your interests to see your personalized quizzes</h2>;
+    }
 
     return(
       <div>

@@ -1,0 +1,107 @@
+/* line 7, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+h1, h2, h3, a, li {
+  color: #F7CD7F;
+}
+
+/* line 11, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+h2 {
+  text-align: center;
+}
+
+/* line 15, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+button {
+  color: #F7CD7F;
+  font-family: "Lemon";
+  text-align: center;
+  font-size: 20px;
+}
+
+/* line 22, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.top-bar-right {
+  padding-right: 15px;
+}
+
+/* line 26, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.top-bar-link {
+  font-size: 20px;
+  display: inline-block;
+  padding-right: 10px;
+  padding-top: 5px;
+}
+
+/* line 33, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.top-bar {
+  margin-bottom: 15px;
+}
+
+/* line 37, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.search {
+  position: absolute;
+  width: 26%;
+  top: 8%;
+  right: 2%;
+}
+
+/* line 44, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.card-divider {
+  width: 250px;
+  height: 170px;
+  border-radius: 10px;
+}
+
+/* line 50, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.card {
+  border-radius: 10px;
+}
+
+/* line 54, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.card-section {
+  text-align: center;
+}
+
+/* line 58, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.paginate {
+  text-align: center;
+  margin: auto;
+  background-color: #755F98;
+  color: #F7CD7F;
+  border-radius: 10px;
+}
+
+/* line 66, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.center {
+  text-align: center;
+}
+
+/* line 70, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.correct {
+  color: green;
+}
+
+/* line 74, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.wrong {
+  color: #DB0000;
+}
+
+/* line 78, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.start {
+  border-radius: 10px;
+  margin-top: 12px;
+}
+
+/* line 83, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.category {
+  display: block;
+  margin: 0 auto;
+}
+
+/* line 88, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+#myChart {
+  margin: 0 auto;
+}
+
+/* line 92, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.toggleQuizzes {
+  margin-bottom: 50px;
+  margin-top: 15px;
+}
