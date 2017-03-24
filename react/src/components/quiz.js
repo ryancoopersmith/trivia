@@ -7,6 +7,7 @@ class Quiz extends Component {
     this.state = {
       questions: [],
       start: false
+      // add a current_question state and change it when the user presses the next button
     };
     this.getQuestions = this.getQuestions.bind(this);
     this.startQuiz = this.startQuiz.bind(this);

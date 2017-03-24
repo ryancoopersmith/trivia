@@ -155,6 +155,7 @@ class Question extends Component {
   nextQuestion() {
     console.log("create me!!!")
     // put logic here to go to the next question after componentWillReceiveProps
+    // componentWillReceiveProps will work if I only pass one question at a time
   }
 
   render() {
