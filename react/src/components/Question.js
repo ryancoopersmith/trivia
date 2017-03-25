@@ -25,13 +25,13 @@ class Question extends Component {
 
   setScore(score) {
     let jsonStringData = JSON.stringify(score);
-    fetch('http://localhost:3000/api/v1/scores.json', {
+    fetch(`http://localhost:3000/api/v1/users/${this.props.userId}/scores.json`, {
       credentials: 'same-origin',
       method: "post",
-      // headers: {
-      //   'Accept': 'application/json, text/plain, */*',
-      //   'Content-Type': 'application/json'
-      // },
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
       body: jsonStringData
     }).then(response => {
       if (response.ok) {
@@ -60,7 +60,8 @@ class Question extends Component {
         answerClasses2: null,
         answerClasses3: null,
         answerClasses4: null,
-        answer: null
+        answer: null,
+        userId: 0
       });
     }
   }
@@ -135,10 +136,12 @@ class Question extends Component {
           } else if (num === 4) {
             this.setState({ answerClasses4: correctAnswerClasses });
           }
-          let countdown = Math.round(this.state.countdown / 100);
-          let seconds = (10 - (countdown / 10)).toFixed(1);
-          let newScore = 10 * Math.ceil(seconds);
-          this.setScore(newScore);
+          if (this.props.userId) {
+            let countdown = Math.round(this.state.countdown / 100);
+            let seconds = (10 - (countdown / 10)).toFixed(1);
+            let newScore = 10 * Math.ceil(seconds);
+            this.setScore(newScore);
+          }
         } else {
           this.setState({ message: 'wrong' });
           if (num === 1) {

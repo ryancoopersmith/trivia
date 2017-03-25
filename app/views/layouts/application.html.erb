@@ -11,6 +11,9 @@
   </head>
 
   <body>
+    <% if current_user %>
+      <div id="user" class="hidden"><%=current_user.id%></div>
+    <% end %>
     <div class="top-bar">
       <div class="top-bar-title">
         <h1><%=link_to "Trivia Extraordinaire", root_path%></h1>

@@ -1,13 +1,13 @@
 class Api::V1::FavoriteCategoriesController < ApiController
   def index
-    render json: current_user.favorite_categories
+    user = User.find(params[:user_id])
+    render json: user.favorite_categories
   end
 
   def create
-    current_user.favorite_categories.create(favorite_category_params)
+    user = User.find(params[:user_id])
+    user.favorite_categories.create(favorite_category_params)
   end
-
-  before_action :authenticate_user!
 
   private
 

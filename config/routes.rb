@@ -9,19 +9,25 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :interests
+      resources :users do
+        resources :interests
+      end
     end
   end
 
   namespace :api do
     namespace :v1 do
-      resources :favorite_categories
+      resources :users do
+        resources :favorite_categories
+      end
     end
   end
 
   namespace :api do
     namespace :v1 do
-      resources :scores
+      resources :users do
+        resources :scores
+      end
     end
   end
 

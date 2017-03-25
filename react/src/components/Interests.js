@@ -7,8 +7,7 @@ class Interests extends Component {
     super(props);
     this.state = {
       quizzes: [],
-      interests: [],
-      auth: true
+      interests: []
     };
     this.getMyQuizzes = this.getMyQuizzes.bind(this);
     this.getMyInterests = this.getMyInterests.bind(this);
@@ -34,8 +33,9 @@ class Interests extends Component {
   }
 
   getMyInterests() {
-    fetch('http://localhost:3000/api/v1/interests.json', {credentials: 'same-origin'})
-      .then(response => {
+    fetch(`http://localhost:3000/api/v1/users/${this.props.userId}/interests.json`, {
+      credentials: 'same-origin'
+    }).then(response => {
         if (response.ok) {
           return response;
         } else {
@@ -50,14 +50,15 @@ class Interests extends Component {
         this.setState({ interests: body });
       })
       .catch(error => {
-        this.setState({ auth: false });
         console.error(`Error in fetch: ${error.message}`);
       });
   }
 
   componentDidMount() {
     this.getMyQuizzes();
-    this.getMyInterests();
+    if (this.props.userId) {
+      this.getMyInterests();
+    }
   }
 
   render() {
@@ -70,6 +71,7 @@ class Interests extends Component {
             <Quiz
               key={quizIndex + 1}
               category={quiz.category}
+              userId={this.props.userId}
             />
           )
         }
@@ -86,7 +88,7 @@ class Interests extends Component {
       );
     });
 
-    if (!this.state.auth) {
+    if (this.state.userId === 0) {
       myQuizzes = <h2>Sign in and add your interests to see your personalized quizzes</h2>;
     }
 

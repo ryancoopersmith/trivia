@@ -65,13 +65,13 @@ class Quiz extends Component {
 
   setMyFavorites(category) {
     let jsonStringData = JSON.stringify(category);
-    fetch('http://localhost:3000/api/v1/favorite_categories.json', {
+    fetch(`http://localhost:3000/api/v1/users/${this.props.userId}/favorite_categories.json`, {
       credentials: 'same-origin',
       method: "post",
-      // headers: {
-      //   'Accept': 'application/json, text/plain, */*',
-      //   'Content-Type': 'application/json'
-      // },
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
       body: jsonStringData
     }).then(response => {
       if (response.ok) {
@@ -92,7 +92,9 @@ class Quiz extends Component {
   startQuiz(category) {
     this.getQuestions(category);
     this.setState({ start: true });
-    this.setMyFavorites(category);
+    if (this.props.userId) {
+      this.setMyFavorites(category);
+    }
   }
 
   render() {
@@ -146,6 +148,7 @@ class Quiz extends Component {
            back={this.goBack}
            end={this.state.end}
            whichQuestion={this.state.question}
+           userId={this.props.userId}
           />
         );
       });

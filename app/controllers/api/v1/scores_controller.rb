@@ -1,13 +1,13 @@
 class Api::V1::ScoresController < ApiController
   def index
-    render json: current_user.scores
+    user = User.find(params[:user_id])
+    render json: user.scores
   end
 
   def create
-    current_user.scores.create(score_params)
+    user = User.find(params[:user_id])
+    user.scores.create(score_params)
   end
-
-  before_action :authenticate_user!
 
   private
 

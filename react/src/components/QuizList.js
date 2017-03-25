@@ -88,6 +88,7 @@ class QuizList extends Component {
           <Quiz
           key={index + 1}
           category={quiz.category}
+          userId={this.props.userId}
           />
         );
       }

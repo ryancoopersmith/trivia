@@ -34,12 +34,20 @@ class App extends Component {
       page = <div className="center">
       <button type="button" onClick={() => this.toggleMyQuizzes(0)} className={quizClasses}>See All Quizzes</button>
       </div>;
-      quiz = <Interests />;
+      if (document.getElementById('user')) {
+        quiz = <Interests userId={document.getElementById('user').innerHTML}/>;
+      } else {
+        quiz = <Interests />;
+      }
     } else {
       page = <div className="center">
       <button type="button" onClick={() => this.toggleMyQuizzes(1)} className={quizClasses}>My Quizzes</button>
       </div>;
-      quiz = <QuizList />;
+      if (document.getElementById('user')) {
+        quiz = <QuizList userId={document.getElementById('user').innerHTML}/>;
+      } else {
+        quiz = <QuizList />;
+      }
     }
 
     return(
