@@ -172,34 +172,39 @@ class Question extends Component {
   }
 
   render() {
-    let classNames = require('classnames');
-    let nextClasses = classNames({
-      'hollow': true,
-      'button': true,
-      'defcon-5': true
-    });
+    if (!this.props.end) {
+      let classNames = require('classnames');
+      let nextClasses = classNames({
+        'hollow': true,
+        'button': true,
+        'defcon-5': true
+      });
 
-    let message = this.capitalize(this.state.message);
+      let message = this.capitalize(this.state.message);
 
-    let seconds;
-    if (!this.state.didAnswer) {
-      let countdown = Math.round(this.state.countdown / 100);
-      seconds = (10 - (countdown / 10)).toFixed(1);
-      if (seconds <= 0) {
-        clearInterval(this.timer);
-        seconds = "Time's up!";
+      let seconds;
+      if (!this.state.didAnswer) {
+        let countdown = Math.round(this.state.countdown / 100);
+        seconds = (10 - (countdown / 10)).toFixed(1);
+        if (seconds <= 0) {
+          clearInterval(this.timer);
+          seconds = "Time's up!";
+        }
       }
-    }
 
-    let next;
-    if (this.state.timesUp || this.state.didAnswer) {
-      next = <button type="button" onClick={this.props.onClick} className={nextClasses}>Next Question</button>;
-    }
+      let next;
+      if (this.state.timesUp || this.state.didAnswer) {
+        if (this.props.whichQuestion < 4) {
+          next = <button type="button" onClick={this.props.onClick} className={nextClasses}>Next Question</button>;
+        } else {
+          next = <button type="button" onClick={this.props.onClick} className={nextClasses}>Finish</button>;
+        }
+      }
 
-    let randomAnswers = [this.state.answers[0], this.state.answers[1], this.state.answers[2], this.state.answers[3]];
+      let randomAnswers = [this.state.answers[0], this.state.answers[1], this.state.answers[2], this.state.answers[3]];
 
-    return (
-      <div>
+      return (
+        <div>
         {seconds}
         <h2>{this.props.category}</h2>
         <p className={this.state.message}>{message}</p>
@@ -210,8 +215,13 @@ class Question extends Component {
         <button type="button" onClick={() => this.checkAnswer(this.state.answers[3], randomAnswers, 4)} className={this.state.answerClasses4}>{this.state.answers[3]}</button>
         <button type="button" onClick={this.props.back} className={nextClasses}>Exit</button>
         {next}
-      </div>
-    );
+        </div>
+      );
+    } else {
+      return (
+        <div>END OF GAME</div>
+      );
+    }
   }
 }
 

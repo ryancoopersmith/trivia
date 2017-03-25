@@ -7,7 +7,8 @@ class Quiz extends Component {
     this.state = {
       questions: [],
       start: false,
-      question: 0
+      question: 0,
+      end: false
     };
     this.getQuestions = this.getQuestions.bind(this);
     this.startQuiz = this.startQuiz.bind(this);
@@ -18,8 +19,13 @@ class Quiz extends Component {
   }
 
   nextQuestion() {
-    let question = this.state.question += 1;
-    this.setState({ question: question })
+    let question;
+    if (this.state.question < 4) {
+      question = this.state.question + 1;
+      this.setState({ question: question });
+    } else {
+      this.setState({ end: true });
+    }
   }
 
   goBack() {
@@ -135,6 +141,8 @@ class Quiz extends Component {
            start={new Date()}
            onClick={this.nextQuestion}
            back={this.goBack}
+           end={this.state.end}
+           whichQuestion={this.state.question}
           />
         );
       });
