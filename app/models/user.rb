@@ -7,10 +7,10 @@ class User < ApplicationRecord
 
   validates :username, presence: true, uniqueness: true
   validates :email, uniqueness: true, format: { with: /\A((\w+)|(\.))+\@[a-z]+\.[a-z]{3}\z/ }
-  validates :win_percentage, numericality: true, allow_nil: true
 
   has_many :interests, dependent: :destroy
   has_many :favorite_categories, dependent: :destroy
+  has_many :scores, dependent: :destroy
   accepts_nested_attributes_for :interests
 
   mount_uploader :profile_photo, ProfilePhotoUploader

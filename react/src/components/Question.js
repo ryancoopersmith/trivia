@@ -20,6 +20,33 @@ class Question extends Component {
     this.checkAnswer = this.checkAnswer.bind(this);
     this.tick = this.tick.bind(this);
     this.setClasses = this.setClasses.bind(this);
+    this.setScore = this.setScore.bind(this);
+  }
+
+  setScore(score) {
+    let jsonStringData = JSON.stringify(score);
+    fetch('http://localhost:3000/api/v1/scores.json', {
+      credentials: 'same-origin',
+      method: "post",
+      // headers: {
+      //   'Accept': 'application/json, text/plain, */*',
+      //   'Content-Type': 'application/json'
+      // },
+      body: jsonStringData
+    }).then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      console.log(body);
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   componentWillReceiveProps(nextProps) {
@@ -32,7 +59,8 @@ class Question extends Component {
         answerClasses1: null,
         answerClasses2: null,
         answerClasses3: null,
-        answerClasses4: null
+        answerClasses4: null,
+        answer: null
       });
     }
   }
@@ -107,6 +135,10 @@ class Question extends Component {
           } else if (num === 4) {
             this.setState({ answerClasses4: correctAnswerClasses });
           }
+          let countdown = Math.round(this.state.countdown / 100);
+          let seconds = (10 - (countdown / 10)).toFixed(1);
+          let newScore = 10 * Math.ceil(seconds);
+          this.setScore(newScore);
         } else {
           this.setState({ message: 'wrong' });
           if (num === 1) {
@@ -194,7 +226,7 @@ class Question extends Component {
 
       let next;
       if (this.state.timesUp || this.state.didAnswer) {
-        if (this.props.whichQuestion < 4) {
+        if (this.props.whichQuestion < 5) {
           next = <button type="button" onClick={this.props.onClick} className={nextClasses}>Next Question</button>;
         } else {
           next = <button type="button" onClick={this.props.onClick} className={nextClasses}>Finish</button>;
@@ -219,7 +251,10 @@ class Question extends Component {
       );
     } else {
       return (
-        <div>END OF GAME</div>
+        <div>
+          <p>END OF GAME</p>
+          <p>{this.state.score}</p>
+        </div>
       );
     }
   }

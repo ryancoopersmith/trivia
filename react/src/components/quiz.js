@@ -20,7 +20,7 @@ class Quiz extends Component {
 
   nextQuestion() {
     let question;
-    if (this.state.question < 4) {
+    if (this.state.question < 5) {
       question = this.state.question + 1;
       this.setState({ question: question });
     } else {
@@ -65,10 +65,13 @@ class Quiz extends Component {
 
   setMyFavorites(category) {
     let jsonStringData = JSON.stringify(category);
-    //look into token authenticatble to get this to work
     fetch('http://localhost:3000/api/v1/favorite_categories.json', {
       credentials: 'same-origin',
-      method: 'post',
+      method: "post",
+      // headers: {
+      //   'Accept': 'application/json, text/plain, */*',
+      //   'Content-Type': 'application/json'
+      // },
       body: jsonStringData
     }).then(response => {
       if (response.ok) {
