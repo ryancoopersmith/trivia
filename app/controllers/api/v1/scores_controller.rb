@@ -6,12 +6,12 @@ class Api::V1::ScoresController < ApiController
 
   def create
     user = User.find(params[:user_id])
-    user.scores.create(score_params)
+    Score.create(user: user, score: score_params[:score])
   end
 
   private
 
   def score_params
-    params.require(:score_params).permit(:user_id, :score)
+    params.require(:score).permit(:user_id, :score)
   end
 end

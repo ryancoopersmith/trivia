@@ -82,10 +82,6 @@ class Quiz extends Component {
         throw(error);
       }
     })
-    .then(response => response.json())
-    .then(body => {
-      console.log(body);
-    })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
