@@ -23,7 +23,6 @@ class Question extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('hi');
     if (this.props !== nextProps) {
       this.setState({
         message: '',
@@ -209,6 +208,7 @@ class Question extends Component {
         <button type="button" onClick={() => this.checkAnswer(this.state.answers[1], randomAnswers, 2)} className={this.state.answerClasses2}>{this.state.answers[1]}</button>
         <button type="button" onClick={() => this.checkAnswer(this.state.answers[2], randomAnswers, 3)} className={this.state.answerClasses3}>{this.state.answers[2]}</button>
         <button type="button" onClick={() => this.checkAnswer(this.state.answers[3], randomAnswers, 4)} className={this.state.answerClasses4}>{this.state.answers[3]}</button>
+        <button type="button" onClick={this.props.back} className={nextClasses}>Exit</button>
         {next}
       </div>
     );

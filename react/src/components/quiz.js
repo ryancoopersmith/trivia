@@ -14,11 +14,16 @@ class Quiz extends Component {
     this.shuffle = this.shuffle.bind(this);
     this.setMyFavorites = this.setMyFavorites.bind(this);
     this.nextQuestion = this.nextQuestion.bind(this);
+    this.goBack = this.goBack.bind(this);
   }
 
   nextQuestion() {
     let question = this.state.question += 1;
     this.setState({ question: question })
+  }
+
+  goBack() {
+    this.setState({ start: false });
   }
 
   shuffle(array) {
@@ -78,7 +83,7 @@ class Quiz extends Component {
   startQuiz(category) {
     this.getQuestions(category);
     this.setState({ start: true });
-    this.setMyFavorites(category)
+    this.setMyFavorites(category);
   }
 
   render() {
@@ -88,14 +93,14 @@ class Quiz extends Component {
       'card': true,
       'small-3': true,
       'columns': true
-    })
+    });
 
     let startClasses = classNames({
       'hollow': true,
       'button': true,
       'defcon-5': true,
       'start': true
-    })
+    });
 
     if (this.state.start) {
       let randomizedQuestions = this.shuffle(this.state.questions);
@@ -129,6 +134,7 @@ class Quiz extends Component {
            wrong3={finalWrongs[2]}
            start={new Date()}
            onClick={this.nextQuestion}
+           back={this.goBack}
           />
         );
       });
