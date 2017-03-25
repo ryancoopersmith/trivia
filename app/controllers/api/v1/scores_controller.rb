@@ -4,10 +4,14 @@ class Api::V1::ScoresController < ApiController
   end
 
   def create
-    current_user.scores.create(score: 0)
-    # use like normal controller create action
-    # save to database and send back json
+    current_user.scores.create(score_params)
   end
 
   before_action :authenticate_user!
+
+  private
+
+  def score_params
+    params.require(:score_params).permit(:user_id, :score)
+  end
 end

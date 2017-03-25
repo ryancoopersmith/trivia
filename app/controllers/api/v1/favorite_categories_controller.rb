@@ -4,10 +4,14 @@ class Api::V1::FavoriteCategoriesController < ApiController
   end
 
   def create
-    current_user.favorite_categories.create(category: 'mycategory')
-    # use like normal controller create action
-    # save to database and send back json
+    current_user.favorite_categories.create(favorite_category_params)
   end
 
   before_action :authenticate_user!
+
+  private
+
+  def favorite_category_params
+    params.require(:favorite_category).permit(:user_id, :category)
+  end
 end
