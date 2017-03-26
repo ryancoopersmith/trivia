@@ -38,9 +38,10 @@ window.onload = function() {
   let check = () => {
     if (categories[0]) {
       let sortedCategories = categories.sort((a, b) => {
-        return a[1] - b[1];
+        return b[1] - a[1];
       });
 
+      sortedCategories = sortedCategories.slice(0, 5)
       let total = 0;
       sortedCategories.forEach((category) => {
         total += category[1];
@@ -88,7 +89,8 @@ window.onload = function() {
             animation: {
               animateScale: true
             },
-            responsive: false
+            responsive: true,
+            maintainAspectRatio: false
           }
         });
     } else {

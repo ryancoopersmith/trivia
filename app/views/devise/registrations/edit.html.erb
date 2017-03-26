@@ -14,7 +14,9 @@
 </div>
 
 <% if current_user.favorite_categories.any? %>
-  <canvas id="myChart"></canvas>
+  <div id="canvasParent">
+    <canvas id="myChart"></canvas>
+  </div>
 <% else %>
   <div class = "row">
     <h3 class="text-center">Start playing to see your favorite categories!</h3>
