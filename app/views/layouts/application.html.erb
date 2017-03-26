@@ -68,5 +68,9 @@
       <% end %>
     </div>
     <%= yield %>
+    <% if request.env['PATH_INFO'] != "/terms" && request.env['PATH_INFO'] != "/privacy" %>
+      <%= link_to 'Privacy Policy', privacy_index_path %>
+      <%= link_to 'Terms and Conditions', terms_path %>
+    <% end %>
   </body>
 </html>

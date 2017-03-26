@@ -15,6 +15,8 @@ gem 'foundation-rails'
 gem 'fog'
 gem 'jquery-turbolinks'
 gem 'json'
+gem 'omniauth'
+gem 'omniauth-twitter'
 
 group :development do
   gem 'listen', '~> 3.0.5'
