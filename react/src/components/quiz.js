@@ -24,21 +24,20 @@ class Quiz extends Component {
     fetch(`http://localhost:3000/api/v1/users/${this.props.userId}/scores.json`, {
       credentials: 'same-origin'
     }).then(response => {
-        if (response.ok) {
-          return response;
-        } else {
-          let errorMessage = `${response.status} (${response.statusText})`,
-              error = new Error(errorMessage);
-          throw(error);
-        }
-      })
-      .then(response => response.json())
-      .then(body => {
-        let length = body.length;
-        let score = body[length - 1].score + body[length - 2].score + body[length - 3].score + body[length - 4].score + body[length - 5].score + body[length - 6].score
-        this.setState({ score: score });
-      })
-      .catch(error => console.error(`Error in fetch: ${error.message}`));
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage);
+        throw(error);
+      }
+    }).then(response => response.json())
+    .then(body => {
+      let length = body.length;
+      let score = body[length - 1].score + body[length - 2].score + body[length - 3].score + body[length - 4].score + body[length - 5].score + body[length - 6].score;
+      this.setState({ score: score });
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   nextQuestion() {

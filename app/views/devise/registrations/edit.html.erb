@@ -17,7 +17,40 @@
   <canvas id="myChart"></canvas>
 <% else %>
   <div class = "row">
-    <h3 class="text-center">Sign In and start playing to see your favorite categories!</h3>
+    <h3 class="text-center">Start playing to see your favorite categories!</h3>
+  </div>
+<% end %>
+
+<div class = "row">
+  <h3 class="text-center">Score History</h3>
+</div>
+<% if current_user.scores.any? %>
+  <div class="center">
+    <% scores = [] %>
+    <% game_scores = [] %>
+    <% current_user.scores.each_with_index do |score, index| %>
+      <% scores << score.score %>
+      <% if (index + 6) % 6 == 0 %>
+        <% game_score = current_user.scores[index].score + current_user.scores[index + 1].score + current_user.scores[index + 2].score + current_user.scores[index + 3].score + current_user.scores[index + 4].score + current_user.scores[index + 5].score %>
+        <% game_scores << game_score %>
+      <% end %>
+    <% end %>
+    <p>
+      Total Score: <%= scores.inject(:+) %>
+    </p>
+    <p>
+      Best Score: <%= game_scores.max %>
+    </p>
+    <p>
+      Worst Score: <%= game_scores.min %>
+    </p>
+    <p>
+      Average Score: <%= scores.inject(:+) / (scores.length / 6) %>
+    </p>
+  </div>
+<% else %>
+  <div class = "row">
+    <h3 class="text-center">Start playing to see your score history!</h3>
   </div>
 <% end %>
 
