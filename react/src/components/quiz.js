@@ -8,7 +8,8 @@ class Quiz extends Component {
       questions: [],
       start: false,
       question: 0,
-      end: false
+      end: false,
+      score: 0
     };
     this.getQuestions = this.getQuestions.bind(this);
     this.startQuiz = this.startQuiz.bind(this);
@@ -16,6 +17,28 @@ class Quiz extends Component {
     this.setMyFavorites = this.setMyFavorites.bind(this);
     this.nextQuestion = this.nextQuestion.bind(this);
     this.goBack = this.goBack.bind(this);
+    this.getScore = this.getScore.bind(this);
+  }
+
+  getScore() {
+    fetch(`http://localhost:3000/api/v1/users/${this.props.userId}/scores.json`, {
+      credentials: 'same-origin'
+    }).then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+              error = new Error(errorMessage);
+          throw(error);
+        }
+      })
+      .then(response => response.json())
+      .then(body => {
+        let length = body.length;
+        let score = body[length - 1].score + body[length - 2].score + body[length - 3].score + body[length - 4].score + body[length - 5].score + body[length - 6].score
+        this.setState({ score: score });
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   nextQuestion() {
@@ -25,6 +48,7 @@ class Quiz extends Component {
       this.setState({ question: question });
     } else {
       this.setState({ end: true });
+      this.getScore();
     }
   }
 
@@ -145,6 +169,7 @@ class Quiz extends Component {
            end={this.state.end}
            whichQuestion={this.state.question}
            userId={this.props.userId}
+           score={this.state.score}
           />
         );
       });

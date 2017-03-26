@@ -42,10 +42,6 @@ class Question extends Component {
         throw(error);
       }
     })
-    .then(response => response.json())
-    .then(body => {
-      console.log(body);
-    })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
@@ -153,6 +149,7 @@ class Question extends Component {
           } else if (num === 4) {
             this.setState({ answerClasses4: wrongAnswerClasses });
           }
+          this.setScore(0);
         }
       }
       this.setState({ didAnswer: true });
@@ -187,6 +184,7 @@ class Question extends Component {
 
   timesUp() {
     this.setState({ timesUp: true });
+    this.setScore(0);
 
     let classNames = require('classnames');
     let correctAnswerClasses = classNames({
@@ -256,7 +254,7 @@ class Question extends Component {
       return (
         <div>
           <p>END OF GAME</p>
-          <p>{this.state.score}</p>
+          <p>{this.props.score}</p>
         </div>
       );
     }
