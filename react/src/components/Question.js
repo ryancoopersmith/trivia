@@ -254,6 +254,12 @@ class Question extends Component {
         <div>
           <p>END OF GAME</p>
           <p>{this.props.score}</p>
+          <a className="twitter-share-button"
+            href={`https://twitter.com/intent/tweet?text=I%20scored%20${this.props.score}%20points%20in%20${this.props.category}%20on%20Trivia%20Extraordinaire!&hashtags=TriviaExtraordinaire`}
+            data-size="large"
+            target="_blank">
+            Brag to your friends on Twitter!
+          </a>
         </div>
       );
     }
