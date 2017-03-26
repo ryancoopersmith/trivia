@@ -30,7 +30,7 @@
     <% game_scores = [] %>
     <% current_user.scores.each_with_index do |score, index| %>
       <% scores << score.score %>
-      <% if (index + 6) % 6 == 0 %>
+      <% if (index + 6) % 6 == 0 && current_user.scores.length % 6 == 0%>
         <% game_score = current_user.scores[index].score + current_user.scores[index + 1].score + current_user.scores[index + 2].score + current_user.scores[index + 3].score + current_user.scores[index + 4].score + current_user.scores[index + 5].score %>
         <% game_scores << game_score %>
       <% end %>

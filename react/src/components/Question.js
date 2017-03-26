@@ -56,8 +56,7 @@ class Question extends Component {
         answerClasses2: null,
         answerClasses3: null,
         answerClasses4: null,
-        answer: null,
-        userId: 0
+        answer: null
       });
     }
   }
