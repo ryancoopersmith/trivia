@@ -9,12 +9,12 @@ RSpec.describe Api::V1::InterestsController, type: :controller do
       Interest.create(user: user, interest: "Movies")
       Interest.create(user: user, interest: "Music")
 
-      get :index
+      get :index, params: { user_id: user.id }
       json = JSON.parse(response.body)
 
-      expect(json["interests"].length).to eq(2)
-      expect(json["interests"][0]["interest"]).to eq("Movies")
-      expect(json["interests"][1]["interest"]).to eq("Music")
+      expect(json.length).to eq(2)
+      expect(json[0]["interest"]).to eq("Movies")
+      expect(json[1]["interest"]).to eq("Music")
     end
   end
 end
