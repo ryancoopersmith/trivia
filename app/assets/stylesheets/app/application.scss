@@ -8,13 +8,16 @@ h1, h2, h3, a, li {
   color: $yellow;
 }
 
+h1, h2 {
+  font-family: "Lemon"
+}
+
 h2 {
   text-align: center;
 }
 
 button {
   color: $yellow;
-  font-family: "Lemon";
   text-align: center;
   font-size: 20px;
 }

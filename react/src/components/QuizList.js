@@ -15,7 +15,6 @@ class QuizList extends Component {
     this.setQuizzes = this.setQuizzes.bind(this);
     this.shuffle = this.shuffle.bind(this);
     this.updateGroup = this.updateGroup.bind(this);
-    this.showMessage = this.showMessage.bind(this);
   }
 
   updateSearch(event) {
