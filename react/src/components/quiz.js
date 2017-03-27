@@ -115,18 +115,20 @@ class Quiz extends Component {
   }
 
   startQuiz(category) {
-    this.getQuestions(category);
-    this.setState({ start: true });
     if (this.props.userId) {
-      this.setMyFavorites(category);
-    }
+      this.getQuestions(category);
+      this.setState({ start: true });
+      if (this.props.userId) {
+        this.setMyFavorites(category);
+      }
 
-    for (let i = 0; i < 36; i++) {
-      document.getElementsByClassName('card-divider')[i].style.display = 'none';
+      for (let i = 0; i < 36; i++) {
+        document.getElementsByClassName('card-divider')[i].style.display = 'none';
+      }
+      document.getElementsByClassName('search')[0].style.display = 'none';
+      document.getElementsByClassName('paginate')[0].style.display = 'none';
+      document.getElementsByClassName('paginate')[1].style.display = 'none';
     }
-    document.getElementsByClassName('search')[0].style.display = 'none';
-    document.getElementsByClassName('paginate')[0].style.display = 'none';
-    document.getElementsByClassName('paginate')[1].style.display = 'none';
   }
 
   render() {

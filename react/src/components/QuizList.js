@@ -15,6 +15,7 @@ class QuizList extends Component {
     this.setQuizzes = this.setQuizzes.bind(this);
     this.shuffle = this.shuffle.bind(this);
     this.updateGroup = this.updateGroup.bind(this);
+    this.showMessage = this.showMessage.bind(this);
   }
 
   updateSearch(event) {
@@ -131,16 +132,28 @@ class QuizList extends Component {
       <button type="button" onClick={() => this.updateGroup(1)} className={paginateClasses}>Next</button>
       </div>;
     }
-
-    return(
-      <div>
+    if (this.props.userId) {
+      return(
+        <div>
         <input type="text" className="search" placeholder="Search"
         value={this.state.search}
         onChange={this.updateSearch}/>
         {quizzes}
         {page}
-      </div>
-    );
+        </div>
+      );
+    } else {
+      return(
+        <div>
+        <input type="text" className="search" placeholder="Search"
+        value={this.state.search}
+        onChange={this.updateSearch}/>
+        <div className="flash">You need to sign in or sign up first to start playing</div>
+        {quizzes}
+        {page}
+        </div>
+      );
+    }
   }
 }
 
