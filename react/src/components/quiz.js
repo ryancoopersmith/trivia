@@ -53,6 +53,12 @@ class Quiz extends Component {
 
   goBack() {
     this.setState({ start: false });
+    document.getElementsByClassName('search')[0].style.display = 'block';
+    document.getElementsByClassName('paginate')[0].style.display = 'block';
+    document.getElementsByClassName('paginate')[1].style.display = 'block';
+    for (let i = 0; i < 36; i++) {
+      document.getElementsByClassName('card-divider')[i].style.display = 'block';
+    }
   }
 
   shuffle(array) {
@@ -114,6 +120,13 @@ class Quiz extends Component {
     if (this.props.userId) {
       this.setMyFavorites(category);
     }
+
+    for (let i = 0; i < 36; i++) {
+      document.getElementsByClassName('card-divider')[i].style.display = 'none';
+    }
+    document.getElementsByClassName('search')[0].style.display = 'none';
+    document.getElementsByClassName('paginate')[0].style.display = 'none';
+    document.getElementsByClassName('paginate')[1].style.display = 'none';
   }
 
   render() {

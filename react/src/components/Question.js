@@ -209,7 +209,8 @@ class Question extends Component {
       let nextClasses = classNames({
         'hollow': true,
         'button': true,
-        'defcon-5': true
+        'defcon-5': true,
+        'next': true
       });
 
       let message = this.capitalize(this.state.message);
