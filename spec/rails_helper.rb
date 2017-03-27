@@ -90,3 +90,15 @@ RSpec.configure do |config|
   end
 
 end
+OmniAuth.config.test_mode = true
+OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({
+  'provider' => 'twitter',
+  'uid' => '123545',
+  'info' => {
+    'email' => 'mockuser@test.com'
+  },
+  'credentials' => {
+    'token' => 'mock_token',
+    'secret' => 'mock_secret'
+  }
+})

@@ -3,14 +3,14 @@ require 'rails_helper'
 feature 'user visits account page' do
   # As an authenticated user that wants to play some trivia
   # I should be able to see my trivia stats
-  # So that I can see my progress
+  # So that I can see my favorite categories and score history
   #
-  # [] I should be able to see my best category
-  # [] I should be able to see my worst category
-  # [] I should be able to see my total number of wins
-  # [] I should be able to see my total number of losses
-  # [] I should be able to see my most played ("favorite") category
-  # [] I should be able to see any quizzes I've created
+  # [X] I should be able to see my best category
+  # [X] I should be able to see my worst category
+  # [X] I should be able to see my total number of wins
+  # [X] I should be able to see my total number of losses
+  # [X] I should be able to see my most played ("favorite") category
+  # [X] I should be able to see any quizzes I've created
   let!(:user) { FactoryGirl.create(:user) }
 
   scenario "user clicks on 'My Account'" do

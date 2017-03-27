@@ -6,7 +6,6 @@ class User < ApplicationRecord
     :recoverable, :rememberable, :trackable, :validatable,
     :omniauthable, :omniauth_providers => [:twitter]
 
-  validates :username, presence: true, uniqueness: true
   validates :email, uniqueness: true, format: { with: /\A((\w+)|(\.))+\@[a-z]+\.[a-z]{3}\z/ }
 
   has_many :interests, dependent: :destroy

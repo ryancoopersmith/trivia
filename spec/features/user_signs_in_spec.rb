@@ -3,14 +3,14 @@ require 'rails_helper'
 feature 'user signs in' do
   # As an returning user that wants to play some trivia
   # I should be able to sign in using my account information
-  # So that I can save my progress, post new questions, and comment on questions
+  # So that I can save my progress and see my score and favorite categories
   #
-  # [] I must provide a valid email
-  # [] I must provide a valid password
-  # [] I should see an error message if I enter an invalid email or password
-  # [] I should remain on the sign in page if I enter invalid information
-  # [] I should see a success message if I successfully sign in
-  # [] I should be taken to the root path when I sign in
+  # [X] I must provide a valid email
+  # [X] I must provide a valid password
+  # [X] I should see an error message if I enter an invalid email or password
+  # [X] I should remain on the sign in page if I enter invalid information
+  # [X] I should see a success message if I successfully sign in
+  # [X] I should be taken to the root path when I sign in
 
   scenario 'user visits sign in page' do
     visit root_path
