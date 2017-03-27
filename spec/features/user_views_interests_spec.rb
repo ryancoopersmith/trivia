@@ -33,6 +33,8 @@ feature 'user visits interests page' do
     fill_in "interest-field-1", with: "History"
     fill_in "interest-field-2", with: "Science"
     click_button "Add Interests"
+
+    expect(page).to have_content("Interests successfully saved")
     click_link "View Your Interests"
 
     expect(page).to have_content("History")
@@ -51,7 +53,7 @@ feature 'user visits interests page' do
     fill_in "interest-field-2", with: "hi"
     click_button "Add Interests"
 
-    expect(page).to have_content("One or more interests failed to save. Interests must be four letters of longer")
+    expect(page).to have_content("One or more interests failed to save. Interests must be four letters or longer.")
   end
 
   scenario "user successfully edits interests" do

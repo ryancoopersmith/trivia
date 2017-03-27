@@ -19,22 +19,13 @@ class InterestsController < ApplicationController
 
   def create
     @user = current_user
-    if params.has_key?("interest")
-      my_interest = @user.interests.create(interests_params(params['interest']))
-      if my_interest.save
-        flash[:notice] = "Interests successfully saved"
-      else
-        flash[:notice] = "One or more interests failed to save. Interests must be four letters of longer"
-      end
-    else
-      params['interests'].each do |interest|
-        if interest['interest'] != ""
-          my_interest = @user.interests.create(interests_params(interest))
-          if my_interest.save
-            flash[:notice] = "Interests successfully saved"
-          else
-            flash[:notice] = "One or more interests failed to save. Interests must be four letters of longer"
-          end
+    params['interests'].each do |interest|
+      if interest['interest'] != ""
+        my_interest = @user.interests.create(interests_params(interest))
+        if my_interest.save
+          flash[:notice] = "Interests successfully saved"
+        else
+          flash[:notice] = "One or more interests failed to save. Interests must be four letters or longer."
         end
       end
     end
