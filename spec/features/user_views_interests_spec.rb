@@ -39,6 +39,21 @@ feature 'user visits interests page' do
     expect(page).to have_content("Science")
   end
 
+  scenario "user unsuccessfully adds interests" do
+    visit new_user_session_path
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
+    click_button "Sign In"
+    click_link "View Your Interests"
+
+    click_link "Add Interests"
+    fill_in "interest-field-1", with: ""
+    fill_in "interest-field-2", with: ""
+    click_button "Add Interests"
+
+    expect(page).to have_content("One or more interests failed to save")
+  end
+
   scenario "user successfully edits interests" do
     visit new_user_session_path
     fill_in "Email", with: user.email
@@ -60,6 +75,26 @@ feature 'user visits interests page' do
     expect(page).to_not have_content('History')
   end
 
+  scenario "user unsuccessfully edits interests" do
+    visit new_user_session_path
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
+    click_button "Sign In"
+    click_link "View Your Interests"
+
+    click_link "Add Interests"
+    fill_in "interest-field-1", with: "History"
+    fill_in "interest-field-2", with: "Science"
+    click_button "Add Interests"
+    click_link "View Your Interests"
+
+    click_link "edit-interest-1"
+    fill_in "Interest", with: ""
+    click_button "Edit Interest"
+
+    expect(page).to have_content("Interest can't be blank")
+  end
+
   scenario "user deletes interests" do
     visit new_user_session_path
     fill_in "Email", with: user.email
@@ -77,5 +112,12 @@ feature 'user visits interests page' do
 
     expect(page).to have_content('Science')
     expect(page).to_not have_content('History')
+  end
+
+  scenario "unauthorized user clicks on 'view your interests'" do
+    visit 'users/1/interests'
+
+    expect(page).to have_content("You need to sign in or sign up before continuing")
+    expect(page).to_not have_content("Add Interests")
   end
 end

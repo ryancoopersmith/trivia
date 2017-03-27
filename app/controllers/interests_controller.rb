@@ -42,7 +42,7 @@ class InterestsController < ApplicationController
     if success
       flash[:notice] = "Interests successfully added"
     else
-      flash[:notice] = "One or more interests failed to add"
+      flash[:notice] = "One or more interests failed to save"
     end
     redirect_to root_path
   end
@@ -83,7 +83,7 @@ class InterestsController < ApplicationController
 
   def authorize_user
     if !user_signed_in? || !current_user.admin?
-      flash[:notice] = "This page doesn't exist"
+      flash[:notice] = "You need to sign in or sign up before continuing"
       redirect_to root_path
     end
   end
