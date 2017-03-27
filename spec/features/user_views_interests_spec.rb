@@ -47,11 +47,11 @@ feature 'user visits interests page' do
     click_link "View Your Interests"
 
     click_link "Add Interests"
-    fill_in "interest-field-1", with: ""
-    fill_in "interest-field-2", with: ""
+    fill_in "interest-field-1", with: "fun"
+    fill_in "interest-field-2", with: "hi"
     click_button "Add Interests"
 
-    expect(page).to have_content("One or more interests failed to save")
+    expect(page).to have_content("One or more interests failed to save. Interests must be four letters of longer")
   end
 
   scenario "user successfully edits interests" do
@@ -112,12 +112,5 @@ feature 'user visits interests page' do
 
     expect(page).to have_content('Science')
     expect(page).to_not have_content('History')
-  end
-
-  scenario "unauthorized user clicks on 'view your interests'" do
-    visit 'users/1/interests'
-
-    expect(page).to have_content("You need to sign in or sign up before continuing")
-    expect(page).to_not have_content("Add Interests")
   end
 end

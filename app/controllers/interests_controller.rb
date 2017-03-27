@@ -19,30 +19,24 @@ class InterestsController < ApplicationController
 
   def create
     @user = current_user
-    success = false
     if params.has_key?("interest")
       my_interest = @user.interests.create(interests_params(params['interest']))
       if my_interest.save
-        success = true
+        flash[:notice] = "Interests successfully saved"
       else
-        success = false
+        flash[:notice] = "One or more interests failed to save. Interests must be four letters of longer"
       end
     else
       params['interests'].each do |interest|
         if interest['interest'] != ""
           my_interest = @user.interests.create(interests_params(interest))
           if my_interest.save
-            success = true
+            flash[:notice] = "Interests successfully saved"
           else
-            success = false
+            flash[:notice] = "One or more interests failed to save. Interests must be four letters of longer"
           end
         end
       end
-    end
-    if success
-      flash[:notice] = "Interests successfully added"
-    else
-      flash[:notice] = "One or more interests failed to save"
     end
     redirect_to root_path
   end
@@ -79,12 +73,5 @@ class InterestsController < ApplicationController
 
   def one_interest_params
     params.require(:interest).permit(:interest, :user_id)
-  end
-
-  def authorize_user
-    if !user_signed_in? || !current_user.admin?
-      flash[:notice] = "You need to sign in or sign up before continuing"
-      redirect_to root_path
-    end
   end
 end
