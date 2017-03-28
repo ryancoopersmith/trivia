@@ -22,7 +22,7 @@ button {
 }
 
 .top-bar-right {
-  padding-right: 160px;
+  padding-right: 149px;
 }
 
 .top-bar-link {
@@ -100,8 +100,10 @@ button {
 }
 
 .toggleQuizzes {
-  margin-bottom: 50px;
-  margin-top: 15px;
+  position: absolute;
+  top: 17px;
+  right: 5%;
+  font-size: 20px !important;
 }
 
 .wrongAnswer {
@@ -155,13 +157,6 @@ button {
 
 .top-bar-title {
   margin-top: 25px;
-}
-
-.toggleQuizzes {
-  position: absolute;
-  top: -3px;
-  right: 5%;
-  font-size: 20px !important;
 }
 
 .answer {
