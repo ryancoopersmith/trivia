@@ -127,7 +127,6 @@ class Quiz extends Component {
       }
       document.getElementsByClassName('search')[0].style.display = 'none';
       document.getElementsByClassName('paginate')[0].style.display = 'none';
-      document.getElementsByClassName('paginate')[1].style.display = 'none';
     }
   }
 

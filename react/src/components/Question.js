@@ -212,6 +212,11 @@ class Question extends Component {
         'next': true
       });
 
+      let gridClasses = classNames({
+        'small-6': true,
+        'columns': true
+      });
+
       let message = this.capitalize(this.state.message);
 
       let seconds;
@@ -238,13 +243,25 @@ class Question extends Component {
       return (
         <div>
         {seconds}
-        <h2>{this.props.category}</h2>
+        <h2 className="quizCategory">{this.props.category}</h2>
         <p className={this.state.message}>{message}</p>
         <p className="question">{this.props.question}</p>
-        <button type="button" onClick={() => this.checkAnswer(this.state.answers[0], randomAnswers, 1)} className={this.state.answerClasses1}>{this.state.answers[0]}</button>
-        <button type="button" onClick={() => this.checkAnswer(this.state.answers[1], randomAnswers, 2)} className={this.state.answerClasses2}>{this.state.answers[1]}</button>
-        <button type="button" onClick={() => this.checkAnswer(this.state.answers[2], randomAnswers, 3)} className={this.state.answerClasses3}>{this.state.answers[2]}</button>
-        <button type="button" onClick={() => this.checkAnswer(this.state.answers[3], randomAnswers, 4)} className={this.state.answerClasses4}>{this.state.answers[3]}</button>
+        <div className="row">
+          <div className={gridClasses}>
+            <button type="button" onClick={() => this.checkAnswer(this.state.answers[0], randomAnswers, 1)} className={this.state.answerClasses1}>{this.state.answers[0]}</button>
+          </div>
+          <div className={gridClasses}>
+            <button type="button" onClick={() => this.checkAnswer(this.state.answers[1], randomAnswers, 2)} className={this.state.answerClasses2}>{this.state.answers[1]}</button>
+          </div>
+        </div>
+        <div className="row">
+          <div className={gridClasses}>
+            <button type="button" onClick={() => this.checkAnswer(this.state.answers[2], randomAnswers, 3)} className={this.state.answerClasses3}>{this.state.answers[2]}</button>
+          </div>
+          <div className={gridClasses}>
+            <button type="button" onClick={() => this.checkAnswer(this.state.answers[3], randomAnswers, 4)} className={this.state.answerClasses4}>{this.state.answers[3]}</button>
+          </div>
+        </div>
         <button type="button" onClick={this.props.back} className={nextClasses}>Exit</button>
         {next}
         </div>
