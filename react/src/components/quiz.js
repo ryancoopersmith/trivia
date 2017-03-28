@@ -127,6 +127,8 @@ class Quiz extends Component {
       }
       document.getElementsByClassName('search')[0].style.display = 'none';
       document.getElementsByClassName('paginate')[0].style.display = 'none';
+    } else {
+      document.getElementsByClassName('flash')[1].style.color = '#DB0000';
     }
   }
 

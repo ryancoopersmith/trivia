@@ -32,10 +32,6 @@ button {
   padding-top: 5px;
 }
 
-.top-bar {
-  margin-bottom: 40px;
-}
-
 .search {
   position: absolute;
   width: 40%;
@@ -71,6 +67,7 @@ button {
   font-weight: 800;
   margin-left: 18px;
   margin-right: 34px;
+  margin-bottom: 45px;
 }
 
 .center {
@@ -127,7 +124,7 @@ button {
 #privacy {
   position: absolute;
   left: 5%;
-  margin-bottom: 5px;
+  margin-top: 12px;
   font-size: 18px !important;
 }
 
@@ -135,13 +132,13 @@ button {
   position: absolute;
   left: 5%;
   margin-left: 130px;
-  margin-bottom: 5px;
+  margin-top: 12px;
   font-size: 18px !important;
 }
 
 .footer {
   width: 100%;
-  height: 25px;
+  height: 50px;
   background-color: #00BCD4;
 }
 
@@ -173,4 +170,10 @@ button {
 
 .question {
   text-align: center;
+}
+
+.flash {
+  color: #00BCD4;
+  font-size: 20px !important;
+  margin-bottom: 10px;
 }
