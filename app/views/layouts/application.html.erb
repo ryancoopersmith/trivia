@@ -67,10 +67,10 @@
         <% end %>
       <% end %>
     </div>
-    <%= yield %>
     <% if request.env['PATH_INFO'] != "/terms" && request.env['PATH_INFO'] != "/privacy" %>
       <%= link_to 'Privacy Policy', privacy_index_path, id: 'privacy' %>
       <%= link_to 'Terms and Conditions', terms_path, id: 'terms' %>
     <% end %>
+    <%= yield %>
   </body>
 </html>

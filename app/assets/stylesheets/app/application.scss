@@ -2,6 +2,12 @@ $white: #fefefe;
 $green: #30AD23;
 $red: #DB0000;
 
+body {
+  background-image: url('https://s3.amazonaws.com/trivia-extraordinaire/background/background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 h1, h2 {
   font-family: "Lemon";
   color: $white;

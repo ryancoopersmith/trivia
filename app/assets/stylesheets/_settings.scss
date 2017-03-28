@@ -64,7 +64,7 @@ $white: #fefefe;
 $purple: #755F98;
 $blue: #6D96D3;
 $yellow: #F7CD7F;
-$body-background: $dark-gray;
+$body-background: $white;
 $body-font-color: $white;
 $body-font-family: sans-serif, 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
 $body-antialiased: true;
@@ -288,10 +288,10 @@ $callout-link-tint: 30%;
 // 14. Card
 // --------
 
-$card-background: $blue;
+$card-background: none;
 $card-font-color: $body-font-color;
 $card-divider-background: $purple;
-$card-border: 1px solid $blue;
+$card-border: none;
 $card-shadow: none;
 $card-border-radius: $global-radius;
 $card-padding: $global-padding;
