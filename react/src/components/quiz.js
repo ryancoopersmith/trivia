@@ -143,7 +143,7 @@ class Quiz extends Component {
     let startClasses = classNames({
       'hollow': true,
       'button': true,
-      '': true,
+      'defcon-5': true,
       'start': true
     });
 

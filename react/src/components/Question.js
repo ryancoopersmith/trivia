@@ -209,7 +209,6 @@ class Question extends Component {
       let nextClasses = classNames({
         'hollow': true,
         'button': true,
-        '': true,
         'next': true
       });
 

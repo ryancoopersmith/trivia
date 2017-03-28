@@ -2,15 +2,13 @@ $white: #fefefe;
 $green: #30AD23;
 $red: #DB0000;
 
-body {
-  background-image: url('https://s3.amazonaws.com/trivia-extraordinaire/background/background.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
+a {
+  color: $white;
 }
 
-h1, h2 {
-  font-family: "Lemon";
-  color: $white;
+button {
+  font-family: "Josefin Sans";
+  font-weight: 800;
 }
 
 h2 {
@@ -53,6 +51,7 @@ button {
 
 .card {
   border-radius: 10px;
+  padding-bottom: 30px;
 }
 
 .card-section {
@@ -62,9 +61,15 @@ button {
 .paginate {
   text-align: center;
   margin: auto;
-  background-color: blue;
+  background-color: #00BCD4;
   color: $white;
   border-radius: 10px;
+  width: 150px;
+  height: 50px;
+  font-size: 18px;
+  font-weight: 800;
+  margin-left: 18px;
+  margin-right: 34px;
 }
 
 .center {
@@ -120,6 +125,7 @@ button {
   position: absolute;
   left: 5%;
   margin-bottom: 5px;
+  font-size: 18px !important;
 }
 
 #terms {
@@ -127,4 +133,21 @@ button {
   left: 5%;
   margin-left: 130px;
   margin-bottom: 5px;
+  font-size: 18px !important;
+}
+
+.footer {
+  width: 100%;
+  height: 25px;
+  background-color: #00BCD4;
+}
+
+.category {
+  font-weight: 800;
+  font-size: 24px;
+}
+
+.hollow {
+  font-size: 16px !important;
+  border-width: 2px !important;
 }
