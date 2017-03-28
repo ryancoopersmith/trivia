@@ -16,7 +16,7 @@ feature 'user visits interests page' do
     fill_in "Email", with: user.email
     fill_in "Password", with: user.password
     click_button "Sign In"
-    click_link "View Your Interests"
+    click_link "View My Interests"
 
     expect(page).to have_content("Your Interests")
     expect(page).to have_content("Add Interests")
@@ -27,7 +27,7 @@ feature 'user visits interests page' do
     fill_in "Email", with: user.email
     fill_in "Password", with: user.password
     click_button "Sign In"
-    click_link "View Your Interests"
+    click_link "View My Interests"
 
     click_link "Add Interests"
     fill_in "interest-field-1", with: "History"
@@ -35,7 +35,7 @@ feature 'user visits interests page' do
     click_button "Add Interests"
 
     expect(page).to have_content("Interests successfully saved")
-    click_link "View Your Interests"
+    click_link "View My Interests"
 
     expect(page).to have_content("History")
     expect(page).to have_content("Science")
@@ -46,7 +46,7 @@ feature 'user visits interests page' do
     fill_in "Email", with: user.email
     fill_in "Password", with: user.password
     click_button "Sign In"
-    click_link "View Your Interests"
+    click_link "View My Interests"
 
     click_link "Add Interests"
     fill_in "interest-field-1", with: "fun"
@@ -61,13 +61,13 @@ feature 'user visits interests page' do
     fill_in "Email", with: user.email
     fill_in "Password", with: user.password
     click_button "Sign In"
-    click_link "View Your Interests"
+    click_link "View My Interests"
 
     click_link "Add Interests"
     fill_in "interest-field-1", with: "History"
     fill_in "interest-field-2", with: "Science"
     click_button "Add Interests"
-    click_link "View Your Interests"
+    click_link "View My Interests"
 
     click_link "edit-interest-1"
     fill_in "Interest", with: "Sports"
@@ -82,13 +82,13 @@ feature 'user visits interests page' do
     fill_in "Email", with: user.email
     fill_in "Password", with: user.password
     click_button "Sign In"
-    click_link "View Your Interests"
+    click_link "View My Interests"
 
     click_link "Add Interests"
     fill_in "interest-field-1", with: "History"
     fill_in "interest-field-2", with: "Science"
     click_button "Add Interests"
-    click_link "View Your Interests"
+    click_link "View My Interests"
 
     click_link "edit-interest-1"
     fill_in "Interest", with: ""
@@ -102,15 +102,15 @@ feature 'user visits interests page' do
     fill_in "Email", with: user.email
     fill_in "Password", with: user.password
     click_button "Sign In"
-    click_link "View Your Interests"
+    click_link "View My Interests"
     click_link "Add Interests"
     fill_in "interest-field-1", with: "History"
     fill_in "interest-field-2", with: "Science"
     click_button "Add Interests"
-    click_link "View Your Interests"
+    click_link "View My Interests"
 
     click_link "delete-interest-1"
-    click_link "View Your Interests"
+    click_link "View My Interests"
 
     expect(page).to have_content('Science')
     expect(page).to_not have_content('History')

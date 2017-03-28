@@ -28,7 +28,7 @@
               <%= link_to "My Account", edit_user_registration_path %>
             </div>
             <div class="top-bar-link">
-              <%= link_to "View Your Interests", user_interests_path(current_user) %>
+              <%= link_to "View My Interests", user_interests_path(current_user) %>
             </div>
           <% else %>
             <div class="top-bar-link">
@@ -69,22 +69,8 @@
     </div>
     <%= yield %>
     <% if request.env['PATH_INFO'] != "/terms" && request.env['PATH_INFO'] != "/privacy" %>
-      <div class="row">
-        <div class = "small-offset-3 small-6 columns">
-          <div class='hollow button defcon-5'>
-            <%= link_to 'Privacy Policy', privacy_index_path %>
-          </div>
-        </div>
-        <div class = "small-offset-3 columns"></div>
-      </div>
-      <div class="row">
-        <div class = "small-offset-3 small-6 columns">
-          <div class='hollow button defcon-5'>
-            <%= link_to 'Terms and Conditions', terms_path %>
-          </div>
-        </div>
-        <div class = "small-offset-3 columns"></div>
-      </div>
+      <%= link_to 'Privacy Policy', privacy_index_path, id: 'privacy' %>
+      <%= link_to 'Terms and Conditions', terms_path, id: 'terms' %>
     <% end %>
   </body>
 </html>

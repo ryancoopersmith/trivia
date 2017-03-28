@@ -13,14 +13,14 @@
         </li>
         <div class="row">
           <div class = "small-offset-3 small-6 columns">
-            <div class="hollow button defcon-5">
+            <div class="hollow button">
               <%= link_to "Edit Interest", edit_user_interest_path(current_user, interest), id: "edit-interest-#{index + 1}" %>
             </div>
           </div>
         </div>
         <div class="row">
           <div class = "small-offset-3 small-6 columns">
-            <div class="hollow button defcon-5">
+            <div class="hollow button">
               <%= link_to "Delete Interest", user_interest_path(current_user, interest), method: :delete, id: "delete-interest-#{index + 1}" %>
             </div>
           </div>
@@ -31,7 +31,7 @@
   <% unless @interests.length == 10 %>
     <div class="row">
       <div class = "small-offset-3 small-6 columns">
-        <div class="hollow button defcon-5">
+        <div class="hollow button">
           <%= link_to "Add Interests", new_user_interest_path(current_user) %>
         </div>
       </div>
@@ -41,7 +41,7 @@
   <h3 class="text-center">You don't have any interests!</h3>
   <div class="row">
     <div class = "small-offset-3 small-6 columns">
-      <div class="hollow button defcon-5">
+      <div class="hollow button">
         <%= link_to "Add Interests", new_user_interest_path(current_user) %>
       </div>
     </div>
@@ -50,7 +50,7 @@
 
 <div class="row">
   <div class = "small-offset-3 small-6 columns">
-    <div class='hollow button defcon-5'>
+    <div class='hollow button'>
       <%= link_to "Go Back", root_path %>
     </div>
   </div>

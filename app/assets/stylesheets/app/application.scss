@@ -1,15 +1,10 @@
-$purple: #755F98;
-$blue: #6D96D3;
-$yellow: #F7CD7F;
+$white: #fefefe;
 $green: #30AD23;
 $red: #DB0000;
 
-h1, h2, h3, a, li {
-  color: $yellow;
-}
-
 h1, h2 {
-  font-family: "Lemon"
+  font-family: "Lemon";
+  color: $white;
 }
 
 h2 {
@@ -17,7 +12,7 @@ h2 {
 }
 
 button {
-  color: $yellow;
+  color: $white;
   text-align: center;
   font-size: 20px;
 }
@@ -61,8 +56,8 @@ button {
 .paginate {
   text-align: center;
   margin: auto;
-  background-color: $purple;
-  color: $yellow;
+  background-color: blue;
+  color: $white;
   border-radius: 10px;
 }
 
@@ -113,4 +108,17 @@ button {
   width: 50%;
   height: 50%;
   margin: 0 auto;
+}
+
+#privacy {
+  position: absolute;
+  left: 5%;
+  margin-bottom: 5px;
+}
+
+#terms {
+  position: absolute;
+  left: 5%;
+  margin-left: 130px;
+  margin-bottom: 5px;
 }

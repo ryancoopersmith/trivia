@@ -2631,12 +2631,12 @@ p + .stat {
   color: #fefefe;
 }
 /* line 235, /Users/ryancoopersmith/.gem/ruby/2.2.5/gems/foundation-rails-6.3.0.0/vendor/assets/scss/components/_button.scss */
-.button.defcon-5 {
+.button. {
   background-color: #F7CD7F;
   color: #0a0a0a;
 }
 /* line 131, /Users/ryancoopersmith/.gem/ruby/2.2.5/gems/foundation-rails-6.3.0.0/vendor/assets/scss/components/_button.scss */
-.button.defcon-5:hover, .button.defcon-5:focus {
+.button.:hover, .button.:focus {
   background-color: #f3b239;
   color: #0a0a0a;
 }
@@ -2705,12 +2705,12 @@ p + .stat {
   color: #67251a;
 }
 /* line 257, /Users/ryancoopersmith/.gem/ruby/2.2.5/gems/foundation-rails-6.3.0.0/vendor/assets/scss/components/_button.scss */
-.button.hollow.defcon-5 {
+.button.hollow. {
   border: 1px solid #F7CD7F;
   color: #F7CD7F;
 }
 /* line 154, /Users/ryancoopersmith/.gem/ruby/2.2.5/gems/foundation-rails-6.3.0.0/vendor/assets/scss/components/_button.scss */
-.button.hollow.defcon-5:hover, .button.hollow.defcon-5:focus {
+.button.hollow.:hover, .button.hollow.:focus {
   border-color: #b0760b;
   color: #b0760b;
 }
@@ -2775,12 +2775,12 @@ p + .stat {
   color: #fefefe;
 }
 /* line 270, /Users/ryancoopersmith/.gem/ruby/2.2.5/gems/foundation-rails-6.3.0.0/vendor/assets/scss/components/_button.scss */
-.button.disabled.defcon-5, .button[disabled].defcon-5 {
+.button.disabled., .button[disabled]. {
   opacity: 0.25;
   cursor: not-allowed;
 }
 /* line 165, /Users/ryancoopersmith/.gem/ruby/2.2.5/gems/foundation-rails-6.3.0.0/vendor/assets/scss/components/_button.scss */
-.button.disabled.defcon-5:hover, .button.disabled.defcon-5:focus, .button[disabled].defcon-5:hover, .button[disabled].defcon-5:focus {
+.button.disabled.:hover, .button.disabled.:focus, .button[disabled].:hover, .button[disabled].:focus {
   background-color: #F7CD7F;
   color: #fefefe;
 }
@@ -3401,7 +3401,7 @@ select[multiple] {
   color: #fefefe;
 }
 /* line 57, /Users/ryancoopersmith/.gem/ruby/2.2.5/gems/foundation-rails-6.3.0.0/vendor/assets/scss/components/_badge.scss */
-.badge.defcon-5 {
+.badge. {
   background: #F7CD7F;
   color: #0a0a0a;
 }
@@ -3597,12 +3597,12 @@ select[multiple] {
   color: #fefefe;
 }
 /* line 202, /Users/ryancoopersmith/.gem/ruby/2.2.5/gems/foundation-rails-6.3.0.0/vendor/assets/scss/components/_button-group.scss */
-.button-group.defcon-5 .button {
+.button-group. .button {
   background-color: #F7CD7F;
   color: #0a0a0a;
 }
 /* line 131, /Users/ryancoopersmith/.gem/ruby/2.2.5/gems/foundation-rails-6.3.0.0/vendor/assets/scss/components/_button.scss */
-.button-group.defcon-5 .button:hover, .button-group.defcon-5 .button:focus {
+.button-group. .button:hover, .button-group. .button:focus {
   background-color: #f3b239;
   color: #0a0a0a;
 }
@@ -3684,7 +3684,7 @@ select[multiple] {
   color: #6D96D3;
 }
 /* line 93, /Users/ryancoopersmith/.gem/ruby/2.2.5/gems/foundation-rails-6.3.0.0/vendor/assets/scss/components/_callout.scss */
-.callout.defcon-5 {
+.callout. {
   background-color: #fef8ec;
   color: #6D96D3;
 }
@@ -4256,7 +4256,7 @@ select[multiple] {
   color: #fefefe;
 }
 /* line 58, /Users/ryancoopersmith/.gem/ruby/2.2.5/gems/foundation-rails-6.3.0.0/vendor/assets/scss/components/_label.scss */
-.label.defcon-5 {
+.label. {
   background: #F7CD7F;
   color: #0a0a0a;
 }
@@ -5059,7 +5059,7 @@ select[multiple] {
   background-color: #cc4b37;
 }
 /* line 48, /Users/ryancoopersmith/.gem/ruby/2.2.5/gems/foundation-rails-6.3.0.0/vendor/assets/scss/components/_progress-bar.scss */
-.progress.defcon-5 .progress-meter {
+.progress. .progress-meter {
   background-color: #F7CD7F;
 }
 
@@ -6048,7 +6048,7 @@ button {
   margin-top: 15px;
 }
 /* line 5, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/form.scss */
-.defcon-5 {
+. {
   font-family: "Lemon";
 }
 /*
