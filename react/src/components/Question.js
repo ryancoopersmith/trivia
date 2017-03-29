@@ -182,6 +182,7 @@ class Question extends Component {
   }
 
   timesUp() {
+    document.getElementsByClassName('timer')[0].style.backgroundColor = "#DB0000"
     this.setState({ timesUp: true });
     this.setScore(0);
 
@@ -241,34 +242,34 @@ class Question extends Component {
       let randomAnswers = [this.state.answers[0], this.state.answers[1], this.state.answers[2], this.state.answers[3]];
 
       return (
-        <div>
-        {seconds}
-        <h2 className="quizCategory">{this.props.category}</h2>
-        <p className={this.state.message}>{message}</p>
-        <p className="question">{this.props.question}</p>
-        <div className="row">
-          <div className={gridClasses}>
-            <button type="button" onClick={() => this.checkAnswer(this.state.answers[0], randomAnswers, 1)} className={this.state.answerClasses1}>{this.state.answers[0]}</button>
+        <div className="big-card">
+          <p className="timer">{seconds}</p>
+          <h2 className="quizCategory">{this.props.category}</h2>
+          <p className={this.state.message}>{message}</p>
+          <p className="question">{this.props.question}</p>
+          <div className="row">
+            <div className={gridClasses}>
+              <button type="button" onClick={() => this.checkAnswer(this.state.answers[0], randomAnswers, 1)} className={this.state.answerClasses1}>{this.state.answers[0]}</button>
+            </div>
+            <div className={gridClasses}>
+              <button type="button" onClick={() => this.checkAnswer(this.state.answers[1], randomAnswers, 2)} className={this.state.answerClasses2}>{this.state.answers[1]}</button>
+            </div>
           </div>
-          <div className={gridClasses}>
-            <button type="button" onClick={() => this.checkAnswer(this.state.answers[1], randomAnswers, 2)} className={this.state.answerClasses2}>{this.state.answers[1]}</button>
+          <div className="row">
+            <div className={gridClasses}>
+              <button type="button" onClick={() => this.checkAnswer(this.state.answers[2], randomAnswers, 3)} className={this.state.answerClasses3}>{this.state.answers[2]}</button>
+            </div>
+            <div className={gridClasses}>
+              <button type="button" onClick={() => this.checkAnswer(this.state.answers[3], randomAnswers, 4)} className={this.state.answerClasses4}>{this.state.answers[3]}</button>
+            </div>
           </div>
-        </div>
-        <div className="row">
-          <div className={gridClasses}>
-            <button type="button" onClick={() => this.checkAnswer(this.state.answers[2], randomAnswers, 3)} className={this.state.answerClasses3}>{this.state.answers[2]}</button>
-          </div>
-          <div className={gridClasses}>
-            <button type="button" onClick={() => this.checkAnswer(this.state.answers[3], randomAnswers, 4)} className={this.state.answerClasses4}>{this.state.answers[3]}</button>
-          </div>
-        </div>
-        <button type="button" onClick={this.props.back} className={nextClasses}>Exit</button>
-        {next}
+          <button type="button" onClick={this.props.back} className={nextClasses}>Exit</button>
+          {next}
         </div>
       );
     } else {
       return (
-        <div>
+        <div className="big-card">
           <p>END OF GAME</p>
           <p>{this.props.score}</p>
           <a className="twitter-share-button"

@@ -22,7 +22,7 @@ button {
 }
 
 .top-bar-right {
-  padding-right: 149px;
+  padding-right: 120px;
 }
 
 .top-bar-link {
@@ -99,7 +99,7 @@ button {
 .toggleQuizzes {
   position: absolute;
   top: 17px;
-  right: 5%;
+  right: 30px;
   font-size: 20px !important;
 }
 
@@ -123,14 +123,13 @@ button {
 
 #privacy {
   position: absolute;
-  left: 5%;
+  left: 20px;
   margin-top: 12px;
   font-size: 18px !important;
 }
 
 #terms {
   position: absolute;
-  left: 5%;
   margin-left: 130px;
   margin-top: 12px;
   font-size: 18px !important;
@@ -148,8 +147,10 @@ button {
 }
 
 .hollow {
+  color: $white !important;
   font-size: 16px !important;
   border-width: 2px !important;
+  border-color: $white !important;
 }
 
 .top-bar-title {
@@ -161,15 +162,18 @@ button {
   margin: 0 auto;
   width: 100%;
   margin: 30px;
+  font-size: 20px;
 }
 
 .quizCategory {
-  display: inline-block;
+  display: block;
   margin: 0 auto;
+  text-align: center;
 }
 
 .question {
   text-align: center;
+  font-size: 26px;
 }
 
 .flash {
@@ -188,4 +192,15 @@ button {
 
 .noQuizzes {
   color: #00BCD4;
+}
+
+.timer {
+  padding: 10px;
+  background-color: #00BCD4;
+  font-size: 24px !important;
+}
+
+.small-6 {
+  width: 43% !important;
+  margin-right: 61px;
 }
