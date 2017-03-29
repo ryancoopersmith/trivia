@@ -5,7 +5,6 @@ class Question extends Component {
     super(props);
     this.state = {
       answers: [this.props.answer, this.props.wrong1, this.props.wrong2, this.props.wrong3],
-      message: '',
       countdown: 0,
       timesUp: false,
       didAnswer: false,
@@ -48,7 +47,6 @@ class Question extends Component {
   componentWillReceiveProps(nextProps) {
     if (this.props !== nextProps) {
       this.setState({
-        message: '',
         countdown: 0,
         timesUp: false,
         didAnswer: false,
@@ -121,7 +119,7 @@ class Question extends Component {
     if (!this.state.didAnswer) {
       if (!this.state.timesUp) {
         if (answer === this.props.answer) {
-          this.setState({ message: 'correct' });
+          document.getElementsByClassName('timer')[0].style.backgroundColor = "#6FB981";
           if (num === 1) {
             this.setState({ answerClasses1: correctAnswerClasses });
           } else if (num === 2) {
@@ -138,7 +136,7 @@ class Question extends Component {
             this.setScore(newScore);
           }
         } else {
-          this.setState({ message: 'wrong' });
+          document.getElementsByClassName('timer')[0].style.backgroundColor = "#E55A51";
           if (num === 1) {
             this.setState({ answerClasses1: wrongAnswerClasses });
           } else if (num === 2) {
@@ -182,25 +180,27 @@ class Question extends Component {
   }
 
   timesUp() {
-    document.getElementsByClassName('timer')[0].style.backgroundColor = "#E55A51";
-    this.setState({ timesUp: true });
-    this.setScore(0);
+    if (!this.state.didAnswer) {
+      document.getElementsByClassName('timer')[0].style.backgroundColor = "#E55A51";
+      this.setState({ timesUp: true });
+      this.setScore(0);
 
-    let classNames = require('classnames');
-    let correctAnswerClasses = classNames({
-      'button': true,
-      'answer': true,
-      'correctAnswer': true
-    });
+      let classNames = require('classnames');
+      let correctAnswerClasses = classNames({
+        'button': true,
+        'answer': true,
+        'correctAnswer': true
+      });
 
-    if (this.state.answer === 1) {
-      this.setState({ answerClasses1: correctAnswerClasses });
-    } else if (this.state.answer === 2) {
-      this.setState({ answerClasses2: correctAnswerClasses });
-    } else if (this.state.answer === 3) {
-      this.setState({ answerClasses3: correctAnswerClasses });
-    } else if (this.state.answer === 4) {
-      this.setState({ answerClasses4: correctAnswerClasses });
+      if (this.state.answer === 1) {
+        this.setState({ answerClasses1: correctAnswerClasses });
+      } else if (this.state.answer === 2) {
+        this.setState({ answerClasses2: correctAnswerClasses });
+      } else if (this.state.answer === 3) {
+        this.setState({ answerClasses3: correctAnswerClasses });
+      } else if (this.state.answer === 4) {
+        this.setState({ answerClasses4: correctAnswerClasses });
+      }
     }
   }
 
@@ -218,8 +218,6 @@ class Question extends Component {
         'small-6': true,
         'columns': true
       });
-
-      let message = this.capitalize(this.state.message);
 
       let seconds;
       if (!this.state.didAnswer) {
@@ -247,7 +245,6 @@ class Question extends Component {
           <div className="big-card">
             <div className="timer"><p className="seconds">{seconds}</p></div>
             <h2 className="quizCategory">{this.props.category}</h2>
-            <p className={this.state.message}>{message}</p>
             <p className="question">{this.props.question}</p>
             <div className="row">
               <div className={gridClasses}>
