@@ -1,30 +1,32 @@
-<div class="row">
-  <h2 class="text-center">Forgot your password?</h2>
-</div>
-
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
-
+<div class="big-card">
   <div class="row">
-    <div class = "small-offset-3 small-6 columns">
-      <%= f.label :email, class: 'input-group-label' %>
-      <%= f.email_field :email, autofocus: true %>
-    </div>
-    <div class = "small-offset-3 columns"></div>
+    <h2 class="text-center">Forgot your password?</h2>
   </div>
 
-  <div class="row">
-    <div class = "small-offset-3 small-6 columns">
-      <%= f.submit "Send me reset password instructions", class: 'small-12 hollow button' %>
-    </div>
-    <div class = "small-offset-3 columns">
-  </div>
-  <div class="row">
-    <div class = "small-offset-3 small-6 columns">
-      <div class='hollow button'>
-        <%= link_to "Go Back", new_user_session_path %>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= devise_error_messages! %>
+
+    <div class="row">
+      <div class = "small-offset-3 small-6 columns">
+        <%= f.label :email, class: 'input-group-label' %>
+        <%= f.email_field :email, autofocus: true %>
       </div>
+      <div class = "small-offset-3 columns"></div>
     </div>
-    <div class = "small-offset-3 small-6 columns"></div>
-  </div>
-<% end %>
+
+    <div class="row">
+      <div class = "small-offset-3 small-6 columns">
+        <%= f.submit "Send me reset password instructions", class: 'small-12 hollow button' %>
+      </div>
+      <div class = "small-offset-3 columns"></div>
+    </div>
+    <div class="row">
+      <div class = "small-offset-3 small-6 columns">
+        <div class='hollow button'>
+          <%= link_to "Go Back", new_user_session_path %>
+        </div>
+      </div>
+      <div class = "small-offset-3 small-6 columns"></div>
+    </div>
+  <% end %>
+</div>

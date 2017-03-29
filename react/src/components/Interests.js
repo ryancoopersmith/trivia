@@ -88,8 +88,11 @@ class Interests extends Component {
       );
     });
 
-    if (this.state.userId === 0) {
-      myQuizzes = <h2>Sign in and add your interests to see your personalized quizzes</h2>;
+    if (!this.state.userId) {
+      myQuizzes = <h2 className="noQuizzes">Sign in and add your interests to see your personalized quizzes</h2>;
+      document.getElementsByClassName('footer')[0].style.position = 'fixed';
+      document.getElementsByClassName('footer')[0].style.bottom = '0px';
+      document.getElementsByClassName('footer')[0].style.left = '0px';
     }
 
     return(

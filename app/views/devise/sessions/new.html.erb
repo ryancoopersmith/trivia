@@ -1,8 +1,9 @@
-<div class="row">
-  <h2 class="text-center">Sign In</h2>
-</div>
+<div class="big-card">
+  <div class="row">
+    <h2 class="text-center">Sign In</h2>
+  </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="row">
@@ -24,7 +25,7 @@
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
-    <div class = "small-offset-3 columns">
+    <div class = "small-offset-3 columns"></div>
     <% end -%>
   </div>
 
@@ -46,4 +47,5 @@
     </div>
     <div class = "small-offset-3 columns"></div>
   </div>
-<% end %>
+  <% end %>
+</div>

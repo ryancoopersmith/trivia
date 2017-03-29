@@ -14,8 +14,10 @@ class App extends Component {
   toggleMyQuizzes(value) {
     if (value === 0) {
       this.setState({ myQuiz: false });
+      document.getElementsByClassName('top-bar-right')[0].style.marginRight = '0px';
     } else {
       this.setState({ myQuiz: true });
+      document.getElementsByClassName('top-bar-right')[0].style.marginRight = '30px';
     }
   }
 

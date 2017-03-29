@@ -1,156 +1,158 @@
-<div class = "row">
-  <h2 class="text-center">My Account</h2>
-</div>
-<div class="row">
-  <div class="text-center">
-    <% if current_user.profile_photo %>
-    <img id="profile_photo" src="<%= current_user.profile_photo %>" height=300 width=300 />
-    <% end %>
-  </div>
-</div>
-
-<div class = "row">
-  <h3 class="text-center">Favorite Categories</h3>
-</div>
-
-<% if current_user.favorite_categories.any? %>
-  <div id="canvasParent">
-    <canvas id="myChart"></canvas>
-  </div>
-<% else %>
+<div class="big-card">
   <div class = "row">
-    <h3 class="text-center">Start playing to see your favorite categories!</h3>
+    <h2 class="text-center">My Account</h2>
   </div>
-<% end %>
-
-<div class = "row">
-  <h3 class="text-center">Score History</h3>
-</div>
-<% if current_user.scores.any? %>
-  <div class="center">
-    <% scores = [] %>
-    <% game_scores = [] %>
-    <% current_user.scores.each_with_index do |score, index| %>
-      <% scores << score.score %>
-      <% if (index + 6) % 6 == 0 && current_user.scores.length % 6 == 0%>
-        <% game_score = current_user.scores[index].score + current_user.scores[index + 1].score + current_user.scores[index + 2].score + current_user.scores[index + 3].score + current_user.scores[index + 4].score + current_user.scores[index + 5].score %>
-        <% game_scores << game_score %>
+  <div class="row">
+    <div class="text-center">
+      <% if current_user.profile_photo %>
+      <img id="profile_photo" src="<%= current_user.profile_photo %>" height=300 width=300 />
       <% end %>
-    <% end %>
-    <p>
-      Total Score: <%= scores.inject(:+) %>
-    </p>
-    <p>
-      Best Score: <%= game_scores.max %>
-    </p>
-    <p>
-      Worst Score: <%= game_scores.min %>
-    </p>
-    <p>
-      Average Score: <%= scores.inject(:+) / (scores.length / 6) %>
-    </p>
+    </div>
   </div>
-<% else %>
+
   <div class = "row">
-    <h3 class="text-center">Start playing to see your score history!</h3>
+    <h3 class="text-center">Favorite Categories</h3>
   </div>
-<% end %>
 
-<div class="row">
-  <h3 class="text-center">Edit <%= resource_name.to_s.humanize %></h3>
-</div>
+  <% if current_user.favorite_categories.any? %>
+    <div id="canvasParent">
+      <canvas id="myChart"></canvas>
+    </div>
+  <% else %>
+    <div class = "row">
+      <h3 class="text-center">Start playing to see your favorite categories!</h3>
+    </div>
+  <% end %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+  <div class = "row">
+    <h3 class="text-center">Score History</h3>
+  </div>
+  <% if current_user.scores.any? %>
+    <div class="center">
+      <% scores = [] %>
+      <% game_scores = [] %>
+      <% current_user.scores.each_with_index do |score, index| %>
+        <% scores << score.score %>
+        <% if (index + 6) % 6 == 0 && current_user.scores.length % 6 == 0%>
+          <% game_score = current_user.scores[index].score + current_user.scores[index + 1].score + current_user.scores[index + 2].score + current_user.scores[index + 3].score + current_user.scores[index + 4].score + current_user.scores[index + 5].score %>
+          <% game_scores << game_score %>
+        <% end %>
+      <% end %>
+      <p>
+        Total Score: <%= scores.inject(:+) %>
+      </p>
+      <p>
+        Best Score: <%= game_scores.max %>
+      </p>
+      <p>
+        Worst Score: <%= game_scores.min %>
+      </p>
+      <p>
+        Average Score: <%= scores.inject(:+) / (scores.length / 6) %>
+      </p>
+    </div>
+  <% else %>
+    <div class = "row">
+      <h3 class="text-center">Start playing to see your score history!</h3>
+    </div>
+  <% end %>
 
   <div class="row">
-    <div class = "small-offset-3 small-6 columns">
-      <%= f.label :profile_photo, "Profile Photo"%>
-      <%= f.file_field :profile_photo %>
-    </div>
-    <div class = "small-offset-3 columns"></div>
+    <h3 class="text-center">Edit <%= resource_name.to_s.humanize %></h3>
   </div>
 
-  <div class="row">
-    <div class = "small-offset-3 small-6 columns">
-      <%= f.label :username, class: 'input-group-label' %>
-      <%= f.text_field :username, autofocus: true %>
-    </div>
-    <div class = "small-offset-3 columns"></div>
-  </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= devise_error_messages! %>
 
-  <div class="row">
-    <div class = "small-offset-3 small-6 columns">
-      <%= f.label :email, class: 'input-group-label' %>
-      <%= f.email_field :email, autofocus: true %>
-    </div>
-    <div class = "small-offset-3 columns"></div>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div class="row">
       <div class = "small-offset-3 small-6 columns">
-        <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+        <%= f.label :profile_photo, "Profile Photo"%>
+        <%= f.file_field :profile_photo %>
       </div>
       <div class = "small-offset-3 columns"></div>
     </div>
+
+    <div class="row">
+      <div class = "small-offset-3 small-6 columns">
+        <%= f.label :username, class: 'input-group-label' %>
+        <%= f.text_field :username, autofocus: true %>
+      </div>
+      <div class = "small-offset-3 columns"></div>
+    </div>
+
+    <div class="row">
+      <div class = "small-offset-3 small-6 columns">
+        <%= f.label :email, class: 'input-group-label' %>
+        <%= f.email_field :email, autofocus: true %>
+      </div>
+      <div class = "small-offset-3 columns"></div>
+    </div>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div class="row">
+        <div class = "small-offset-3 small-6 columns">
+          <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+        </div>
+        <div class = "small-offset-3 columns"></div>
+      </div>
+    <% end %>
+  <div class="row">
+    <% if @minimum_password_length %>
+    <div class = "small-offset-3 small-6 columns">
+      <p><em><%= @minimum_password_length %> characters minimum</em></p>
+    </div>
+    <div class = "small-offset-3 columns"></div>
+    <% end %>
+  </div>
+
+    <div class="row">
+      <div class = "small-offset-3 small-6 columns">
+        <%= f.label :password, class: 'input-group-label' %>
+        <%= f.password_field :password, autocomplete: "off" %>
+        <p><i>(leave blank if you want to keep your current password)</i></p>
+      </div>
+      <div class = "small-offset-3 columns"></div>
+    </div>
+
+    <div class="row">
+      <div class = "small-offset-3 small-6 columns">
+        <%= f.label :password_confirmation, "Password Confirmation", class: "input-group-label" %>
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        <p><i>(leave blank if you want to keep your current password)</i></p>
+      </div>
+      <div class = "small-offset-3 columns"></div>
+    </div>
+
+    <div class="row">
+      <div class = "small-offset-3 small-6 columns">
+        <%= f.label :current_password, "Current Password", class: "input-group-label" %>
+        <%= f.password_field :current_password, autocomplete: "off" %>
+        <p><i>(we need your current password to confirm your changes)</i></p>
+      </div>
+      <div class = "small-offset-3 columns"></div>
+    </div>
+
+    <div class="row">
+      <div class = "small-offset-3 small-6 columns">
+        <%= f.submit "Update", class: 'hollow button' %>
+      </div>
+      <div class = "small-offset-3 small-6 columns"></div>
+    </div>
   <% end %>
-<div class="row">
-  <% if @minimum_password_length %>
-  <div class = "small-offset-3 small-6 columns">
-    <p><em><%= @minimum_password_length %> characters minimum</em></p>
-  </div>
-  <div class = "small-offset-3 columns"></div>
-  <% end %>
-</div>
-
+  </br>
   <div class="row">
     <div class = "small-offset-3 small-6 columns">
-      <%= f.label :password, class: 'input-group-label' %>
-      <%= f.password_field :password, autocomplete: "off" %>
-      <p><i>(leave blank if you want to keep your current password)</i></p>
+      <h3 class="text-left">Cancel my account</h3>
+      <p class="text-left">Unhappy? <%= button_to "Delete Account", registration_path(resource_name), method: :delete, class: "hollow button" %></p>
     </div>
-    <div class = "small-offset-3 columns"></div>
   </div>
-
+  </br>
   <div class="row">
     <div class = "small-offset-3 small-6 columns">
-      <%= f.label :password_confirmation, "Password Confirmation", class: "input-group-label" %>
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
-      <p><i>(leave blank if you want to keep your current password)</i></p>
+      <div class='hollow button'>
+        <%= link_to "Go Back", root_path %>
+      </div>
     </div>
-    <div class = "small-offset-3 columns"></div>
+    <div class = "small-offset-3 columns">
   </div>
-
-  <div class="row">
-    <div class = "small-offset-3 small-6 columns">
-      <%= f.label :current_password, "Current Password", class: "input-group-label" %>
-      <%= f.password_field :current_password, autocomplete: "off" %>
-      <p><i>(we need your current password to confirm your changes)</i></p>
-    </div>
-    <div class = "small-offset-3 columns"></div>
-  </div>
-
-  <div class="row">
-    <div class = "small-offset-3 small-6 columns">
-      <%= f.submit "Update", class: 'hollow button' %>
-    </div>
-    <div class = "small-offset-3 small-6 columns"></div>
-  </div>
-<% end %>
-</br>
-<div class="row">
-  <div class = "small-offset-3 small-6 columns">
-    <h3 class="text-left">Cancel my account</h3>
-    <p class="text-left">Unhappy? <%= button_to "Delete Account", registration_path(resource_name), method: :delete, class: "hollow button" %></p>
-  </div>
-</div>
-</br>
-<div class="row">
-  <div class = "small-offset-3 small-6 columns">
-    <div class='hollow button'>
-      <%= link_to "Go Back", root_path %>
-    </div>
-  </div>
-  <div class = "small-offset-3 columns">
 </div>
