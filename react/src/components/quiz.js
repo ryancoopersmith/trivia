@@ -128,7 +128,7 @@ class Quiz extends Component {
       document.getElementsByClassName('search')[0].style.display = 'none';
       document.getElementsByClassName('paginate')[0].style.display = 'none';
     } else {
-      document.getElementsByClassName('flash')[1].style.color = '#DB0000';
+      document.getElementsByClassName('flash')[1].style.color = '#E55A51';
     }
   }
 
@@ -198,7 +198,9 @@ class Quiz extends Component {
       <div className={gridClasses}>
         <div className="card-divider">
           <div className="card-section">
-            <button className="category" type="button" onClick={() => this.startQuiz(this.props.category)}>{this.props.category}</button>
+            <div className="row">
+              <button className="category" type="button" onClick={() => this.startQuiz(this.props.category)}>{this.props.category}</button>
+            </div>
             <button className={startClasses} type="button" onClick={() => this.startQuiz(this.props.category)}>Start Quiz</button>
           </div>
         </div>

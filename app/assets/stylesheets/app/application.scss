@@ -2,6 +2,10 @@ $white: #fefefe;
 $green: #6FB981;
 $red: #E55A51;
 
+body {
+  font-weight: 800 !important;
+}
+
 a {
   color: black;
 }
@@ -11,8 +15,23 @@ button {
   font-weight: 800;
 }
 
+.big-card p {
+  color: black;
+}
+
+h1 {
+  font-weight: 800;
+}
+
 h2 {
+  font-weight: 800;
+  color: black;
   text-align: center;
+}
+
+h3 {
+  font-weight: 800;
+  color: black;
 }
 
 button {
@@ -67,7 +86,7 @@ button {
   font-weight: 800;
   margin-left: 18px;
   margin-right: 34px;
-  margin-bottom: 45px;
+  margin-bottom: 95px;
 }
 
 .center {
@@ -98,7 +117,7 @@ button {
 
 .toggleQuizzes {
   position: absolute;
-  top: 17px;
+  top: 12px;
   right: 30px;
   font-size: 20px !important;
 }
@@ -141,6 +160,8 @@ button {
   width: 100%;
   height: 50px;
   background-color: #2A5F9F;
+  position: fixed;
+  bottom: 0px;
 }
 
 .category {
@@ -148,11 +169,19 @@ button {
   font-size: 24px;
 }
 
+[type='file'] {
+  color: black;
+}
+
 .hollow {
   color: black !important;
   font-size: 16px !important;
   border-width: 2px !important;
-  border-color: $white !important;
+  border-color: black !important;
+}
+
+.top-bar {
+  margin-bottom: 40px;
 }
 
 .top-bar-title {
@@ -168,23 +197,25 @@ button {
   margin: 0 auto;
   width: 100%;
   margin: 30px;
-  font-size: 20px;
+  font-size: 24px;
   border-radius: 10px;
 }
 
 .quizCategory {
+  color: black;
   display: block;
   margin: 0 auto;
   text-align: center;
 }
 
 .question {
+  color: black;
   text-align: center;
   font-size: 26px;
 }
 
 .flash {
-  color: #E55A51;
+  color: #2A5F9F;
   font-size: 26px !important;
   margin-bottom: 10px;
 }
@@ -193,8 +224,10 @@ button {
   width: 80%;
   height: 100%;
   border-radius: 10px;
-  background-color: #FFCF00;
+  background-color: #F9F401;
   margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 80px;
 }
 
 .noQuizzes {
@@ -204,7 +237,16 @@ button {
 .timer {
   padding: 10px;
   background-color: #2A5F9F;
-  font-size: 24px !important;
+  font-size: 36px !important;
+  height: 80px;
+  margin-bottom: 30px;
+}
+
+.seconds {
+  color: $white !important;
+  width: 150px;
+  text-align: left;
+  margin-left: 10px;
 }
 
 .found {
@@ -213,8 +255,9 @@ button {
 }
 
 .next {
-  margin-left: 400px;
-  margin-right: 80px;
+  margin: 0 auto;
+  margin-right: 15px;
+  margin-left: 15px;
 }
 
 .top-bar-link a {
@@ -229,4 +272,13 @@ button {
 
 label {
   font-size: 20px;
+}
+
+.buttonWrapper {
+  margin-top: -60px;
+  text-align: center;
+}
+
+.card-section .row {
+  height: 55px;
 }

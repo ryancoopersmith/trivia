@@ -182,7 +182,7 @@ class Question extends Component {
   }
 
   timesUp() {
-    document.getElementsByClassName('timer')[0].style.backgroundColor = "#E55A51"
+    document.getElementsByClassName('timer')[0].style.backgroundColor = "#E55A51";
     this.setState({ timesUp: true });
     this.setScore(0);
 
@@ -245,7 +245,7 @@ class Question extends Component {
       return (
         <div>
           <div className="big-card">
-            <p className="timer">{seconds}</p>
+            <div className="timer"><p className="seconds">{seconds}</p></div>
             <h2 className="quizCategory">{this.props.category}</h2>
             <p className={this.state.message}>{message}</p>
             <p className="question">{this.props.question}</p>
@@ -266,8 +266,10 @@ class Question extends Component {
               </div>
             </div>
             </div>
-            <button type="button" onClick={this.props.back} className={nextClasses}>Exit</button>
-            {next}
+            <div className="buttonWrapper">
+              <button type="button" onClick={this.props.back} className={nextClasses}>Exit</button>
+              {next}
+            </div>
           </div>
       );
     } else {
