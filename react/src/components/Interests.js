@@ -88,7 +88,7 @@ class Interests extends Component {
       );
     });
 
-    if (!this.state.userId) {
+    if (!this.props.userId) {
       myQuizzes = <h2 className="noQuizzes">Sign in and add your interests to see your personalized quizzes</h2>;
     }
 

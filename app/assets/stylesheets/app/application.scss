@@ -3,6 +3,7 @@ $green: #6FB981;
 $red: #E55A51;
 
 body {
+  margin-bottom: 50px;
   font-weight: 800 !important;
 }
 
@@ -86,7 +87,7 @@ button {
   font-weight: 800;
   margin-left: 18px;
   margin-right: 34px;
-  margin-bottom: 95px;
+  margin-bottom: 45px;
 }
 
 .center {
@@ -281,4 +282,9 @@ label {
 
 .card-section .row {
   height: 55px;
+}
+
+li {
+  font-size: 20px !important;
+  color: black;
 }
