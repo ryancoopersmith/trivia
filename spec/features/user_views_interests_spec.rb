@@ -34,7 +34,7 @@ feature 'user visits interests page' do
     fill_in "interest-field-2", with: "Science"
     click_button "Add Interests"
 
-    expect(page).to have_content("Interests successfully saved")
+    expect(page).to have_content("Interests successfully saved.")
     click_link "My Interests"
 
     expect(page).to have_content("History")

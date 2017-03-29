@@ -248,18 +248,18 @@ class Question extends Component {
             <p className="question">{this.props.question}</p>
             <div className="row">
               <div className={gridClasses}>
-                <button type="button" onClick={() => this.checkAnswer(this.state.answers[0], randomAnswers, 1)} className={this.state.answerClasses1}>{this.state.answers[0]}</button>
+                <button type="button" onClick={() => this.checkAnswer(this.state.answers[0], randomAnswers, 1)} className={this.state.answerClasses1}>{this.capitalize(this.state.answers[0])}</button>
               </div>
               <div className={gridClasses}>
-                <button type="button" onClick={() => this.checkAnswer(this.state.answers[1], randomAnswers, 2)} className={this.state.answerClasses2}>{this.state.answers[1]}</button>
+                <button type="button" onClick={() => this.checkAnswer(this.state.answers[1], randomAnswers, 2)} className={this.state.answerClasses2}>{this.capitalize(this.state.answers[1])}</button>
               </div>
             </div>
             <div className="row">
               <div className={gridClasses}>
-                <button type="button" onClick={() => this.checkAnswer(this.state.answers[2], randomAnswers, 3)} className={this.state.answerClasses3}>{this.state.answers[2]}</button>
+                <button type="button" onClick={() => this.checkAnswer(this.state.answers[2], randomAnswers, 3)} className={this.state.answerClasses3}>{this.capitalize(this.state.answers[2])}</button>
               </div>
               <div className={gridClasses}>
-                <button type="button" onClick={() => this.checkAnswer(this.state.answers[3], randomAnswers, 4)} className={this.state.answerClasses4}>{this.state.answers[3]}</button>
+                <button type="button" onClick={() => this.checkAnswer(this.state.answers[3], randomAnswers, 4)} className={this.state.answerClasses4}>{this.capitalize(this.state.answers[3])}</button>
               </div>
             </div>
             </div>
@@ -272,13 +272,15 @@ class Question extends Component {
     } else {
       return (
         <div className="big-card">
-          <p>END OF GAME</p>
-          <p>{this.props.score}</p>
+          <div className="center">
+            <h2 className="end-o-game">GAME OVER</h2>
+          </div>
+          <p className="score">{this.props.score}</p>
           <a className="twitter-share-button"
             href={`https://twitter.com/intent/tweet?text=I%20scored%20${this.props.score}%20points%20in%20${this.props.category}%20on%20Trivia%20Extraordinaire!&hashtags=TriviaExtraordinaire`}
             data-size="large"
             target="_blank">
-            Brag to your friends on Twitter!
+            <i className="fa fa-twitter" aria-hidden="false"></i> Brag about your score on Twitter!
           </a>
         </div>
       );

@@ -72,6 +72,7 @@ window.onload = function() {
       let ctx = document.getElementById('myChart');
       ctx.width = 200;
       ctx.height = 200;
+      ctx.fontSize = '56px';
       let data = {
         labels: categoryLabels,
         datasets: [

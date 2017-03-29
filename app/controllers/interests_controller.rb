@@ -23,7 +23,7 @@ class InterestsController < ApplicationController
       if interest['interest'] != ""
         my_interest = @user.interests.create(interests_params(interest))
         if my_interest.save
-          flash[:notice] = "Interests successfully saved"
+          flash[:notice] = "Interests successfully saved."
         else
           flash[:notice] = "One or more interests failed to save. Interests must be four letters or longer."
         end
@@ -41,7 +41,7 @@ class InterestsController < ApplicationController
     @user = current_user
     @interest = @user.interests.find(params[:id])
     if @interest.update_attributes(one_interest_params)
-      flash[:notice] = "Interest updated successfully"
+      flash[:notice] = "Interest updated successfully."
     else
       flash[:notice] = @interest.errors.messages
     end
@@ -52,7 +52,7 @@ class InterestsController < ApplicationController
     @user = current_user
     @interest = Interest.find(params[:id])
     @interest.delete
-    flash[:notice] = "Interest successfully deleted"
+    flash[:notice] = "Interest successfully deleted."
     redirect_to user_interests_path(@user)
   end
 

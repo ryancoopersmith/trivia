@@ -2,7 +2,7 @@
   <h2 class="text-center">Your Interests</h2>
 
   <div class="row">
-    <h3 class="text-center">Quizzes realating to your interests will show up in "My Quizzes".</h3>
+    <h3 class="text-center">Quizzes relating to your interests will show up in "My Quizzes".</h3>
   </div>
 
   <% if current_user.interests[0] %>
@@ -10,22 +10,12 @@
       <% @interests.each_with_index do |interest, index| %>
         <div class="center">
           <li>
-            <h4><%= interest.interest %></h4>
+            <h3>
+              <%= interest.interest.capitalize %>
+              <%= link_to "✎", edit_user_interest_path(current_user, interest), id: "edit-interest-#{index + 1}" %>
+              <%= link_to "✘", user_interest_path(current_user, interest), method: :delete, id: "delete-interest-#{index + 1}" %>
+            </h3>
           </li>
-          <div class="row">
-            <div class = "small-offset-3 small-6 columns">
-              <div class="hollow button">
-                <%= link_to "Edit Interest", edit_user_interest_path(current_user, interest), id: "edit-interest-#{index + 1}" %>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class = "small-offset-3 small-6 columns">
-              <div class="hollow button">
-                <%= link_to "Delete Interest", user_interest_path(current_user, interest), method: :delete, id: "delete-interest-#{index + 1}" %>
-              </div>
-            </div>
-          </div>
         </div>
       <% end %>
     </ul>
@@ -40,21 +30,13 @@
     <% end %>
   <% else %>
     <h3 class="text-center">You don't have any interests!</h3>
-    <div class="row">
-      <div class = "small-offset-3 small-6 columns">
-        <div class="hollow button">
-          <%= link_to "Add Interests", new_user_interest_path(current_user) %>
-        </div>
-      </div>
+    <div class="button interest-button">
+      <%= link_to "Add Interests", new_user_interest_path(current_user), class: 'interest' %>
     </div>
   <% end %>
+</br>
 
-  <div class="row">
-    <div class = "small-offset-3 small-6 columns">
-      <div class='hollow button'>
-        <%= link_to "Go Back", root_path %>
-      </div>
-    </div>
-    <div class = "small-offset-3 columns"></div>
+  <div class='hollow button go-back'>
+    <%= link_to "Go Back", root_path %>
   </div>
 </div>
