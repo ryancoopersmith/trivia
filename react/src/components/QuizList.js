@@ -147,7 +147,7 @@ class QuizList extends Component {
         <input type="text" className="search" placeholder="Search"
         value={this.state.search}
         onChange={this.updateSearch}/>
-        <div className="flash">You need to sign in or sign up first to start playing</div>
+        <div className="flash">You need to sign in or sign up first to start playing.</div>
         {quizzes}
         {page}
         </div>
