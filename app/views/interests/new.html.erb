@@ -1,10 +1,10 @@
 <div class="big-card">
   <div class="row">
-    <h2 class="text-center">What Interests You?</h2>
+    <h2 class="text-center interestsBigTitle">What Interests You?</h2>
   </div>
 
   <div class="row">
-    <h3 class="text-center">Quizzes realating to your interests will show up in "My Quizzes".</h3>
+    <h3 class="text-center interestsTitle">Quizzes realating to your interests will show up in "My Quizzes".</h3>
   </div>
 
   <%= form_tag user_interests_path do %>
@@ -19,12 +19,8 @@
         </div>
       <% end %>
     <% end %>
-    <div class="row">
-      <div class = "small-offset-3 small-6 columns">
-        <%= submit_tag "Add Interests", class: "hollow button" %>
-      </div>
-      <div class = "small-offset-3 columns"></div>
-    </div>
+
+    <%= submit_tag "Add Interests", class: "button centerButtons" %>
   <% end %>
 
   <div class='hollow button go-back'>
