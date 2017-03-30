@@ -24,7 +24,7 @@ class Question extends Component {
 
   setScore(score) {
     let jsonStringData = JSON.stringify(score);
-    fetch(`http://localhost:3000/api/v1/users/${this.props.userId}/scores.json`, {
+    fetch(`https://trivia-extraordinaire.herokuapp.com/api/v1/users/${this.props.userId}/scores.json`, {
       credentials: 'same-origin',
       method: "post",
       headers: {

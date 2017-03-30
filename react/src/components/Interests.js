@@ -33,7 +33,7 @@ class Interests extends Component {
   }
 
   getMyInterests() {
-    fetch(`http://localhost:3000/api/v1/users/${this.props.userId}/interests.json`, {
+    fetch(`https://trivia-extraordinaire.herokuapp.com/api/v1/users/${this.props.userId}/interests.json`, {
       credentials: 'same-origin'
     }).then(response => {
         if (response.ok) {

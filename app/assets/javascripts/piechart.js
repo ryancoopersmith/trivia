@@ -1,7 +1,7 @@
 window.onload = function() {
   let user = document.getElementById('user').innerHTML;
   let categories = [];
-  fetch(`http://localhost:3000/api/v1/users/${user}/favorite_categories.json`, {
+  fetch(`https://trivia-extraordinaire.herokuapp.com/api/v1/users/${user}/favorite_categories.json`, {
     credentials: 'same-origin'
   }).then(response => {
     if (response.ok) {
@@ -70,9 +70,8 @@ window.onload = function() {
       });
 
       let ctx = document.getElementById('myChart');
-      ctx.width = 200;
-      ctx.height = 200;
-      ctx.fontSize = '56px';
+      ctx.width = 300;
+      ctx.height = 300;
       let data = {
         labels: categoryLabels,
         datasets: [

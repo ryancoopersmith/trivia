@@ -21,7 +21,7 @@ class Quiz extends Component {
   }
 
   getScore() {
-    fetch(`http://localhost:3000/api/v1/users/${this.props.userId}/scores.json`, {
+    fetch(`https://trivia-extraordinaire.herokuapp.com/api/v1/users/${this.props.userId}/scores.json`, {
       credentials: 'same-origin'
     }).then(response => {
       if (response.ok) {
@@ -94,7 +94,7 @@ class Quiz extends Component {
 
   setMyFavorites(category) {
     let jsonStringData = JSON.stringify(category);
-    fetch(`http://localhost:3000/api/v1/users/${this.props.userId}/favorite_categories.json`, {
+    fetch(`https://trivia-extraordinaire.herokuapp.com/api/v1/users/${this.props.userId}/favorite_categories.json`, {
       credentials: 'same-origin',
       method: "post",
       headers: {
