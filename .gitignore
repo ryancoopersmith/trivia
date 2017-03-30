@@ -28,6 +28,3 @@
 
 # Ignore secrets
 /config/secrets.yml
-
-# Ignore public/assets
-/public/assets
