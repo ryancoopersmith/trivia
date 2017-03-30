@@ -29,11 +29,11 @@
     <% end -%>
   </div>
 
-  <%= f.submit "Sign In", class: "button" %>
-
   <%= render "devise/shared/links" %>
 
-  <div class='hollow button go-back fix'>
+  <%= f.submit "Sign In", class: "button centerButtons devise" %>
+
+  <div class='hollow button go-back'>
     <%= link_to "Go Back", root_path %>
   </div>
   <% end %>

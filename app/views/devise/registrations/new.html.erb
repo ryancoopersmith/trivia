@@ -49,11 +49,11 @@
       <div class = "small-offset-3 columns"></div>
     </div>
 
-    <%= f.submit "Sign Up", class: "button" %>
-
     <%= render "devise/shared/links" %>
 
-    <div class='hollow button go-back fix'>
+    <%= f.submit "Sign Up", class: "button centerButtons devise" %>
+
+    <div class='hollow button go-back'>
       <%= link_to "Go Back", root_path %>
     </div>
   <% end %>
