@@ -55,6 +55,10 @@ class Interests extends Component {
   }
 
   componentDidMount() {
+    if (this.props.userId) {
+      document.getElementsByClassName('toggleQuizzes')[0].style.top = '12px';
+      document.getElementsByClassName('top-bar-right')[0].style.marginRight = '38px';
+    }
     this.getMyQuizzes();
     if (this.props.userId) {
       this.getMyInterests();

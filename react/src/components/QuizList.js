@@ -65,6 +65,13 @@ class QuizList extends Component {
   }
 
   componentDidMount() {
+    if (this.props.userId) {
+      document.getElementsByClassName('toggleQuizzes')[0].style.top = '12px';
+      document.getElementsByClassName('top-bar-right')[0].style.marginRight = '10px';
+    } else {
+      document.getElementsByClassName('toggleQuizzes')[0].style.top = '17px';
+      document.getElementsByClassName('top-bar-right')[0].style.marginRight = '0px';
+    }
     this.getQuizzes();
   }
 
