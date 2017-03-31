@@ -217,6 +217,7 @@ button {
 }
 
 .flash {
+  padding-left: 10px;
   color: #2A5F9F;
   font-size: 26px !important;
   margin-bottom: 10px;
@@ -359,6 +360,10 @@ em {
   color: $white;
   font-size: 22px;
   padding: 20px;
+}
+
+.interest:hover {
+  color: $white;
 }
 
 .interest-button {
