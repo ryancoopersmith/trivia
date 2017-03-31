@@ -274,12 +274,3 @@ Devise.setup do |config|
   config.omniauth :twitter, ENV['TWITTER_API_KEY'], ENV['TWITTER_API_SECRET']
 
 end
-
-Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :twitter, ENV['TWITTER_API_KEY'], ENV['TWITTER_API_SECRET'], {
-    client_options: { ssl: {
-      ca_file: '/usr/lib/ssl/certs/ca-certificates.crt',
-      ca_path: "/etc/ssl/certs"
-      }}
-    }
-  end

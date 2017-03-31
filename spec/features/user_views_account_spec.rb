@@ -22,6 +22,7 @@ feature 'user visits account page' do
     click_link "My Account"
 
     expect(page).to have_content("Edit")
+    binding.pry
     expect(page).to have_content("Delete Account")
   end
 
