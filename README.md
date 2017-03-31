@@ -18,4 +18,4 @@ of the numerous features in "Trivia Extraordinaire".
 * The Chart.js API is used so the user can view their personal statistics in a piechart
 
 ### Deployed Site:
-* https://trivia-extraordinaire.herokuapp.com/
+* https://trivia-extraordinaire.herokuapp.com/ (should be opened in Chrome or Firefox)

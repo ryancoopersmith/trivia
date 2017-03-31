@@ -1,0 +1,524 @@
+/* line 5, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+body {
+  margin-bottom: 50px;
+  font-weight: 800 !important;
+}
+
+/* line 10, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+a {
+  color: black;
+}
+
+/* line 14, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+button {
+  font-family: "Josefin Sans";
+  font-weight: 800;
+}
+
+/* line 19, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.big-card p {
+  color: black;
+}
+
+/* line 23, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+h1 {
+  font-weight: 800;
+}
+
+/* line 27, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+h2 {
+  font-weight: 800;
+  color: black;
+  text-align: center;
+}
+
+/* line 33, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+h3 {
+  font-weight: 800;
+  color: black;
+}
+
+/* line 38, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+button {
+  color: black;
+  text-align: center;
+  font-size: 20px;
+}
+
+/* line 44, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.top-bar-right {
+  padding-right: 110px;
+}
+
+/* line 48, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.top-bar-link {
+  font-size: 20px;
+  display: inline-block;
+  padding-right: 10px;
+  padding-top: 5px;
+}
+
+/* line 55, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.search {
+  position: absolute;
+  width: 40%;
+  top: 5.5%;
+  right: 2%;
+  margin-top: 10px;
+}
+
+/* line 63, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.card-divider {
+  width: 250px;
+  height: 170px;
+  border-radius: 35px;
+}
+
+/* line 69, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.card {
+  border-radius: 10px;
+  padding-bottom: 30px;
+}
+
+/* line 74, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.card-section {
+  text-align: center;
+}
+
+/* line 78, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.paginate {
+  text-align: center;
+  margin: auto;
+  background-color: #2A5F9F;
+  color: #fefefe;
+  border-radius: 10px;
+  width: 150px;
+  height: 50px;
+  font-size: 18px;
+  font-weight: 800;
+  margin-left: 18px;
+  margin-right: 34px;
+  margin-bottom: 45px;
+}
+
+/* line 93, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.center {
+  text-align: center;
+}
+
+/* line 97, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.correct {
+  color: green;
+}
+
+/* line 101, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.wrong {
+  color: #E55A51;
+}
+
+/* line 105, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.start {
+  border-radius: 10px;
+  margin-top: 12px;
+}
+
+/* line 110, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.category {
+  display: block;
+  margin: 0 auto;
+}
+
+/* line 115, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+#myChart {
+  margin: 0 auto;
+}
+
+/* line 119, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.toggleQuizzes {
+  position: absolute;
+  top: 17px;
+  right: 30px;
+  font-size: 20px !important;
+  cursor: pointer;
+}
+
+/* line 127, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.wrongAnswer {
+  background-color: #E55A51;
+}
+
+/* line 131, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.correctAnswer {
+  background-color: #6FB981;
+}
+
+/* line 135, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.hidden {
+  display: none;
+}
+
+/* line 139, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+#canvasParent {
+  width: 50%;
+  height: 50%;
+  margin: 0 auto;
+}
+
+/* line 145, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+#privacy {
+  color: #fefefe;
+  position: absolute;
+  left: 20px;
+  margin-top: 12px;
+  font-size: 18px !important;
+}
+
+/* line 153, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+#terms {
+  color: #fefefe;
+  position: absolute;
+  margin-left: 130px;
+  margin-top: 12px;
+  font-size: 18px !important;
+}
+
+/* line 161, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.footer {
+  width: 100%;
+  height: 50px;
+  background-color: #2A5F9F;
+  position: fixed;
+  bottom: 0px;
+}
+
+/* line 169, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.category {
+  font-weight: 800;
+  font-size: 24px;
+}
+
+/* line 174, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+[type='file'] {
+  color: black;
+}
+
+/* line 178, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.hollow {
+  color: black !important;
+  font-size: 16px !important;
+  border-width: 2px !important;
+  border-color: black !important;
+}
+
+/* line 185, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.top-bar {
+  margin-bottom: 10px;
+}
+
+/* line 189, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.top-bar-title {
+  margin-top: 25px;
+}
+
+/* line 193, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.top-bar-title a {
+  color: #fefefe;
+}
+
+/* line 197, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.answer {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  margin: 30px;
+  font-size: 24px;
+  border-radius: 10px;
+}
+
+/* line 206, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.quizCategory {
+  color: black;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* line 213, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.question {
+  color: black;
+  text-align: center;
+  font-size: 26px;
+}
+
+/* line 219, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.flash {
+  padding-left: 10px;
+  color: #2A5F9F;
+  font-size: 26px !important;
+  margin-bottom: 10px;
+}
+
+/* line 226, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.big-card {
+  width: 80%;
+  height: 100%;
+  border-radius: 50px;
+  background-color: #F9F401;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 80px;
+}
+
+/* line 236, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.noQuizzes {
+  color: #2A5F9F;
+}
+
+/* line 240, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.timer {
+  padding: 10px;
+  background-color: #2A5F9F;
+  font-size: 36px !important;
+  height: 80px;
+  margin-bottom: 30px;
+}
+
+/* line 248, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.seconds {
+  color: #fefefe !important;
+  width: 150px;
+  text-align: left;
+  margin-left: 10px;
+}
+
+/* line 255, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.found {
+  width: 43% !important;
+  margin-right: 61px;
+}
+
+/* line 260, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.next {
+  margin: 0 auto;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+/* line 266, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.top-bar-link a {
+  color: #fefefe;
+}
+
+/* line 270, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.input-group-label {
+  font-weight: 600;
+  font-size: 26px;
+  color: #fefefe;
+  background-color: #2A5F9F;
+}
+
+/* line 277, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+label {
+  font-size: 20px;
+}
+
+/* line 281, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.buttonWrapper {
+  margin-top: -60px;
+  text-align: center;
+}
+
+/* line 286, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.card-section .row {
+  height: 55px;
+}
+
+/* line 290, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+li {
+  font-size: 20px !important;
+  color: black;
+  list-style: none;
+}
+
+/* line 296, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.text-center {
+  padding-top: 30px;
+}
+
+/* line 300, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.go-back {
+  margin-left: 30px;
+  margin-bottom: 25px;
+}
+
+/* line 305, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.button {
+  border-radius: 10px;
+}
+
+/* line 309, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.update {
+  width: 150px;
+  margin-right: 200px;
+}
+
+/* line 314, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.delete {
+  width: 150px;
+  margin-left: 30px;
+  position: absolute;
+  top: 1574px;
+}
+
+/* line 321, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+i {
+  font-size: 20px;
+}
+
+/* line 325, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+em {
+  font-size: 20px;
+}
+
+/* line 329, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.end-o-game {
+  text-align: center;
+  padding-top: 30px;
+}
+
+/* line 334, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.score {
+  color: #2A5F9F !important;
+  text-align: center;
+  font-size: 200px;
+}
+
+/* line 340, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.fa-twitter {
+  color: #2A5F9F !important;
+  font-size: 20px;
+  font-size: 40px;
+}
+
+/* line 346, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.twitter-share-button {
+  font-size: 30px;
+  margin-left: 255px;
+  margin-bottom: 30px;
+  display: inline-block;
+}
+
+/* line 353, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.historyTitle {
+  margin-bottom: 25px;
+}
+
+/* line 357, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.history {
+  font-size: 24px;
+}
+
+/* line 361, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.interest {
+  color: #fefefe;
+  font-size: 22px;
+  padding: 20px;
+}
+
+/* line 367, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.interest:hover {
+  color: #fefefe;
+}
+
+/* line 371, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.interest-button {
+  margin-left: 488px;
+  margin-top: 10px;
+  margin-bottom: 100px;
+}
+
+/* line 377, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.terms {
+  font-family: Helvetica, sans-serif;
+  text-align: left;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+/* line 384, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.privacy {
+  font-family: Helvetica, sans-serif;
+  text-align: left;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+/* line 391, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.fix {
+  position: absolute;
+  left: 145px;
+  bottom: 175px;
+}
+
+/* line 397, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+[type='text'], [type='password'], [type='date'], [type='datetime'], [type='datetime-local'], [type='month'], [type='week'], [type='email'], [type='number'], [type='search'], [type='tel'], [type='time'], [type='url'], [type='color'], textarea {
+  font-weight: 600 !important;
+  font-size: 24px !important;
+  height: 50px;
+}
+
+/* line 403, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.interestsTitle {
+  margin-bottom: 40px;
+}
+
+/* line 407, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.interestsBigTitle {
+  margin-bottom: -10px;
+}
+
+/* line 411, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.centerButtons {
+  display: block;
+  margin: 0 auto;
+  font-family: "Josefin Sans";
+  font-size: 22px;
+  font-weight: 800;
+  padding: 10px 33px;
+}
+
+/* line 420, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.shared {
+  font-weight: 400;
+  font-size: 20px;
+}
+
+/* line 425, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.twitter-o-auth {
+  font-size: 20px !important;
+}
+
+/* line 429, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.devise {
+  margin-bottom: 30px;
+}
+
+/* line 433, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.forgot {
+  margin-top: 20px;
+}
+
+/* line 437, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.o-auth {
+  line-height: 2.4;
+}
+
+/* line 441, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.offsignin {
+  margin-top: 90px;
+}
+
+/* line 445, /Users/ryancoopersmith/trivia/app/assets/stylesheets/app/application.scss */
+.offsignup {
+  margin-top: 60px;
+}
