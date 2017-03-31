@@ -1,11 +1,11 @@
 import App from '../src/components/App';
 
-describe('Bars Index', () => {
+describe('Quiz List', () => {
   let wrapper;
 
   beforeEach(() => {
     spyOn(global, 'fetch').and.returnValue(
-      createResponseFromFixture('bars/barsIndex')
+      createResponseFromFixture('quizList/quizList')
     );
   });
 
