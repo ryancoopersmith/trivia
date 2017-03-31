@@ -308,12 +308,14 @@ li {
 
 .update {
   width: 150px;
-  margin-right: 30px;
+  margin-right: 200px;
 }
 
 .delete {
   width: 150px;
   margin-left: 30px;
+  position: absolute;
+  top: 1685px;
 }
 
 i {
