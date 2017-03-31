@@ -272,4 +272,14 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
   config.omniauth :twitter, ENV['TWITTER_API_KEY'], ENV['TWITTER_API_SECRET']
+
 end
+
+Rails.application.config.middleware.use OmniAuth::Builder do
+  provider :twitter, ENV['TWITTER_API_KEY'], ENV['TWITTER_API_SECRET'], {
+    client_options: { ssl: {
+      ca_file: '/usr/lib/ssl/certs/ca-certificates.crt',
+      ca_path: "/etc/ssl/certs"
+      }}
+    }
+  end
