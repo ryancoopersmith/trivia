@@ -7,12 +7,11 @@ class UserMailer < ApplicationMailer
     )
   end
 
-  def reminder(user, question)
+  def reminder(user)
     @user = user
-    @question = question
     mail(
       to: user.email,
-      subject: "Can you answer this?"
+      subject: "There's over 1,200 quizzes waiting for you!"
     )
   end
 end
