@@ -19,7 +19,7 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'sidekiq'
 gem 'sinatra', github: 'sinatra/sinatra'
-gem 'sidetiq'
+gem 'sidekiq-cron'
 
 group :development do
   gem 'listen', '~> 3.0.5'
