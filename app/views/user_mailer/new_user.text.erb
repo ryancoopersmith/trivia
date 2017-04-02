@@ -1,4 +1,8 @@
-Welcome <%= @user.username %>!
+<% if @user.username %>
+  Welcome <%= @user.username %>!
+<% else %>
+  Welcome <%= @user.email %>!
+<% end %>
 
 We're very happy to have you join our community!
 
