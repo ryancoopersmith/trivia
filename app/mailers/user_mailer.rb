@@ -6,4 +6,12 @@ class UserMailer < ApplicationMailer
       subject: "Success"
     )
   end
+
+  def reminder(user)
+    @user = user
+    mail(
+      to: user.email
+      subject: "Can you answer this?"
+    )
+  end
 end

@@ -17,6 +17,9 @@ gem 'jquery-turbolinks'
 gem 'json'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'sidekiq'
+gem 'sinatra', github: 'sinatra/sinatra'
+gem 'sidetiq'
 
 group :development do
   gem 'listen', '~> 3.0.5'

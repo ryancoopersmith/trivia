@@ -61,11 +61,11 @@ window.onload = function() {
           categoryColors.push('#FFCE56');
           categoryHovers.push('#FFCE56');
         } else if (index === 3) {
-          categoryColors.push('#F6F3F2'); // fix color
-          categoryHovers.push('#ABCDEF'); // fix hover color
+          categoryColors.push('#F6F3F2');
+          categoryHovers.push('#ABCDEF');
         } else if (index === 4) {
-          categoryColors.push('#998FE2'); // fix color
-          categoryHovers.push('#223BAC'); // fix hover color
+          categoryColors.push('#998FE2');
+          categoryHovers.push('#223BAC');
         }
       });
 
