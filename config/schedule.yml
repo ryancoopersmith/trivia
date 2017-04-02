@@ -1,4 +1,4 @@
 email:
-  cron: '55 * * * *'
+  cron: '0 20 * * *'
   class: 'EmailWorker'
   queue: 'default'
