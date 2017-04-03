@@ -1,5 +1,0 @@
-ratings:
-   paths:
-   - "**.rb"
-   - "**.js"
-   - "**.erb"
