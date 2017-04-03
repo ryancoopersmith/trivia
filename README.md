@@ -18,6 +18,7 @@ of the numerous features in "Trivia Extraordinaire".
 * The scoring system is implemented for each question by rounding up the time left on the timer multiplied by 10
 * The authentication process provides the user with a choice of either custom registration via Devise or Twitter registration via Omniauth
 * The wrong answers were implemented by finding random answers of other questions of the same category
+* Users will recieve an email reminding them to come back and play 3 times a week if they haven't played a quiz in a week or longer
 
 
 
