@@ -1,4 +1,4 @@
 email:
-  cron: '56 0 * * *' # 0,3,5 not working
+  cron: '0 1 * * 3,5,7' # 0,3,5 not working adding 4 hours to the time does work ex: 8 => 0
   class: 'EmailWorker'
   queue: 'default'
